@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>docker - 标签 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/tags/docker/</link>
+        <description>docker - 标签 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Mar 2023 14:10:48 &#43;0000</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>docker基本命令使用</title>
+    <link>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 07 Mar 2023 14:10:48 &#43;0000</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[在kubernets项目中多次使用到了docker的相关指令，特在此记录。 Docker 基本命令的使用方法 镜像的拉取、上传和删除 搜索镜像 1 docker search [imageName]:[tag] 拉取镜像]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>kubernetes - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/kubernetes/</link>
+        <description>kubernetes - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 14 Apr 2023 13:23:26 &#43;0000</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Kubernetes中request的作用</title>
+    <link>https://wxs-605.github.io/kubernetes%E4%B8%ADrequest%E7%9A%84%E4%BD%9C%E7%94%A8/</link>
+    <pubDate>Fri, 14 Apr 2023 13:23:26 &#43;0000</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/kubernetes%E4%B8%ADrequest%E7%9A%84%E4%BD%9C%E7%94%A8/</guid>
+    <description><![CDATA[在完成柔性计算项目的过程中，总结request在kubernetes中的各种作用。如有不正确的地方或者有补充的点，欢迎联系我。 request]]></description>
+</item>
+<item>
+    <title>修改kubelet配置</title>
+    <link>https://wxs-605.github.io/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Tue, 21 Mar 2023 13:29:53 &#43;0000</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[记录在验证kubelet压力驱逐原则时的遇到的问题与解决方法。 验证节点压力驱逐原则时，实验结果与官方文档给出的规则相反 kubernetes的]]></description>
+</item>
+<item>
+    <title>docker基本命令使用</title>
+    <link>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 07 Mar 2023 14:10:48 &#43;0000</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[在kubernets项目中多次使用到了docker的相关指令，特在此记录。 Docker 基本命令的使用方法 镜像的拉取、上传和删除 搜索镜像 1 docker search [imageName]:[tag] 拉取镜像]]></description>
+</item>
+</channel>
+</rss>

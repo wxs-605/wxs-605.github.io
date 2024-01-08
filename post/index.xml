@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>https://example.org/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jan 2024 23:39:38 +0800</lastBuildDate>
+    <atom:link href="https://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>https://example.org/post/first-post/</link>
+      <pubDate>Sat, 06 Jan 2024 23:39:38 +0800</pubDate>
+      <guid>https://example.org/post/first-post/</guid>
+      <description>1233333</description>
+    </item>
+    <item>
+      <title>Kubernetes中request的作用</title>
+      <link>https://example.org/post/kubernetes%E4%B8%ADrequest%E7%9A%84%E4%BD%9C%E7%94%A8/</link>
+      <pubDate>Fri, 14 Apr 2023 13:23:26 +0000</pubDate>
+      <guid>https://example.org/post/kubernetes%E4%B8%ADrequest%E7%9A%84%E4%BD%9C%E7%94%A8/</guid>
+      <description>在完成柔性计算项目的过程中，总结request在kubernetes中的各种作用。如有不正确的地方或者有补充的点，欢迎联系我。&#xA;request出现之处 在 Kubernetes 中，Pod 是最小的可调度的部署单元。Pod 包含一个或多个容器，共享相同的网络命名空间和卷存储空间。在 Kubernetes 中，Pod 用来承载应用程序，并提供资源的抽象。Pod 中的 requests 字段是用来定义容器需要的最小计算资源的，主要包括 CPU 和内存。 requests 字段可以在 Pod 级别或容器级别设置。在 Pod 级别设置 requests 字段可以确保所有容器都具有相同的资源要求。在容器级别设置 requests 字段可以确保每个容器都有特定的资源要求。&#xA;request作用分析 为Pod设置request之后，其会在 Kubernetes 的Scheduler、Kubelet中发挥作用。下面进行详细分析。&#xA;request作用在Scheduler 当Pod设置中设置了request Scheduler在调度Pod到合适节点的过程中，会经过预选和优选两个阶段，其中会有各种各样的检查和评分策略，以为Pod找到最适合它的节点。在预选过程中有一个策略叫 NodeResourcesFit ，其作用是检查节点是否拥有Pod 请求的所有资源。实现的扩展点有preFilter、filter、score。其中的重点是 filter 的过程。&#xA;filter 过程Scheduler是如何实现的呢？它首先获取到集群中所有节点，然后检查节点是由有满足Pod请求的最小资源(既是节点的剩余可用资源是否大于Pod中设置的request)，如果不满足，则过滤掉当前节点。在计算节点的剩余可用资源时，Scheduler统计运行在节点上的每一个Pod的request，并把它们累加，如果 podRequest.MilliCPU &amp;gt; (nodeInfo.Allocatable.MilliCPU - nodeInfo.Requested.MilliCPU)，那么该节点将会被过滤(这里以CPU举例，检查Memory是否满足要求也是同样的方法)。&#xA;当Pod未设置request Pod中未设置request时，Scheduler则认为Pod需要的最小计算资源为0，认为此Pod可以运行在任意一个节点上。故此时Scheduler不再对节点进行过滤和评分，而时把Pod调度到随机的节点上。&#xA;request作用在Kubelet 当Pod被调度成功之后，对应节点上的Kubelet会创建、运行、管理这个Pod。Kubelet管理节点上所有Pod的生命周期。当节点上所有Pod的request资源之和大于等于节点的Allocatable资源时，kubelet不创建最后一个被调度到此节点的Pod，并将最后一个被调度到此节点的Pod状态设为 OutOfcpu 或者 OutOfmemory。</description>
+    </item>
+    <item>
+      <title>修改kubelet配置</title>
+      <link>https://example.org/post/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 21 Mar 2023 13:29:53 +0000</pubDate>
+      <guid>https://example.org/post/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</guid>
+      <description>记录在验证kubelet压力驱逐原则时的遇到的问题与解决方法。&#xA;验证节点压力驱逐原则时，实验结果与官方文档给出的规则相反 kubernetes的官方文档中给出，当节点内存资源紧张时，会根据以下的三条规则驱逐节点上的pod以回收内存资源，缓解内存资源压力：&#xA;先根据pod的内存使用量是否超过其request进行排序，超过的排在前面；&#xA;再根据pod的priority值大小进行排序，值小的排在前面；&#xA;最后根据pod内存request减去pod的实际内存使用量的值，得到值较小的排在前面；&#xA;我的集群环境：&#xA;三台基于Centos7.6操作系统的虚拟机&#xA;kubernetes版本1.23.0&#xA;未更改kubelet原本的配置文件&#xA;实验过程 自定义三个low、mid、high优先级类，在节点node1上部署两个pod，内存资源使用量大的pod而优先级高，内存使用量小的pod而优先级低。待他们运行稳定之后，再部署一个抢占node1内存资源的pod造成节点内存资源不足而触发驱逐，观察kubelet先驱逐哪一个pod。（**注意：**上述两个测试用的pod均没有设置request，故他们的request为0，驱逐的顺序由第2和第3点决定；同时保证抢占内存的pod不会被先驱逐）&#xA;实验结果 使用命令 kubectl get pods -n example -w 观察pod的状态（实验时上面的pod都在example的namespace下）。最终是优先级高的pod先被驱逐，并且它的状态直接是error，并没有出现evicted的状态。&#xA;结果分析 显然上面的实验结果比不符合kubernetes文档给出的规则，在查阅kubelet源码之后也发现上面的实验结果有误。接着去查看node1上kubelet的配置，发现其节点剩余可用内存剩余小于100Mi时才触发驱逐，并且驱逐时pod的最大宽限期是0秒，这可能导致节点内存资源紧张时pod直接被kubelet kill掉，从而pod的状态直接变成error。&#xA;思路验证 修改kubelet配置&#xA;进入到node1，使用命令打开 vim /var/lib/kubelet/config.yaml kubelet的配置文件，添加以下字段：&#xA;evictionMaxPodGracePeriod: 60 evictionHard: memory.available: &amp;#34;800Mi&amp;#34; 上面是设置kubelet驱逐pod时，给pod的最大宽限期是60秒，当节点剩余可用内存小于800Mi时触发驱逐。然后使用命令 systemctl restart kubelet 重启节点上的kubelet，重新实验。&#xA;二次实验与结果 同样按照一次实验时的实验步骤再次实验，观察哪一个pod先被驱逐。&#xA;这次实验时低优先级且内存使用量较小的pod先被驱逐，得到了正确的实验结果。故确实是因为kubelet默认的产生驱逐的阈值太高而导致出现错误的实验结果，当把kubelet内存的驱逐阈值调低即得到了正确的结果。</description>
+    </item>
+    <item>
+      <title>docker基本命令使用</title>
+      <link>https://example.org/post/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 07 Mar 2023 14:10:48 +0000</pubDate>
+      <guid>https://example.org/post/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
+      <description>在kubernets项目中多次使用到了docker的相关指令，特在此记录。&#xA;Docker 基本命令的使用方法 镜像的拉取、上传和删除 搜索镜像 docker search [imageName]:[tag] 拉取镜像 docker pull [imageName]:[tag] 上传镜像 docker push [imagesName]:[tag] 删除镜像 docker rmi [镜像名]:[tag] 或 docker rmi [镜像ID] 如果删除不成功，可以在上面的删除命令后面加上参数强制删除，如：&#xA;docker rmi [imageName]:[tag] --force 上述命令可以强制删除镜像，即使这个镜像正在被使用。&#xA;注意： 强制删除镜像的命令对于拥有子镜像的镜像将不会成功，除非先删除他的子镜像。&#xA;镜像打包与导入 打包镜像 docker save -o [打包后的镜像名称].tar [imagesName]:[tag] 通过tar包导入镜像 docker load&amp;lt;[打包的镜像名].tar 注意 其中的 &amp;lt; 符号前后连接没有空格。&#xA;docker制作镜像 docker build -t [你制作的镜像名]:[tag] . 其中的符号 . 表示Dockerfile文件在当前文件夹下，并使用其进行制作镜像。&#xA;Dockerfile 简介 什么是Dockerfile?&#xA;Dockerfile是一个用来构建镜像的文本文件，里面包含了构建镜像所需的指令。&#xA;Dockerfile指令介绍 FROM 所有Dockerfile指令都必须从FROM命令开始。FROM命令会指定镜像基于哪个基础镜像构建，接下来的命令也会给予这个基础镜像，FROM命令可以多&#xA;次使用，表示会创建多个镜像。&#xA;FROM &amp;lt;images name&amp;gt; MAINTAINER MAINTAINER命令用于指定该镜像的作者。&#xA;MAINTAINER &amp;lt;author name&amp;gt; RUN RUN命令在shell或者exec的环境下执行的命令。RUN指令会在新创建的镜像上添加新的层面，接下来提交的结果用在Dockerfile的下一条指令中。语法如下：</description>
+    </item>
+    <item>
+      <title>Markdown编写规范</title>
+      <link>https://example.org/post/markdown%E6%96%87%E7%AB%A0%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/</link>
+      <pubDate>Sun, 05 Mar 2023 12:48:04 +0000</pubDate>
+      <guid>https://example.org/post/markdown%E6%96%87%E7%AB%A0%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/</guid>
+      <description>Markdown是一种轻量级标记语言，被广泛应用于各种场景中，如博客、论坛、文档等。Markdown的语法简单易懂，但是为了使文章格式清晰美观，还是需要按照一定的规范和格式来编写。&#xA;标题 Markdown中的标题使用 # 符号表示，一个 # 表示一级标题，两个 # 表示二级标题，以此类推，如下：&#xA;这是一级标题 一级标题 这是二级标题 二级标题 这是三级标题 三级标题 这是四级标题 四级标题 这是五级标题 五级标题 这是六级标题 六级标题 # 一级标题 ## 二级标题 ### 三级标题 文本样式 Markdown中可以使用如下方式来修改文本样式：&#xA;加粗：使用两个 * 符号或者两个 __ 符号包含文本。 **加粗文字** 或者 __加粗文字__ 斜体：使用一个 * 符号或者一个 _ 符号包含文本。 *斜体文字* 或者_斜体文字 删除线：使用两个 ~~ 符号包含文本。 ~~删除线文字~~ 列表 Markdown支持有序列表和无序列表两种，有序列表使用数字和 . 符号表示，无序列表使用 - 符号或者 * 符号表示。如下：&#xA;无序列表 - 无序列表1 - 无序列表2 - 无序列表3 有序列表 有序列表1 有序列表2 有序列表3 1. 有序列表1 2. 有序列表2 3.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://example.org/post/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/post/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</guid>
+      <description>计算机网络-网络协议知识梳理 在学习完计算机网络之后，对一些常用网络协议做的梳理总结。&#xA;基本常用的网络协议-简介 传输控制协议（TCP） ：TCP是一种面向连接的协议，用于在网络中可靠地传输数据。它通过提供流控制、拥塞控制、差错恢复和可靠性保证等机制来确保数据的完整性和可靠性。TCP广泛用于传输网页、电子邮件、文件传输等应用。 网际协议（IP） ：IP是一种网络层协议，负责在互联网中将数据包从源地址传输到目的地址。它定义了数据包的格式和路由选择算法。IP地址用于唯一标识网络中的设备。IP协议是互联网的核心协议，使得不同网络之间的通信成为可能。 超文本传输协议（HTTP） ：HTTP是一种应用层协议，用于在客户端和服务器之间传输超文本（如网页）和其他资源。它是Web通信的基础，通过使用URL作为资源定位符来请求和传输数据。HTTP协议通常使用TCP作为传输协议。 域名系统（DNS） ：DNS是一种用于将域名解析为IP地址的分布式数据库系统。当你在浏览器中输入一个域名时，DNS将负责将其解析为相应的IP地址，使得你可以访问该域名对应的服务器。 动态主机配置协议（DHCP） ：DHCP是一种用于自动分配IP地址和其他网络配置信息的协议。它允许计算机在加入网络时自动获取所需的网络配置，而无需手动配置。DHCP协议使得网络的管理更加灵活和高效。 文件传输协议（FTP） ：FTP是一种用于在网络中传输文件的协议。它允许用户通过FTP客户端连接到FTP服务器，并进行文件上传、下载、删除等操作。FTP可以通过TCP协议进行可靠的数据传输。 简单邮件传输协议（SMTP） ：SMTP是一种用于在网络中发送和接收电子邮件的协议。它定义了电子邮件的传输规则和信封格式。SMTP客户端用于发送电子邮件，而SMTP服务器用于接收和转发电子邮件。 网际组管理协议（IGMP） ：IGMP是一种用于在多播网络中管理组播组的协议。它允许主机加入和离开多播组，并通过路由器进行组播数据的传输。IGMP在视频流、音频流和在线游戏等应用中发挥重要作用。 基本的常用的网络协议-详细 传输控制协议（TCP） ： 作用层次：传输层（第四层） 单向/双向：TCP是一种双向协议，允许双方在连接中进行双向的数据传输。 长连接/点对点：TCP使用长连接，即在通信双方建立连接后，可以持续地进行数据传输。 区别：TCP提供可靠的、面向连接的通信。它通过序列号、确认应答、重传机制等保证数据的可靠性和完整性。TCP还提供流控制和拥塞控制机制，以确保网络中的可靠性和效率。 网际协议（IP） ： 作用层次：网络层（第三层） 单向/双向：IP是一种无连接协议，只负责将数据包从源地址传输到目的地址，是一种单向协议。 长连接/点对点：IP本身并不保持连接状态，因此没有长连接或点对点的概念。 区别：IP协议是互联网的核心协议，负责数据包的路由选择和传输。它使用IP地址唯一标识网络中的设备，并根据路由表将数据包从源地址传输到目的地址。IP协议提供了无连接、不可靠的传输服务。 超文本传输协议（HTTP） ： 作用层次：应用层（第七层） 单向/双向：HTTP是一种双向协议，客户端向服务器发送请求，服务器返回响应。 长连接/点对点：HTTP既可以使用长连接也可以使用短连接。长连接允许在单个连接上发送多个请求和响应，而短连接在每个请求-响应周期后关闭连接。 区别：HTTP用于在客户端和服务器之间传输超文本和其他资源。它使用URL作为资源定位符，通过请求方法（如GET、POST）向服务器发送请求，并接收服务器返回的响应。 域名系统（DNS） ： 作用层次：应用层（第七层） 单向/双向：DNS是一种双向协议，客户端向DNS服务器发送查询请求，服务器返回响应。 长连接/点对点：DNS通常使用短连接，即每次查询都会建立一个新的连接。 区别：DNS用于将域名解析为IP地址，以实现设备之间的通信。它使用分布式数据库系统，客户端向DNS服务器发送域名查询请求，并接收到对应的IP地址响应。 动态主机配置协议（DHCP） ： 作用层次：应用层（第七层） 单向/双向：DHCP是一种双向协议，客户端向DHCP服务器发送请求，服务器提供响应和配置信息。 长连接/点对点：DHCP使用短连接，在完成IP地址分配后，连接将被释放。 区别：DHCP允许设备在加入网络时自动获取IP地址和其他网络配置信息。客户端通过DHCP发现、请求、确认等阶段与服务器进行交互，最终获取网络配置。 用户数据报协议（UDP） ： 作用层次：传输层（第四层）。 单向/双向：UDP是一种无连接协议，可以进行单向或双向通信。但是，UDP本身不提供确认和重传机制，因此数据传输不可靠。 长连接/点对点：UDP是无连接的，每个数据报都是一个独立的信息单元。每个数据报都具有自己的源地址和目的地址。 区别：UDP是一种简单的传输协议，它提供了一种无需建立连接的快速数据传输方式。它将数据分割为数据报，并通过IP协议进行传输，但不提供可靠性保证。UDP通常用于实时应用，如音频、视频、实时游戏等，其中传输速度和即时性比数据完整性更重要。 文件传输协议（FTP） ： 作用层次：应用层（第七层）。 单向/双向：FTP是一种双向协议，客户端与服务器之间可以进行双向数据传输。 长连接/点对点：FTP使用长连接，客户端在建立连接后可以持续进行多个文件传输操作。 区别：FTP是一种专门用于文件传输的协议。它提供了一套命令和响应规范，允许客户端连接到FTP服务器并进行文件上传、下载、删除等操作。FTP可以使用TCP作为传输协议，以确保可靠的数据传输。 简单邮件传输协议（SMTP） ： 作用层次：应用层（第七层）。 单向/双向：SMTP是一种双向协议，用于在客户端和邮件服务器之间进行双向通信。 长连接/点对点：SMTP使用短连接，在每次邮件发送后连接会关闭。 区别：SMTP是用于发送和接收电子邮件的协议。它定义了电子邮件的传输规则和信封格式。SMTP客户端用于发送电子邮件，而SMTP服务器用于接收和转发电子邮件。SMTP协议通常使用TCP作为传输协议，以确保可靠的邮件传输。 TCP与UDP的区别 TCP（传输控制协议） ：</description>
+    </item>
+  </channel>
+</rss>
