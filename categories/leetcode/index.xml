@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/leetcode/</link>
         <description>LeetCode - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 11 Jan 2024 23:54:19 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 12 Jan 2024 20:52:00 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+    <title>LeetCode 链表</title>
+    <link>https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/</link>
+    <pubDate>Fri, 12 Jan 2024 20:52:00 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/</guid>
+    <description><![CDATA[今天刷了挺多链表的题，稍微总结一下思路。大部分的链表题，按照常规思路去想就可以解决，很少有特别精妙的方法。 两数相加 给你两个 非空 的链表，表示两]]></description>
+</item>
+<item>
     <title>LeetCode 快慢指针</title>
     <link>https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/</link>
     <pubDate>Thu, 11 Jan 2024 23:54:19 &#43;0800</pubDate>

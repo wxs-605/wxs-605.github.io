@@ -4,30 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>LeetCode 快慢指针 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="LeetCode 快慢指针" />
-<meta property="og:description" content="小结一下今天刷的关于链表的题，设计的主要知识点是快慢指针，虽然有点简单，但还是总结一下吧。 快慢指针思想 常规： 定义一个slow慢指针，一个fa" />
+        <title>LeetCode 链表 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="LeetCode 链表" />
+<meta property="og:description" content="今天刷了挺多链表的题，稍微总结一下思路。大部分的链表题，按照常规思路去想就可以解决，很少有特别精妙的方法。 两数相加 给你两个 非空 的链表，表示两" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-01-11T23:54:19+08:00" />
-<meta property="article:modified_time" content="2024-01-11T23:54:19+08:00" /><meta property="og:site_name" content="临海沐清风" />
+<meta property="og:url" content="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-12T20:52:00+08:00" />
+<meta property="article:modified_time" content="2024-01-12T20:52:00+08:00" /><meta property="og:site_name" content="临海沐清风" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 快慢指针"/>
-<meta name="twitter:description" content="小结一下今天刷的关于链表的题，设计的主要知识点是快慢指针，虽然有点简单，但还是总结一下吧。 快慢指针思想 常规： 定义一个slow慢指针，一个fa"/>
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 链表"/>
+<meta name="twitter:description" content="今天刷了挺多链表的题，稍微总结一下思路。大部分的链表题，按照常规思路去想就可以解决，很少有特别精妙的方法。 两数相加 给你两个 非空 的链表，表示两"/>
 <meta name="application-name" content="临海沐清风">
-<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E7%9F%A9%E9%98%B5/" /><link rel="next" href="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "LeetCode 快慢指针",
+        "headline": "LeetCode 链表",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/wxs-605.github.io\/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "快慢指针","wordcount":  924 ,
-        "url": "https:\/\/wxs-605.github.io\/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88\/","datePublished": "2024-01-11T23:54:19+08:00","dateModified": "2024-01-11T23:54:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/wxs-605.github.io\/leetcode-%E9%93%BE%E8%A1%A8\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "链表","wordcount":  1598 ,
+        "url": "https:\/\/wxs-605.github.io\/leetcode-%E9%93%BE%E8%A1%A8\/","datePublished": "2024-01-12T20:52:00+08:00","dateModified": "2024-01-12T20:52:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
                 "@type": "Person",
@@ -58,7 +58,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" selected>简体中文</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/leetcode-%E9%93%BE%E8%A1%A8/" selected>简体中文</option></select>
                 </a></div>
         </div>
     </div>
@@ -92,7 +92,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/leetcode-%E9%93%BE%E8%A1%A8/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 快慢指针</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 链表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-11">2024-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 924 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="leancloud_visitors" data-flag-title="LeetCode 快慢指针">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-12">2024-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1598 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E9%93%BE%E8%A1%A8/" class="leancloud_visitors" data-flag-title="LeetCode 链表">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -117,88 +117,100 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#环形链表">环形链表</a>
+    <li><a href="#两数相加">两数相加</a>
       <ul>
-        <li><a href="#我的思路">我的思路：</a></li>
+        <li><a href="#思路">思路</a></li>
       </ul>
     </li>
-    <li><a href="#环形链表ii">环形链表II</a>
+    <li><a href="#k个一组翻转链表">K个一组翻转链表</a>
       <ul>
-        <li><a href="#我的思路-1">我的思路：</a></li>
+        <li><a href="#思路-1">思路</a></li>
       </ul>
     </li>
-    <li><a href="#删除链表中倒数第n个节点">删除链表中倒数第N个节点</a>
+    <li><a href="#随机链表的复制">随机链表的复制</a>
       <ul>
-        <li><a href="#我的思路一">我的思路一：</a></li>
-        <li><a href="#我的思路二">我的思路二：</a></li>
+        <li><a href="#思路-2">思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#合并k个升序链表">合并K个升序链表</a>
+      <ul>
+        <li><a href="#思路-3">思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#lru缓存">LRU缓存</a>
+      <ul>
+        <li><a href="#思路-4">思路</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>小结一下今天刷的关于链表的题，设计的主要知识点是快慢指针，虽然有点简单，但还是总结一下吧。</p>
-<p><strong>快慢指针思想</strong></p>
+            </div><div class="content" id="content"><p>今天刷了挺多链表的题，稍微总结一下思路。大部分的链表题，按照常规思路去想就可以解决，很少有特别精妙的方法。</p>
+<h2 id="两数相加">两数相加</h2>
+<p>给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。请你将两个数相加，并以相同形式返回一个表示和的链表。</p>
+<h3 id="思路">思路</h3>
+<p>easy，就是用链表表示两个加数，然后将其相加。从两个链表的头部开始一个一个节点相机即可，注意一下进位就好。</p>
 <ul>
-<li>常规： 定义一个slow慢指针，一个fast快指针，慢指针走一步时，快指针走两步。当快指针走到链表尾时，慢指针刚好位于链表中点。</li>
-<li>进阶：快指针先走N步，慢指针不动，然后快指针走一步时慢指针也走一步。当快指针到达链表尾时，慢指针刚好位于倒数第N个位置。</li>
+<li>时间复杂度： 遍历两个链表，故为O(N)；</li>
+<li>空间复杂度： 新开了一个链表存储结果，所以空间复杂度为o(N);</li>
 </ul>
-<h2 id="环形链表">环形链表</h2>
-<p>给你一个链表的头节点，判断链表中是否有环。</p>
-<h3 id="我的思路">我的思路：</h3>
-<p>使用快慢指针的常规做法，当一个链表中有坏时，快指针和慢指针走了n步之后走，必定在环中相遇，因为快指针每次都比慢指针多走一步。若链表中没有环，那么快慢指针则不可能相遇。</p>
+<h2 id="k个一组翻转链表">K个一组翻转链表</h2>
+<p>给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。k是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整数倍，那么请将最后剩余的节点保持原有顺序。能只是单纯的改变节点内部的值，而是需要实际进行节点交换。</p>
+<h3 id="思路-1">思路</h3>
+<p>使用快慢指针，从原链表上一组一组的截取一段节点，然后将每一组节点反转、拼接起来即可。</p>
 <ul>
-<li>时间复杂度： 快慢指针都走了n步，时间复杂度为O(N)；</li>
+<li>时间复杂度：截取原链表，故需要遍历一次，在翻转的过程中遍历每一段链表，所以总的来看遍历了两次链表，故时间复杂度为O(N)；</li>
+<li>空间复杂度： 使用了常数个临时变量，所以空间复杂度为O(1)；</li>
+</ul>
+<h2 id="随机链表的复制">随机链表的复制</h2>
+<p>给你一个长度为 n 的链表，每个节点包含一个额外增加的随机指针 random ，该指针可以指向链表中的任何节点或空节点。构造这个链表的 深拷贝。 深拷贝应该正好由 n 个 全新 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 next 指针和 random 指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。</p>
+<h3 id="思路-2">思路</h3>
+<p>这题较难的地方是对random指针的处理，而且题中没说节点的值是唯一的，这就有可能多个节点的值都一样，造成对random的处理变得复杂。但是，同样可以运用快慢指针来解决这个问题。先遍历一遍整个链表，复制每一个节点，不管random指针先。第二次遍历时，new_list和old_list同时从头节点开始遍历，如果old_list中random为空，则new_list中random也为空；如果random不为空时，让慢指针slow和快指针fast同时指向new_list的头节点，接着从old_list中random指向的节点开始向下移动，每移动一个节点，fast也移动一个节点。当old_list移动到末尾时，slow再和fast同时一步一步的移动，当fast也走到末尾时，此时slow指向的节点刚好是对应于random指向的节点。</p>
+<ul>
+<li>时间复杂度： 最坏情况为o(N<sup>2</sup>);</li>
+<li>空间复杂度：O(1)；</li>
+</ul>
+<h2 id="合并k个升序链表">合并K个升序链表</h2>
+<p>给你一个链表数组，每个链表都已经按升序排列。请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<h3 id="思路-3">思路</h3>
+<p>easy，就是对链表数组做K路归并排序嘛一个while循环里嵌套个for循环就可以解决。</p>
+<ul>
+<li>时间复杂度： 遍历了每一个节点，故为O(KN)；</li>
 <li>空间复杂度： 使用了常数个临时变量，故空间复杂度为O(1)；</li>
 </ul>
-<h2 id="环形链表ii">环形链表II</h2>
-<p>给你一个链表的头节点，判断其中是否有环，如果有环，则返回坏的起始节点，否则返回N空指针。</p>
-<h3 id="我的思路-1">我的思路：</h3>
-<p>使用快慢指针的常规做法解决。设链表中非环部分的长度为a，两指针第一次相遇时慢指针在环里走过的长度为b，环里剩下的长度为c，那么两指针第一次相遇时，有以下的关系：
-2 * (a + b) = a + (n + 1) * b + n * c;
-化简一下有 =&gt; a = (n - 1)(b + c) + c；
-由此可以知道，当快慢指针第一次相遇后，把快指针移到头节点，然后慢指针走一步，快指针也走一步，当他们走了a步之后再次相遇时，就是刚好位于链表中环的起始位置。</p>
+<h2 id="lru缓存">LRU缓存</h2>
+<p>请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。实现 LRUCache 类：</p>
 <ul>
-<li>时间复杂度： 相当于遍历了两次链表，故时间复杂度为O(N)；</li>
-<li>空间复杂度： 使用了常数个临时指针，故空间复杂度为O(1)；</li>
+<li>LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存</li>
+<li>int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1</li>
+<li>void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。
+函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。</li>
 </ul>
-<h2 id="删除链表中倒数第n个节点">删除链表中倒数第N个节点</h2>
-<p>给你一个链表，删除链表的倒数第 n个结点，并且返回链表的头结点。</p>
-<h3 id="我的思路一">我的思路一：</h3>
-<p>快慢指针的进阶用法，快指针先走n步，然后快慢指针再同时一步一步的走，当快指针到达链表尾时，慢指针刚好位于倒数第N个位置，此时对链表进行相应的操作即可。</p>
-<ul>
-<li>时间复杂度： 遍历一次链表，故时间复杂度为O(1)；</li>
-<li>空间复杂度： 使用了常数个临时变量，空间复杂度为O(1)；</li>
-</ul>
-<h3 id="我的思路二">我的思路二：</h3>
-<p>先遍历一次链表，统计出链表中的节点个数，在下一次遍历中找到倒数第n个节点，将其删除。</p>
-<ul>
-<li>时间复杂度： 遍历两次链表，故时间复杂度为O(1)；</li>
-<li>空间复杂度： 使用了常数个临时变量，空间复杂度为O(1)；</li>
-</ul>
+<h3 id="思路-4">思路</h3>
+<p>使用哈希表加双向链表解决。哈希表可以在O(1)时间内查找到key对应的节点。这些哈希表上的节点用双向链表表示，把这些节点用一个头节点head串成一个循环链表。head-&gt;next指向的是第一个节点，head-&gt;pre指向的是尾节点。当访问一个节点或新建立一个节点时，就把这个节点放到head的后面，当容量超过capacity时，就删除掉尾节点。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2024-01-11</span>
+                <span>更新于 2024-01-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/leetcode-%E9%93%BE%E8%A1%A8/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" data-title="LeetCode 快慢指针" data-hashtags="快慢指针"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" data-hashtag="快慢指针"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" data-title="LeetCode 快慢指针"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" data-title="LeetCode 快慢指针"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" data-title="LeetCode 快慢指针" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" data-title="LeetCode 链表" data-hashtags="链表"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" data-hashtag="链表"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" data-title="LeetCode 链表"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" data-title="LeetCode 链表"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" data-title="LeetCode 链表" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">快慢指针</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/leetcode-%E7%9F%A9%E9%98%B5/" class="prev" rel="prev" title="LeetCode 矩阵"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 矩阵</a>
-            <a href="/leetcode-%E9%93%BE%E8%A1%A8/" class="next" rel="next" title="LeetCode 链表">LeetCode 链表<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="prev" rel="prev" title="LeetCode 快慢指针"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 快慢指针</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
