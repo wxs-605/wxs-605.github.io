@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>LeetCode 二叉树 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="LeetCode 二叉树" />
+<meta property="og:description" content="总结一下今天刷二叉树遇到的难题和一些思路。 从前序与中序遍历序列构造二叉树 给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-13T00:00:00+00:00" /><meta property="og:site_name" content="临海沐清风" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 二叉树"/>
+<meta name="twitter:description" content="总结一下今天刷二叉树遇到的难题和一些思路。 从前序与中序遍历序列构造二叉树 给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序"/>
+<meta name="application-name" content="临海沐清风">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LeetCode 二叉树",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wxs-605.github.io\/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "二叉树","wordcount":  1595 ,
+        "url": "https:\/\/wxs-605.github.io\/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91\/","datePublished": "2024-01-13T00:00:00+00:00","dateModified": "2024-01-13T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
+                "@type": "Person",
+                "name": "Mr.Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 二叉树</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-13">2024-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1595 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" class="leancloud_visitors" data-flag-title="LeetCode 二叉树">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#从前序与中序遍历序列构造二叉树">从前序与中序遍历序列构造二叉树</a>
+      <ul>
+        <li><a href="#思路借鉴大神">思路(借鉴大神)</a>
+          <ul>
+            <li><a href="#代码实现过程c">代码实现过程C++</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的最近公共祖先">二叉树的最近公共祖先</a>
+      <ul>
+        <li><a href="#思路">思路</a>
+          <ul>
+            <li><a href="#代码实现过程">代码实现过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的右视图">二叉树的右视图</a>
+      <ul>
+        <li><a href="#思路-1">思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的直径">二叉树的直径</a>
+      <ul>
+        <li><a href="#思路-2">思路</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>总结一下今天刷二叉树遇到的难题和一些思路。</p>
+<h2 id="从前序与中序遍历序列构造二叉树">从前序与中序遍历序列构造二叉树</h2>
+<p>给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序遍历，请构造二叉树并返回其根节点。</p>
+<h3 id="思路借鉴大神">思路(借鉴大神)</h3>
+<p>前序遍历 =&gt; （根节点，左子树前序序列，右子树前序序列）；
+中序遍历 =&gt; （左子树中序序列，根节点，右子树中序序列）
+并且各序列的长度相同</p>
+<ol>
+<li>先根据前序序列得到当前根节点的值(preorder[0]);</li>
+<li>申请当前树节点, 并初始化;</li>
+<li>如果序列长度为1, 说明这颗树只有根节点，直接返回这个节点；</li>
+<li>查找中序序列里当前节点值(没有重复元素)，找得到两子树的序列长度；</li>
+<li>将左子树前序序列, 右子树前序序列，左子树中序序列, 右子树中序序列创建出来；</li>
+<li>以左子树，右子树分类，进行递归, 构造左右子树( 回到步骤1 ), 将返回结果(子树根节点)赋值给左右指针；</li>
+<li>返回这个节点；</li>
+</ol>
+<h4 id="代码实现过程c">代码实现过程C++</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) {
+</span></span><span class="line"><span class="cl">	  // 如果是一颗空树，直接返回空指针；
+</span></span><span class="line"><span class="cl">        if(!preorder.size())
+</span></span><span class="line"><span class="cl">            return nullptr;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 申请节点并初始化
+</span></span><span class="line"><span class="cl">        TreeNode *root = new TreeNode();
+</span></span><span class="line"><span class="cl">        root-&gt;val = preorder[0];
+</span></span><span class="line"><span class="cl">        root-&gt;left = nullptr;
+</span></span><span class="line"><span class="cl">        root-&gt;right = nullptr;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 如果这棵树只有根节点，直接返回这个节点；
+</span></span><span class="line"><span class="cl">        if(preorder.size() == 1)
+</span></span><span class="line"><span class="cl">            return root;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 查找当前节点在中序序列中的位置；
+</span></span><span class="line"><span class="cl">        auto it = find(inorder.begin(), inorder.end(), preorder[0]);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // //创建左子树前序序列, 右子树前序序列，左子树中序序列, 右子树中序序列；
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; pl(preorder.begin() + 1,preorder.begin() + 1 + (it - inorder.begin()));
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt;pr(preorder.begin() + 1 + (it - inorder.begin()), preorder.end());
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; il(inorder.begin(), it);
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; ir(it + 1, inorder.end());
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 创建左右子树, 并将它们的根节点赋值给当前节点的指针；
+</span></span><span class="line"><span class="cl">        root-&gt;left = buildTree(pl, il);
+</span></span><span class="line"><span class="cl">        root-&gt;right = buildTree(pr, ir);
+</span></span><span class="line"><span class="cl">        return root;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这段代码的递归思路很nice，值得记录下来学习！</p>
+<ul>
+<li>时间复杂度： O(N)，N是树中的节点个数；</li>
+<li>空间复杂度： 在创建过程中，除了答案需要的O(N)空间之外，我们还创建了左右子树的先序、中序序列，所以中的空间复杂度为o(N)；</li>
+</ul>
+<h2 id="二叉树的最近公共祖先">二叉树的最近公共祖先</h2>
+<p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。</p>
+<h3 id="思路">思路</h3>
+<p>使用后序遍历的模型，每个父节点都可以接收到两个孩子节点的状态，并把这个状态网上传递，直到该节点满足祖先节点的条件。</p>
+<ol>
+<li>对二叉树进行后序遍历，如果当前节点是p或者q或者NULL，则返回当前节点；</li>
+<li>对子节点进行遍历，获取左右孩子的状态；</li>
+<li>若左右孩子都返回了一个非空指针，则说明当前节点是他们的最近公共祖先，返回当前节点即可；若右孩子扎到了，则返回右孩子；若左孩子找到了，则返回左孩子；否则返回NULL；</li>
+</ol>
+<h4 id="代码实现过程">代码实现过程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+</span></span><span class="line"><span class="cl">        if(root == p || root == q || root == NULL)
+</span></span><span class="line"><span class="cl">            return root;
+</span></span><span class="line"><span class="cl">        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
+</span></span><span class="line"><span class="cl">        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // left 和 right都不为空，说明此时root就是最近公共节点;
+</span></span><span class="line"><span class="cl">        if(left &amp;&amp; right)
+</span></span><span class="line"><span class="cl">            return root;
+</span></span><span class="line"><span class="cl">	  // 如果left为空，right不为空，就返回right，说明目标节点是通过right返回的，反之亦然;
+</span></span><span class="line"><span class="cl">        if(!left)
+</span></span><span class="line"><span class="cl">            return right;
+</span></span><span class="line"><span class="cl">        return left;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度： 递归模型是后序遍历，最坏情况下需要遍历整棵树，故为O(N)；</li>
+<li>空间复杂度： 递归调用栈的深度等于二叉树的高度，最坏情况下二叉树为一个链表，故为O(N)；</li>
+</ul>
+<h2 id="二叉树的右视图">二叉树的右视图</h2>
+<p>给定一个二叉树的 根节点 root，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
+<h3 id="思路-1">思路</h3>
+<p>就是对二叉树进行层序遍历嘛，把每一层的最右个节点逐个加入到ans中即可。</p>
+<ul>
+<li>时间复杂度： 遍历完整棵树，故为O(N)；</li>
+<li>空间复杂度：使用了一个队列存储书中一层的节点，故为O(log<sub>2</sub>N);</li>
+</ul>
+<h2 id="二叉树的直径">二叉树的直径</h2>
+<p>给你一棵二叉树的根节点，返回该树的 直径 。二叉树的 直径 是指树中任意两个节点之间最长路径的 长度 。这条路径可能经过也可能不经过根节点 root 。两节点之间路径的 长度 由它们之间边数表示。</p>
+<h3 id="思路-2">思路</h3>
+<p>easy，就是求树中节点左右孩子高度和的最大值，对求二叉树高度的代码稍加改造即可。</p>
+<ul>
+<li>时间复杂度：o(N);</li>
+<li>空间复杂度：递归栈的大小为log<sub>2</sub>N，最坏情况下，二叉树为链表，故为O(N)；</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-13</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" data-title="LeetCode 二叉树" data-hashtags="二叉树"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" data-hashtag="二叉树"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" data-title="LeetCode 二叉树"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" data-title="LeetCode 二叉树"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" data-title="LeetCode 二叉树" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/leetcode-%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="LeetCode 链表"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 链表</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript><div id="commento" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Mr.Wu</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.commento.io/js/commento.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.f58ffea166ff5d840976e4af8e31ee736ea0e035126a6625ed1feb834ff61769d811827b5137532960ce6edff8ede85f.js" integrity="sha384-9Y/+oWb/XYQJduSvjjHuc26g4DUSamYl7R/rg0/2F2nYEYJ7UTdTKWDObt/47ehf"></script></body>
+</html>
