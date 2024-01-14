@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/leetcode/</link>
         <description>LeetCode - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 13 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Jan 2024 23:41:11 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+    <title>LeetCode 图论</title>
+    <link>https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/</link>
+    <pubDate>Sun, 14 Jan 2024 23:41:11 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/</guid>
+    <description><![CDATA[小结一下今天LeetCode上关于图论的几道题。 岛屿数量 给你一个由 &lsquo;1&rsquo;（陆地）和 &lsquo;0&rsquo;（水]]></description>
+</item>
+<item>
     <title>LeetCode 二叉树</title>
     <link>https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
     <pubDate>Sat, 13 Jan 2024 00:00:00 &#43;0000</pubDate>

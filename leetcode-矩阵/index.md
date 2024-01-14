@@ -31,10 +31,15 @@
 ## 我的思路
 
 观察题目给出的样子，可以发现matrix[i][j]位置的元素旋转后的位置是[j][length -i -1]；与i、j对应的四个元素之间存在这样的关系：
+
 matrix[i][j] = matrix[length - j - 1][i]
+
 matrix[length - j - 1][i] = matrix[length - i - 1][length - j - 1]
+
 matrix[length - i - 1][length - j - 1] = matrix[j][length - i - 1]
+
 matrix[j][length - i - 1] = matrix[i][j]
+
 发现这些关系后就不难了，把这些关系代码化，放进双重for循环里既可解决这道题。
 
 - 空间复杂度 O(1)

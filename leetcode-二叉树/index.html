@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 二叉树"/>
 <meta name="twitter:description" content="总结一下今天刷二叉树遇到的难题和一些思路。 从前序与中序遍历序列构造二叉树 给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序"/>
 <meta name="application-name" content="临海沐清风">
-<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E9%93%BE%E8%A1%A8/" /><link rel="next" href="https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "二叉树","wordcount":  1595 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "二叉树","wordcount":  2328 ,
         "url": "https:\/\/wxs-605.github.io\/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91\/","datePublished": "2024-01-13T00:00:00+00:00","dateModified": "2024-01-13T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 二叉树</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-13">2024-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1595 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" class="leancloud_visitors" data-flag-title="LeetCode 二叉树">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-13">2024-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2328 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/" class="leancloud_visitors" data-flag-title="LeetCode 二叉树">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -143,6 +143,15 @@
     <li><a href="#二叉树的直径">二叉树的直径</a>
       <ul>
         <li><a href="#思路-2">思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树中的最大路径和">二叉树中的最大路径和</a>
+      <ul>
+        <li><a href="#思路-3">思路</a>
+          <ul>
+            <li><a href="#代码实现">代码实现</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -242,7 +251,7 @@
 <h2 id="二叉树的最近公共祖先">二叉树的最近公共祖先</h2>
 <p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。</p>
 <h3 id="思路">思路</h3>
-<p>使用后序遍历的模型，每个父节点都可以接收到两个孩子节点的状态，并把这个状态网上传递，直到该节点满足祖先节点的条件。</p>
+<p>使用后序遍历的模型，每个父节点都可以接收到两个孩子节点的状态，并把这个状态往上传递，直到该节点满足祖先节点的条件。</p>
 <ol>
 <li>对二叉树进行后序遍历，如果当前节点是p或者q或者NULL，则返回当前节点；</li>
 <li>对子节点进行遍历，获取左右孩子的状态；</li>
@@ -306,9 +315,85 @@
 <h3 id="思路-2">思路</h3>
 <p>easy，就是求树中节点左右孩子高度和的最大值，对求二叉树高度的代码稍加改造即可。</p>
 <ul>
-<li>时间复杂度：o(N);</li>
+<li>时间复杂度：O(N);</li>
 <li>空间复杂度：递归栈的大小为log<sub>2</sub>N，最坏情况下，二叉树为链表，故为O(N)；</li>
 </ul>
+<h2 id="二叉树中的最大路径和">二叉树中的最大路径和</h2>
+<p>二叉树中的 路径 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。路径和 是路径中各节点值的总和。给你一个二叉树的根节点 root ，返回其 最大路径和 。</p>
+<h3 id="思路-3">思路</h3>
+<ol>
+<li>每遍历一个节点，都要求出包含该节点在内的最大路径，并且在后面的遍历中更新这个最大值。对于当前节点来说，它的最大路径和等于左右子树的最大路径加上本身的值。但是有个前提，如果左右孩子中的最大路径和小于或者等于0了，那就不需要把这个值加上去，因为它对最大路径和产生了负贡献，使得最大值变小了；</li>
+<li>对于一个节点来说，它对最大路径和的贡献来与源于其本身的值与其左右孩子中的最大值，所以在求左右子树最大值的时候，返回其节点值与其最大的孩子值即可；</li>
+</ol>
+<h4 id="代码实现">代码实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    int(getMax(TreeNode* root, int &amp;ans)){
+</span></span><span class="line"><span class="cl">	  // 当前节点为空，其对最大路径和的贡献为0，故返回0；
+</span></span><span class="line"><span class="cl">        if(!root)
+</span></span><span class="line"><span class="cl">            return 0;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 求左子树的最大贡献，若左子树是负贡献，则其为0；
+</span></span><span class="line"><span class="cl">        int left_max = max(getMax(root-&gt;left, ans), 0);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 求右子树的最大贡献，若右子树是负贡献，则其为0；
+</span></span><span class="line"><span class="cl">        int right_max = max(getMax(root-&gt;right, ans), 0);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 计算当前节点的最大路径和；
+</span></span><span class="line"><span class="cl">        int cur_max = root-&gt;val + left_max + right_max;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 更新最大路径和
+</span></span><span class="line"><span class="cl">        ans = max(ans, cur_max);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 返回当前节点对最大路径的贡献(当前节点值 + 左右孩子中的最大值)；
+</span></span><span class="line"><span class="cl">        return root-&gt;val + max(left_max, right_max);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    int maxPathSum(TreeNode* root) {
+</span></span><span class="line"><span class="cl">        int ans = INT_MIN;
+</span></span><span class="line"><span class="cl">        getMax(root, ans);
+</span></span><span class="line"><span class="cl">        return ans;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：使用的是先序遍历的递归模型，时间复杂度为O(N)；</li>
+<li>空间复杂度：使用了常数个临时变量，故为O(1)；</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>关于二叉树的题，大部分都是运用递归的思想解决。使用递归时，关键是通过分析当前节点与所求值的关系，理清递归时左右孩子需不需要返回，返回时需要返回什么样的值的问题，最后再看怎么处理空节点，从而得到递归的整个边界关系，完成递归代码的编写。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -332,7 +417,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/leetcode-%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="LeetCode 链表"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 链表</a></div>
+    <div class="post-nav"><a href="/leetcode-%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="LeetCode 链表"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 链表</a>
+            <a href="/leetcode-%E5%9B%BE%E8%AE%BA/" class="next" rel="next" title="LeetCode 图论">LeetCode 图论<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
