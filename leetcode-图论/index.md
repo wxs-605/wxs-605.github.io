@@ -97,3 +97,80 @@ public:
 
 - 时间复杂度：对图中的边均进行了两次遍历，同时访问了一次入度数组，故为O(M + N)；
 - 空间复杂度：存储了图中的边及入读，故为O(M + N);
+
+
+## 实现Trie(前缀数)
+Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。请你实现Trie()类：
+- Trie() 初始化前缀树对象；
+- void insert(String word) 向前缀树中插入字符串 word ；
+- boolean search(String word) 如果字符串 word 在前缀树中，返回 true（即，在检索之前已经插入）；否则，返回 false ；
+- boolean startsWith(String prefix) 如果之前已经插入的字符串 word 的前缀之一为 prefix ，返回 true ；否则，返回 false ；
+
+
+### 思路
+首先什么是 **前缀树** ？
+
+前缀数，顾名思义就是前缀形成树，也称为字典树，是一种用于高效存储和检索字符串的数据结构。它的主要特点是将输入的字符串拆分成字符序列，并通过字符之间的关联关系来组织和表示这些字符串。例如在百度中输入C++，会出现一大堆联想词语，都是以C++作为前缀的词语。前缀树的基本思想是利用共同的前缀来减少存储空间和搜索时间。它以树状结构存储字符序列，从根节点开始，每个节点代表一个字符，节点之间通过指针连接形成树的结构。从根节点到每个叶子节点的路径都代表一个完整的字符串。（*注意*根节点不存储字符）
+
+前缀数的**结构**？
+
+在前缀树中，一个节点一般包含两个部分：
+- 字符结尾标志，表示当前字符是否是字符串的结尾；
+- 子节点指针：指向当前节点的子节点，通常使用数组或哈希表来存储多个子节点，其中数组或哈希表的大小取决于字符集的大小。
+
+前缀数**操作**的实现？
+
+1. 插入操作：将一个字符串插入前缀树的过程是逐个字符进行的。从根节点开始，根据每个字符找到对应的子节点（如果不存在就创建一个），然后继续处理下一个字符，直到插入完整个字符串。
+
+2. 搜索操作：在前缀树中搜索一个字符串时，也是逐个字符进行的。从根节点开始，根据每个字符找到对应的子节点，如果遇到空指针或者没有对应的子节点，则表示该字符串不存在于前缀树中。
+
+3. 前缀匹配操作：前缀树最大的优势之一是可以快速找到具有特定前缀的所有字符串。从根节点开始，根据每个字符找到对应的子节点，直到达到前缀的最后一个字符。然后，可以通过遍历子树或使用深度优先搜索等方法，获取所有以该前缀开头的字符串。
+
+4. 删除操作：删除一个字符串时，需要从前缀树中将其对应的节点递归地删除。如果删除节点后导致其父节点成为叶子节点且没有其他子节点，则可以进一步删除该父节点，以此类推，直到遇到一个非叶子节点或者有其他子节点的节点。
+
+#### 实现代码(不包含删除操作)
+```
+class Trie {
+    bool isEnd;
+    Trie* next[26];
+
+public:
+    Trie() {
+        isEnd = false;
+        for(auto & e : next)
+            e = nullptr;
+    }
+
+    void insert(string word) {
+        Trie* cur_node = this;
+        for (auto ch : word) {
+            if (cur_node->next[ch - 'a'] == nullptr) {
+                cur_node->next[ch - 'a'] = new Trie();
+            }
+            cur_node = cur_node->next[ch - 'a'];
+        }
+        cur_node->isEnd = true;
+    }
+
+    bool search(string word) {
+        Trie* cur_node = this;
+        for (auto ch : word) {
+            cur_node = cur_node->next[ch - 'a'];
+            if (cur_node == nullptr)
+                return false;
+        }
+        return cur_node->isEnd;
+    }
+
+    bool startsWith(string prefix) { 
+        Trie* cur_node = this;
+        for (auto ch : prefix) {
+            cur_node = cur_node->next[ch - 'a'];
+            if (cur_node == nullptr)
+                return false;
+        }
+        return true;
+    }
+};
+```
+

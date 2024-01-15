@@ -53,3 +53,86 @@ easy，就是对链表数组做K路归并排序嘛一个while循环里嵌套个f
 
 ### 思路
 使用哈希表加双向链表解决。哈希表可以在O(1)时间内查找到key对应的节点。这些哈希表上的节点用双向链表表示，把这些节点用一个头节点head串成一个循环链表。head->next指向的是第一个节点，head->pre指向的是尾节点。当访问一个节点或新建立一个节点时，就把这个节点放到head的后面，当容量超过capacity时，就删除掉尾节点。
+
+#### 代码实现
+```
+class Node {
+public:
+    int key;
+    int value;
+    Node* pre;
+    Node* next;
+    Node(int k, int v) : key(k), value(v) { pre = next = nullptr; }
+};
+
+class LRUCache {
+    int capacity;
+    unordered_map<int, Node*> map;
+    Node* head;
+
+public:
+    LRUCache(int capacity) {
+        this->capacity = capacity;
+        head = new Node(0, 0);
+        head->next = head;
+        head->pre = head;
+    }
+
+    int get(int key) {
+        auto cur = map.find(key);
+        if (cur == map.end())
+            return -1;
+
+	  // 将访问过的节点调到头节点后面；
+        cur->second->pre->next = cur->second->next;
+        cur->second->next->pre = cur->second->pre;
+        cur->second->next = head->next;
+        head->next->pre = cur->second;
+        head->next = cur->second;
+        cur->second->pre = head;
+        return cur->second->value;
+    }
+
+    void put(int key, int value) {
+        auto cur = map.find(key);
+        if (cur != map.end()) {
+
+		// 节点存在时，修改器value值， 并将其调到头节点后面；
+            cur->second->value = value;
+            cur->second->pre->next = cur->second->next;
+            cur->second->next->pre = cur->second->pre;
+            cur->second->next = head->next;
+            head->next->pre = cur->second;
+            head->next = cur->second;
+            cur->second->pre = head;
+            return;
+        }
+
+	  // 节点不存在，则新间节点，加入到头节点后面；
+        Node* node = new Node(key, value);
+        map[key] = node;
+        node->next = head->next;
+        head->next->pre = node;
+        head->next = node;
+        node->pre = head;
+	
+	  // 判断节点数量有没有达到阈值；
+        if (map.size() <= capacity)
+            return;
+	  
+	  // 到达阈值时，删除链表最后一个节点；
+        Node* temp = head->pre;
+        map.erase(temp->key);
+        temp->pre->next = temp->next;
+        temp->next->pre = temp->pre;
+        delete temp;
+    }
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
+```

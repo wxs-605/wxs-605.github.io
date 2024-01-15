@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/leetcode-%E9%93%BE%E8%A1%A8\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "链表","wordcount":  1598 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "链表","wordcount":  1976 ,
         "url": "https:\/\/wxs-605.github.io\/leetcode-%E9%93%BE%E8%A1%A8\/","datePublished": "2024-01-12T20:52:00+08:00","dateModified": "2024-01-12T20:52:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 链表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-12">2024-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1598 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-12">2024-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1976 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E9%93%BE%E8%A1%A8/" class="leancloud_visitors" data-flag-title="LeetCode 链表">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -139,7 +139,11 @@
     </li>
     <li><a href="#lru缓存">LRU缓存</a>
       <ul>
-        <li><a href="#思路-4">思路</a></li>
+        <li><a href="#思路-4">思路</a>
+          <ul>
+            <li><a href="#代码实现">代码实现</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -187,7 +191,172 @@
 </ul>
 <h3 id="思路-4">思路</h3>
 <p>使用哈希表加双向链表解决。哈希表可以在O(1)时间内查找到key对应的节点。这些哈希表上的节点用双向链表表示，把这些节点用一个头节点head串成一个循环链表。head-&gt;next指向的是第一个节点，head-&gt;pre指向的是尾节点。当访问一个节点或新建立一个节点时，就把这个节点放到head的后面，当容量超过capacity时，就删除掉尾节点。</p>
-</div><div class="post-footer" id="post-footer">
+<h4 id="代码实现">代码实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Node {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    int key;
+</span></span><span class="line"><span class="cl">    int value;
+</span></span><span class="line"><span class="cl">    Node* pre;
+</span></span><span class="line"><span class="cl">    Node* next;
+</span></span><span class="line"><span class="cl">    Node(int k, int v) : key(k), value(v) { pre = next = nullptr; }
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">class LRUCache {
+</span></span><span class="line"><span class="cl">    int capacity;
+</span></span><span class="line"><span class="cl">    unordered_map&lt;int, Node*&gt; map;
+</span></span><span class="line"><span class="cl">    Node* head;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    LRUCache(int capacity) {
+</span></span><span class="line"><span class="cl">        this-&gt;capacity = capacity;
+</span></span><span class="line"><span class="cl">        head = new Node(0, 0);
+</span></span><span class="line"><span class="cl">        head-&gt;next = head;
+</span></span><span class="line"><span class="cl">        head-&gt;pre = head;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    int get(int key) {
+</span></span><span class="line"><span class="cl">        auto cur = map.find(key);
+</span></span><span class="line"><span class="cl">        if (cur == map.end())
+</span></span><span class="line"><span class="cl">            return -1;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 将访问过的节点调到头节点后面；
+</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;pre-&gt;next = cur-&gt;second-&gt;next;
+</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;next-&gt;pre = cur-&gt;second-&gt;pre;
+</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;next = head-&gt;next;
+</span></span><span class="line"><span class="cl">        head-&gt;next-&gt;pre = cur-&gt;second;
+</span></span><span class="line"><span class="cl">        head-&gt;next = cur-&gt;second;
+</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;pre = head;
+</span></span><span class="line"><span class="cl">        return cur-&gt;second-&gt;value;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    void put(int key, int value) {
+</span></span><span class="line"><span class="cl">        auto cur = map.find(key);
+</span></span><span class="line"><span class="cl">        if (cur != map.end()) {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		// 节点存在时，修改器value值， 并将其调到头节点后面；
+</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;value = value;
+</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;pre-&gt;next = cur-&gt;second-&gt;next;
+</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;next-&gt;pre = cur-&gt;second-&gt;pre;
+</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;next = head-&gt;next;
+</span></span><span class="line"><span class="cl">            head-&gt;next-&gt;pre = cur-&gt;second;
+</span></span><span class="line"><span class="cl">            head-&gt;next = cur-&gt;second;
+</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;pre = head;
+</span></span><span class="line"><span class="cl">            return;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	  // 节点不存在，则新间节点，加入到头节点后面；
+</span></span><span class="line"><span class="cl">        Node* node = new Node(key, value);
+</span></span><span class="line"><span class="cl">        map[key] = node;
+</span></span><span class="line"><span class="cl">        node-&gt;next = head-&gt;next;
+</span></span><span class="line"><span class="cl">        head-&gt;next-&gt;pre = node;
+</span></span><span class="line"><span class="cl">        head-&gt;next = node;
+</span></span><span class="line"><span class="cl">        node-&gt;pre = head;
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	  // 判断节点数量有没有达到阈值；
+</span></span><span class="line"><span class="cl">        if (map.size() &lt;= capacity)
+</span></span><span class="line"><span class="cl">            return;
+</span></span><span class="line"><span class="cl">	  
+</span></span><span class="line"><span class="cl">	  // 到达阈值时，删除链表最后一个节点；
+</span></span><span class="line"><span class="cl">        Node* temp = head-&gt;pre;
+</span></span><span class="line"><span class="cl">        map.erase(temp-&gt;key);
+</span></span><span class="line"><span class="cl">        temp-&gt;pre-&gt;next = temp-&gt;next;
+</span></span><span class="line"><span class="cl">        temp-&gt;next-&gt;pre = temp-&gt;pre;
+</span></span><span class="line"><span class="cl">        delete temp;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/**
+</span></span><span class="line"><span class="cl"> * Your LRUCache object will be instantiated and called as such:
+</span></span><span class="line"><span class="cl"> * LRUCache* obj = new LRUCache(capacity);
+</span></span><span class="line"><span class="cl"> * int param_1 = obj-&gt;get(key);
+</span></span><span class="line"><span class="cl"> * obj-&gt;put(key,value);
+</span></span><span class="line"><span class="cl"> */
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
