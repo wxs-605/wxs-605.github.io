@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/leetcode/</link>
         <description>LeetCode - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 15 Jan 2024 23:58:30 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/leetcode/" rel="self" type="application/rss+xml" /><item>
+    <title>LeetCode 回溯</title>
+    <link>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</link>
+    <pubDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</guid>
+    <description><![CDATA[今天刷的专题是回溯，对于回溯这块，比较陌生，这里记录一下一些题的思路以及大神总结的回溯题思路。 回溯算法 回溯算法是一种在搜索空间中寻找解的算法]]></description>
+</item>
+<item>
     <title>LeetCode 堆</title>
     <link>https://wxs-605.github.io/leetcode-%E5%A0%86/</link>
     <pubDate>Mon, 15 Jan 2024 23:58:30 &#43;0800</pubDate>

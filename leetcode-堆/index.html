@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 堆"/>
 <meta name="twitter:description" content="小结一下今天刷到的关于堆的题目。 数组中的第K个最大元素 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。请注意，你需要找的是数组排序后的"/>
 <meta name="application-name" content="临海沐清风">
-<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E5%A0%86/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E5%A0%86/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/" /><link rel="next" href="https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/leetcode-%E5%A0%86\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "堆","wordcount":  604 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "堆","wordcount":  987 ,
         "url": "https:\/\/wxs-605.github.io\/leetcode-%E5%A0%86\/","datePublished": "2024-01-15T23:58:30+08:00","dateModified": "2024-01-15T23:58:30+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 堆</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-15">2024-01-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 604 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-15">2024-01-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 987 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/leetcode-%E5%A0%86/" class="leancloud_visitors" data-flag-title="LeetCode 堆">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -131,6 +131,15 @@
         <li><a href="#思路-1">思路</a>
           <ul>
             <li><a href="#实现代码-1">实现代码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#滑动窗口最大值">滑动窗口最大值</a>
+      <ul>
+        <li><a href="#思路-2">思路</a>
+          <ul>
+            <li><a href="#实现代码-2">实现代码</a></li>
           </ul>
         </li>
       </ul>
@@ -238,7 +247,74 @@
 </span></span><span class="line"><span class="cl">};
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>注意，在ACM模式下，使用pair需要加头文件 #include <utility>.</p>
+</div><p>注意，在ACM模式下，使用pair需要加头文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"> <span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">.
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="滑动窗口最大值">滑动窗口最大值</h2>
+<p>给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。返回 滑动窗口中的最大值 。</p>
+<h3 id="思路-2">思路</h3>
+<p>这道题可以说是考察大根堆的运用，采用大根堆存储遍历到的元素，若堆顶元素的下标大于或等于窗口的左边界，那么这个值就是窗口内的最大值，否则弹出堆顶元素，继续判断。依此类推，遍历完整个数组，即可找打窗口中的所有最大值。</p>
+<h4 id="实现代码-2">实现代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) {
+</span></span><span class="line"><span class="cl">        priority_queue&lt;pair&lt;int ,int&gt;&gt; q;
+</span></span><span class="line"><span class="cl">        int i = 0;
+</span></span><span class="line"><span class="cl">        int length  = nums.size();
+</span></span><span class="line"><span class="cl">        for(;i &lt; length, k &gt; 0; i++, k--){
+</span></span><span class="line"><span class="cl">            q.push(make_pair(nums[i], i));
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt;ans;
+</span></span><span class="line"><span class="cl">        ans.push_back(q.top().first);
+</span></span><span class="line"><span class="cl">        int left_margin = 1;
+</span></span><span class="line"><span class="cl">        for(;i &lt; length;i++){
+</span></span><span class="line"><span class="cl">            q.push(make_pair(nums[i], i));
+</span></span><span class="line"><span class="cl">            while(q.top().second &lt; left_margin)
+</span></span><span class="line"><span class="cl">                q.pop();
+</span></span><span class="line"><span class="cl">            ans.push_back(q.top().first);
+</span></span><span class="line"><span class="cl">            left_margin++;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return ans;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：最坏情况下，数组 nums 中的元素单调递增，最终大根堆中没有元素被移除。由于将一个元素放入堆的时间复杂度为 O(logN)，因此总时间复杂度为 O(NlogN);</li>
+<li>空间复杂度：采用了大根堆存储遍历到的元素，故为O(N)；</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -262,7 +338,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/leetcode-%E5%9B%BE%E8%AE%BA/" class="prev" rel="prev" title="LeetCode 图论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 图论</a></div>
+    <div class="post-nav"><a href="/leetcode-%E5%9B%BE%E8%AE%BA/" class="prev" rel="prev" title="LeetCode 图论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 图论</a>
+            <a href="/leetcode-%E5%9B%9E%E6%BA%AF/" class="next" rel="next" title="LeetCode 回溯">LeetCode 回溯<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

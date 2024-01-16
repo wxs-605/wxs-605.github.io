@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/posts/</link>
         <description>所有文章 | 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 15 Jan 2024 23:58:30 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>LeetCode 回溯</title>
+    <link>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</link>
+    <pubDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</guid>
+    <description><![CDATA[今天刷的专题是回溯，对于回溯这块，比较陌生，这里记录一下一些题的思路以及大神总结的回溯题思路。 回溯算法 回溯算法是一种在搜索空间中寻找解的算法]]></description>
+</item>
+<item>
     <title>LeetCode 堆</title>
     <link>https://wxs-605.github.io/leetcode-%E5%A0%86/</link>
     <pubDate>Mon, 15 Jan 2024 23:58:30 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</guid>
     <description><![CDATA[记录在验证kubelet压力驱逐原则时的遇到的问题与解决方法。 验证节点压力驱逐原则时，实验结果与官方文档给出的规则相反 kubernetes的]]></description>
-</item>
-<item>
-    <title>docker基本命令使用</title>
-    <link>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
-    <pubDate>Tue, 07 Mar 2023 14:10:48 &#43;0000</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
-    <description><![CDATA[在kubernets项目中多次使用到了docker的相关指令，特在此记录。 Docker 基本命令的使用方法 镜像的拉取、上传和删除 搜索镜像 1 docker search [imageName]:[tag] 拉取镜像]]></description>
 </item>
 </channel>
 </rss>
