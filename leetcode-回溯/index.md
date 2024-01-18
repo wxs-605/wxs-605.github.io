@@ -186,3 +186,107 @@ public:
 
 - 时间复杂度：O(2<sup>2*N</sup> * N);
 - 空间复杂度：需要的空间取决于递归栈的深度，每一层递归函数需要 O(1) 的空间，最多递归 2*N 层，因此空间复杂度为 O(N)；
+
+
+## 分割回文串
+给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。回文串 是正着读和反着读都一样的字符串。
+
+##### 实现过程
+```
+class Solution {
+    vector<vector<string>> ans;
+    vector<string> path;
+    void backTrack(const string& s, int start) {
+	  // 所有字符都划分完成，达到结束条件
+        if (start >= s.size()) {
+            ans.push_back(path);
+            return;
+        }
+
+        for (int i = start; i < s.size(); i++) {
+		// 如果当前划分的字串是回文的，则将其进一步划分
+            if (isPlalindrome(s, start, i)) {
+                string temp = s.substr(start, i - start + 1);
+                path.push_back(temp);
+                backTrack(s, i + 1);
+            } else
+                continue;
+            path.pop_back();
+        }
+    }
+    // 判断是否是回文，双指针
+    bool isPlalindrome(const string& s, int i, int j) {
+        while (i < j) {
+            if (s[i++] != s[j--])
+                return false;
+        }
+        return true;
+    }
+
+public:
+    vector<vector<string>> partition(string s) {
+        ans.clear();
+        path.clear();
+        backTrack(s, 0);
+        return ans;
+    }
+};
+```
+
+
+## 复原IP地址
+有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 '.' 分隔。
+
+- 例如："0.1.2.201" 和 "192.168.1.1" 是 有效 IP 地址，但是 "0.011.255.245"、"192.168.1.312" 和 "192.168@1.1" 是 无效 IP 地址。
+
+给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 '.' 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。
+
+### 思路
+复原IP地址的思路与分割回文串的思路一致，都是分割，但是这里的回溯结束条件是子串中划分成了四个部分，既有三个'.'；
+
+#### 实现过程
+```
+class Solution {
+    vector<string>ans;
+    void backTrack(string &s, int start, int point){
+        if(point == 3){
+            if(isLegal(s,start, s.size() - 1))
+                ans.push_back(s);
+            return;
+        }
+        for(int i = start; i <s.size();i++){
+            if(isLegal(s, start, i)){
+                s.insert(s.begin() + i + 1, '.');
+                backTrack(s, i + 2,point + 1);
+                s.erase(s.begin() + i + 1);
+            }else
+                break;
+        }
+    }
+    bool isLegal(string&s, int left, int right){
+        if(left > right)
+            return false;
+        if(s[left] == '0' && left != right)
+            return false;
+        int num = 0;
+        for (int i = left; i <= right; i++) {
+            if (s[i] > '9' || s[i] < '0') { 
+                return false;
+            }
+            num = num * 10 + (s[i] - '0');
+        }
+        if (num > 255)
+            return false;
+        return true;
+    }
+public:
+    vector<string> restoreIpAddresses(string s) {
+        ans.clear();
+        if(s.size() < 4 || s.size() > 12)
+            return ans;
+        backTrack(s,0,0);
+        return ans;
+    }
+};
+```
+
