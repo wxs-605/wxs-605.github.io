@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/tags/</link>
         <description>Tags - 标签 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 19 Jan 2024 22:26:28 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>栈</title>
+    <link>https://wxs-605.github.io/tags/%E6%A0%88/</link>
+    <pubDate>Fri, 19 Jan 2024 22:26:28 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/tags/%E6%A0%88/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>回溯</title>
     <link>https://wxs-605.github.io/tags/%E5%9B%9E%E6%BA%AF/</link>
     <pubDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <pubDate>Fri, 14 Apr 2023 13:23:26 &#43;0000</pubDate>
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/tags/kubelet/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>scheduler</title>
-    <link>https://wxs-605.github.io/tags/scheduler/</link>
-    <pubDate>Fri, 14 Apr 2023 13:23:26 &#43;0000</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/tags/scheduler/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

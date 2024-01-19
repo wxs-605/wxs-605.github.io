@@ -160,14 +160,12 @@ public:
             ans.push_back(cur);
             return;
         }
-
 	  // 左括号数量没有达到 len 时，可以继续生成左括号，然后递归
         if(left < len){
             cur.push_back('(');
             backTrack(ans,cur, left + 1, right, len);
             cur.pop_back();
         }
-
 	  // 若左括号数量为 n 之后，右括号数量不够，则生成右括号
         if(right < left){
             cur.push_back(')');
@@ -244,7 +242,7 @@ public:
 ### 思路
 复原IP地址的思路与分割回文串的思路一致，都是分割，但是这里的回溯结束条件是子串中划分成了四个部分，既有三个'.'；
 
-#### 实现过程
+##### 实现过程
 ```
 class Solution {
     vector<string>ans;

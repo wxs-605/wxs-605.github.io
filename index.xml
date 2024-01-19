@@ -4,9 +4,17 @@
         <link>https://wxs-605.github.io/</link>
         <description>不知名的小网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</lastBuildDate>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 19 Jan 2024 22:26:28 &#43;0800</lastBuildDate>
             <atom:link href="https://wxs-605.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LeetCode 栈</title>
+    <link>https://wxs-605.github.io/leetcode-%E6%A0%88/</link>
+    <pubDate>Fri, 19 Jan 2024 22:26:28 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E6%A0%88/</guid>
+    <description><![CDATA[总结一下今天刷栈类题目的思路或学到的思路。 有效的括号 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsqu]]></description>
+</item>
+<item>
     <title>LeetCode 回溯</title>
     <link>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</link>
     <pubDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/kubernetes%E4%B8%ADrequest%E7%9A%84%E4%BD%9C%E7%94%A8/</guid>
     <description><![CDATA[在完成柔性计算项目的过程中，总结request在kubernetes中的各种作用。如有不正确的地方或者有补充的点，欢迎联系我。 request]]></description>
-</item>
-<item>
-    <title>修改kubelet配置</title>
-    <link>https://wxs-605.github.io/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</link>
-    <pubDate>Tue, 21 Mar 2023 13:29:53 &#43;0000</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/%E4%BF%AE%E6%94%B9kubelet%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[记录在验证kubelet压力驱逐原则时的遇到的问题与解决方法。 验证节点压力驱逐原则时，实验结果与官方文档给出的规则相反 kubernetes的]]></description>
 </item>
 </channel>
 </rss>
