@@ -4,30 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>LeetCode 栈 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="LeetCode 栈" />
-<meta property="og:description" content="总结一下今天刷栈类题目的思路或学到的思路。 有效的括号 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsqu" />
+        <title>LeetCode 贪心算法 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="LeetCode 贪心算法" />
+<meta property="og:description" content="今天刷了贪心算法，小结一下这些题目的思路。 买卖股票的最佳时机 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。 你只能选择 某一天 买" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://wxs-605.github.io/leetcode-%E6%A0%88/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-01-19T22:26:28+08:00" />
-<meta property="article:modified_time" content="2024-01-19T22:26:28+08:00" /><meta property="og:site_name" content="临海沐清风" />
+<meta property="og:url" content="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-23T22:04:26+08:00" />
+<meta property="article:modified_time" content="2024-01-23T22:04:26+08:00" /><meta property="og:site_name" content="临海沐清风" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 栈"/>
-<meta name="twitter:description" content="总结一下今天刷栈类题目的思路或学到的思路。 有效的括号 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsqu"/>
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="LeetCode 贪心算法"/>
+<meta name="twitter:description" content="今天刷了贪心算法，小结一下这些题目的思路。 买卖股票的最佳时机 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。 你只能选择 某一天 买"/>
 <meta name="application-name" content="临海沐清风">
-<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E6%A0%88/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/" /><link rel="next" href="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://i.postimg.cc/50vT2N1G/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "LeetCode 栈",
+        "headline": "LeetCode 贪心算法",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/wxs-605.github.io\/leetcode-%E6%A0%88\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "栈","wordcount":  1109 ,
-        "url": "https:\/\/wxs-605.github.io\/leetcode-%E6%A0%88\/","datePublished": "2024-01-19T22:26:28+08:00","dateModified": "2024-01-19T22:26:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/wxs-605.github.io\/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "贪心算法","wordcount":  1393 ,
+        "url": "https:\/\/wxs-605.github.io\/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95\/","datePublished": "2024-01-23T22:04:26+08:00","dateModified": "2024-01-23T22:04:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
                 "@type": "Person",
@@ -58,7 +58,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/leetcode-%E6%A0%88/" selected>简体中文</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" selected>简体中文</option></select>
                 </a></div>
         </div>
     </div>
@@ -92,7 +92,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/leetcode-%E6%A0%88/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 栈</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 贪心算法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-19">2024-01-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1109 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/leetcode-%E6%A0%88/" class="leancloud_visitors" data-flag-title="LeetCode 栈">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1393 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="leancloud_visitors" data-flag-title="LeetCode 贪心算法">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -117,12 +117,16 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#有效的括号">有效的括号</a>
+    <li><a href="#买卖股票的最佳时机">买卖股票的最佳时机</a>
       <ul>
-        <li><a href="#思路">思路</a></li>
+        <li><a href="#思路">思路</a>
+          <ul>
+            <li><a href="#代码实现">代码实现</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#最小栈">最小栈</a>
+    <li><a href="#跳跃游戏">跳跃游戏</a>
       <ul>
         <li><a href="#思路-1">思路</a>
           <ul>
@@ -131,7 +135,7 @@
         </li>
       </ul>
     </li>
-    <li><a href="#每日温度">每日温度</a>
+    <li><a href="#跳跃游戏-ii">跳跃游戏 II</a>
       <ul>
         <li><a href="#思路-2">思路</a>
           <ul>
@@ -140,34 +144,185 @@
         </li>
       </ul>
     </li>
+    <li><a href="#划分字母区间">划分字母区间</a>
+      <ul>
+        <li><a href="#思路-3">思路</a>
+          <ul>
+            <li><a href="#代码实现-1">代码实现</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>总结一下今天刷栈类题目的思路或学到的思路。</p>
-<h2 id="有效的括号">有效的括号</h2>
-<p>给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串 s ，判断字符串是否有效。有效字符串需满足：</p>
-<ol>
-<li>左括号必须用相同类型的右括号闭合。</li>
-<li>左括号必须以正确的顺序闭合。</li>
-<li>每个右括号都有一个对应的相同类型的左括号。</li>
-</ol>
+            </div><div class="content" id="content"><p>今天刷了贪心算法，小结一下这些题目的思路。</p>
+<h2 id="买卖股票的最佳时机">买卖股票的最佳时机</h2>
+<p>给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。</p>
+<p>你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。</p>
+<p>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。</p>
 <h3 id="思路">思路</h3>
-<p>这是道简单题，直接用栈就可解决。遍历括号序列，如果是左括号，就加入到栈中，如果遇到右括号，则弹出栈顶的括号，如果不i配，可直接返回false；以此类推，遍历完这个序列。</p>
-<ul>
-<li>时间复杂度：遍历一遍括号序列，故为O(N)；</li>
-<li>空间复杂度：最坏情况下，序列的最后一个字符为右括号，其余全为左括号，栈中存储了N - 1个括号，故为O(N)；</li>
+<p>用两个变量分别记录最大利润和股票的最低价，先计算先前买的股票的最大利润，既 max_profit = max(max_profit, prices[i] - purchase) , 再判断今天是否是股票的最低价，既 purchase = min(purchase, prices[i])；注意，这两个步骤不能反，因为你不能出售未来买的股票。</p>
+<h4 id="代码实现">代码实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    int maxProfit(vector&lt;int&gt;&amp; prices) {
+</span></span><span class="line"><span class="cl">        int length = prices.size();
+</span></span><span class="line"><span class="cl">        if (length == 1)
+</span></span><span class="line"><span class="cl">            return 0;
+</span></span><span class="line"><span class="cl">        int max_profit = 0;
+</span></span><span class="line"><span class="cl">        int purchase = prices[0];
+</span></span><span class="line"><span class="cl">        for (int i = 0; i &lt; length; i++) {
+</span></span><span class="line"><span class="cl">            max_profit = max(max_profit, prices[i] - purchase);
+</span></span><span class="line"><span class="cl">            purchase = min(purchase, prices[i]);
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return max_profit;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：遍历了一次 prices ，故为O(N)；</li>
+<li>空间复杂度：使用了三个临时变量，故为O(1)；</li>
 </ul>
-<h2 id="最小栈">最小栈</h2>
-<p>设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。实现MinStack类：</p>
-<ul>
-<li>MinStack() 初始化堆栈对象。</li>
-<li>void push(int val) 将元素val推入堆栈。</li>
-<li>void pop() 删除堆栈顶部的元素。</li>
-<li>int top() 获取堆栈顶部的元素。</li>
-<li>int getMin() 获取堆栈中的最小元素。</li>
-</ul>
+<h2 id="跳跃游戏">跳跃游戏</h2>
+<p>给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。</p>
 <h3 id="思路-1">思路</h3>
-<p>就是实现一个栈嘛。采用单向链表的方式实现，其中栈的先进先出特性，可对链表采用头插法实现。链表带头节点，每次插入一个元素时，就将节点插入到头节点的后面。</p>
+<p>如果可以从开头跳到结尾，那么必然可以从结尾跳到开头。所以可以从结尾往前跳，一个一个判断，能跳到开头，就返回true，否则返回false。</p>
 <h4 id="实现过程">实现过程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    bool canJump(vector&lt;int&gt;&amp; nums) {
+</span></span><span class="line"><span class="cl">        if (nums.size() == 1)
+</span></span><span class="line"><span class="cl">            return true;
+</span></span><span class="line"><span class="cl">        int cur = nums.size() - 1;
+</span></span><span class="line"><span class="cl">        int pre = cur - 1;
+</span></span><span class="line"><span class="cl">        while (pre &gt;= 0) {
+</span></span><span class="line"><span class="cl">            if (nums[pre] &gt;= cur - pre) {
+</span></span><span class="line"><span class="cl">                cur = pre;
+</span></span><span class="line"><span class="cl">                pre -= 1;
+</span></span><span class="line"><span class="cl">            } else
+</span></span><span class="line"><span class="cl">                pre--;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        if (cur == 0)
+</span></span><span class="line"><span class="cl">            return true;
+</span></span><span class="line"><span class="cl">        return false;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：遍历了一次 nums ，故为O(N)；</li>
+<li>空间复杂度：O(1);</li>
+</ul>
+<h2 id="跳跃游戏-ii">跳跃游戏 II</h2>
+<p>给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。</p>
+<p>每个元素 nums[i] 表示从索引 i 向前跳转的最大长度。换句话说，如果你在 nums[i] 处，你可以跳转到任意 nums[i + j] 处:</p>
+<ul>
+<li>0 &lt;= j &lt;= nums[i]</li>
+<li>i + j &lt; n
+返回到达 nums[n - 1] 的最小跳跃次数。生成的测试用例可以到达 nums[n - 1]。</li>
+</ul>
+<h3 id="思路-2">思路</h3>
+<p>一跳接着一跳跳。先找出从当前可以跳到的下一个区间，跳数加一，再以找到下一个区间作为当前这一跳的区间，再去找下一跳的区间，以此类推，直到跳到最后一个下标。</p>
+<h4 id="实现过程-1">实现过程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    int jump(vector&lt;int&gt;&amp; nums) {
+</span></span><span class="line"><span class="cl">        int start = 0;
+</span></span><span class="line"><span class="cl">        int end = 1;
+</span></span><span class="line"><span class="cl">        int len = nums.size();
+</span></span><span class="line"><span class="cl">        int result = 0;
+</span></span><span class="line"><span class="cl">        while (end &lt; len) {
+</span></span><span class="line"><span class="cl">            int maxDistance = INT_MIN;
+</span></span><span class="line"><span class="cl">            for (int i = start; i &lt; end; i++) {
+</span></span><span class="line"><span class="cl">                maxDistance = max(maxDistance, i + nums[i]);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            start = end;
+</span></span><span class="line"><span class="cl">            end = maxDistance + 1;
+</span></span><span class="line"><span class="cl">            result += 1;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return result;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：在 while 循环里，实际上遍历了一次 nums ，故为O(N)；</li>
+<li>空间复杂度：O(1);</li>
+</ul>
+<h2 id="划分字母区间">划分字母区间</h2>
+<p>给你一个字符串 s 。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。</p>
+<p>注意，划分结果需要满足：将所有划分结果按顺序连接，得到的字符串仍然是 s 。</p>
+<p>返回一个表示每个字符串片段的长度的列表。</p>
+<h3 id="思路-3">思路</h3>
+<p>记录每个字符最后出现的位置，从字符开始出现 start 到最后出现 end 这个区间中，如果存在字符的最后出现位置超过 end ，那么就更新 end ，当遍历到 end 时，说明这个区间的字符已经遍历完了，将这个区间加入到 answer 中即可，然后更新 start 和 end ，依此类推直到遍历完整个字符串。</p>
+<h4 id="代码实现-1">代码实现</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -196,125 +351,30 @@
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Node {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    int val;
-</span></span><span class="line"><span class="cl">    Node* next;
-</span></span><span class="line"><span class="cl">    Node(int value) : val(value) { next = nullptr; }
-</span></span><span class="line"><span class="cl">};
-</span></span><span class="line"><span class="cl">class MinStack {
-</span></span><span class="line"><span class="cl">    Node* head;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    MinStack() { head = new Node(INT_MAX); }
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    void push(int val) {
-</span></span><span class="line"><span class="cl">        head-&gt;val = min(val, head-&gt;val);
-</span></span><span class="line"><span class="cl">        Node* p = new Node(val);
-</span></span><span class="line"><span class="cl">        p-&gt;next = head-&gt;next;
-</span></span><span class="line"><span class="cl">        head-&gt;next = p;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    void pop() {
-</span></span><span class="line"><span class="cl">        Node* temp = head-&gt;next;
-</span></span><span class="line"><span class="cl">        head-&gt;next = temp-&gt;next;
-</span></span><span class="line"><span class="cl">        if (head-&gt;val == temp-&gt;val) {
-</span></span><span class="line"><span class="cl">            head-&gt;val = INT_MAX;
-</span></span><span class="line"><span class="cl">            Node* p = head-&gt;next;
-</span></span><span class="line"><span class="cl">            while (p) {
-</span></span><span class="line"><span class="cl">                head-&gt;val = min(head-&gt;val, p-&gt;val);
-</span></span><span class="line"><span class="cl">                p = p-&gt;next;
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        delete temp;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    int top() {
-</span></span><span class="line"><span class="cl">        if (head-&gt;next)
-</span></span><span class="line"><span class="cl">            return head-&gt;next-&gt;val;
-</span></span><span class="line"><span class="cl">        else
-</span></span><span class="line"><span class="cl">            return -1;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    int getMin() { return head-&gt;val; }
-</span></span><span class="line"><span class="cl">};
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/**
-</span></span><span class="line"><span class="cl"> * Your MinStack object will be instantiated and called as such:
-</span></span><span class="line"><span class="cl"> * MinStack* obj = new MinStack();
-</span></span><span class="line"><span class="cl"> * obj-&gt;push(val);
-</span></span><span class="line"><span class="cl"> * obj-&gt;pop();
-</span></span><span class="line"><span class="cl"> * int param_3 = obj-&gt;top();
-</span></span><span class="line"><span class="cl"> * int param_4 = obj-&gt;getMin();
-</span></span><span class="line"><span class="cl"> */
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="每日温度">每日温度</h2>
-<p>给定一个整数数组 temperatures ，表示每天的温度，返回一个数组 answer ，其中 answer[i] 是指对于第 i 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 0 来代替。</p>
-<h3 id="思路-2">思路</h3>
-<p>采用单调栈解决，栈中的元素有序。使用一个栈来记录当前遇到的最高温度。当栈为空时，当前元素的坐标入栈；若当前元素小于栈顶元素，则将当前元素的坐标入栈；当栈不为空且栈顶元素小于当前元素时，更新栈顶元素对应的答案 ans[s.top()] = i - s.top() ；然后弹出栈顶元素，更新新栈顶元素对应的答案，直到栈为空，最后将当前元素的坐标入栈。</p>
-<h4 id="实现过程-1">实现过程</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
 </span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; temperatures) {
-</span></span><span class="line"><span class="cl">        stack&lt;int&gt; stk;
-</span></span><span class="line"><span class="cl">        int len = temperatures.size();
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; ans(len);
-</span></span><span class="line"><span class="cl">        fill(ans.begin(), ans.end(), 0);
+</span></span><span class="line"><span class="cl">    vector&lt;int&gt; partitionLabels(string s) {
+</span></span><span class="line"><span class="cl">        unordered_map&lt;char, int&gt; map;
+</span></span><span class="line"><span class="cl">        int len = s.size();
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; ans;
+</span></span><span class="line"><span class="cl">	  // 记录字符的最后出现位置
 </span></span><span class="line"><span class="cl">        for (int i = 0; i &lt; len; i++) {
-</span></span><span class="line"><span class="cl">            while (!stk.empty() &amp;&amp; temperatures[i] &gt; temperatures[stk.top()]) {
-</span></span><span class="line"><span class="cl">                ans[stk.top()] = i - stk.top();
-</span></span><span class="line"><span class="cl">                stk.pop();
+</span></span><span class="line"><span class="cl">            map[s[i]] = i;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        int start = 0;
+</span></span><span class="line"><span class="cl">        int end = map[s[0]];
+</span></span><span class="line"><span class="cl">        for (int i = 0; i &lt; len; i++) {
+</span></span><span class="line"><span class="cl">            if (i == end) {
+</span></span><span class="line"><span class="cl">                ans.push_back(end - start + 1);
+</span></span><span class="line"><span class="cl">                start = i + 1;
+</span></span><span class="line"><span class="cl">                if (i != len - 1)
+</span></span><span class="line"><span class="cl">                    end = map[s[i + 1]];
+</span></span><span class="line"><span class="cl">                continue;
 </span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">            stk.push(i);
+</span></span><span class="line"><span class="cl">            if (i &lt; end &amp;&amp; map[s[i]] &gt; end)
+</span></span><span class="line"><span class="cl">                end = map[s[i]];
 </span></span><span class="line"><span class="cl">        }
 </span></span><span class="line"><span class="cl">        return ans;
 </span></span><span class="line"><span class="cl">    }
@@ -322,34 +382,33 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>时间复杂度：遍历一遍 nums 数组，故为O(N)；</li>
-<li>空间复杂度：最坏情况下每日温度为递减序列，栈中存储了所有元素，故为O(N);</li>
+<li>时间复杂度：遍历了两次字符串，故为O(N)；</li>
+<li>空间复杂度：采用了哈希表存储每个字符出现的最后位置，最多有26个字符，故为O(1)；</li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2024-01-19</span>
+                <span>更新于 2024-01-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/leetcode-%E6%A0%88/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://wxs-605.github.io/leetcode-%E6%A0%88/" data-title="LeetCode 栈" data-hashtags="栈"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://wxs-605.github.io/leetcode-%E6%A0%88/" data-hashtag="栈"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://wxs-605.github.io/leetcode-%E6%A0%88/" data-title="LeetCode 栈"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://wxs-605.github.io/leetcode-%E6%A0%88/" data-title="LeetCode 栈"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://wxs-605.github.io/leetcode-%E6%A0%88/" data-title="LeetCode 栈" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" data-title="LeetCode 贪心算法" data-hashtags="贪心算法"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" data-hashtag="贪心算法"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" data-title="LeetCode 贪心算法"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" data-title="LeetCode 贪心算法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" data-title="LeetCode 贪心算法" data-ralateuid="xxxx"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%A0%88/">栈</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/leetcode-%E5%9B%9E%E6%BA%AF/" class="prev" rel="prev" title="LeetCode 回溯"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 回溯</a>
-            <a href="/leetcode-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="next" rel="next" title="LeetCode 二分查找">LeetCode 二分查找<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/leetcode-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="prev" rel="prev" title="LeetCode 二分查找"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 二分查找</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
