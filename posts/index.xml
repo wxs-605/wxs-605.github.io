@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/posts/</link>
         <description>所有文章 | 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Jan 2024 22:04:26 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>CPP 八股文</title>
+    <link>https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[变量初始化/虚函数/多态 全局静态变量和函数静态变量的初始化顺序？ 全局静态变量的初始化顺序： 在同一个编译单元中，全局静态变量的初始化顺序按照它]]></description>
+</item>
+<item>
     <title>LeetCode 贪心算法</title>
     <link>https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</link>
     <pubDate>Tue, 23 Jan 2024 22:04:26 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/</guid>
     <description><![CDATA[小结一下今天刷的关于链表的题，设计的主要知识点是快慢指针，虽然有点简单，但还是总结一下吧。 快慢指针思想 常规： 定义一个slow慢指针，一个fa]]></description>
-</item>
-<item>
-    <title>LeetCode 矩阵</title>
-    <link>https://wxs-605.github.io/leetcode-%E7%9F%A9%E9%98%B5/</link>
-    <pubDate>Wed, 10 Jan 2024 17:50:03 &#43;0800</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/leetcode-%E7%9F%A9%E9%98%B5/</guid>
-    <description><![CDATA[小结一下今天刷的LeetCode算法题，今天刷的三道题属于矩阵方面。 矩阵置零 给你一个m * n 的数组，如果一个元素的值为零，则将这个元素所在行列]]></description>
 </item>
 </channel>
 </rss>
