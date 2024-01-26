@@ -1,6 +1,10 @@
 # CPP 八股文
 
 
+参考文章：https://blog.csdn.net/Awesomewan/article/details/123948929
+参考公众号：阿Q技术站
+
+
 ## 变量初始化/虚函数/多态
 
 ### 全局静态变量和函数静态变量的初始化顺序？
