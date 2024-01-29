@@ -188,3 +188,77 @@ public:
 
 - 时间复杂度：遍历一次 nums ，故为O(N)；
 - 空间复杂度：使用了常熟个变量，故为O(1)；
+
+## 分割等和子集
+给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
+
+### 思路
+分割等和子集，换一种角度思考，就是看给出的 nums 中是否有元素可以的和等于 sum 的一半( sum 是 nums 各元素之和，且 nums 中的元素不能重复使用)。此时这道题又与完全平方和、零钱兑换的思路一致了。这里有个剪枝，如果 sum 为奇数，那么不可能分割成两个相等的子集，因为两个偶数相加必然等于偶数。
+
+#### 实现过程
+```
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int sum = 0;
+        for (auto& num : nums)
+            sum += num;
+        if (sum % 2 == 1 || nums.size() == 1)
+            return false;
+        sum /= 2;
+        sort(nums.begin(), nums.end());
+        vector<int> dp(sum + 2, 0);
+        for (int i = 0; i < nums.size(); i++)
+            for (int j = sum; j >= 1; j--) {
+                if (nums[i] > j)
+                    continue;
+                dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+            }
+        return dp[sum] == sum;
+    }
+};
+```
+
+- 时间复杂度：遍历整个 nums ，每次从 target 遍历到 1 ，故为o(N*target)；
+- 空间复杂度：使用了一维状态转移方程，故为O(N)；
+
+
+## 最长有效括号
+给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
+
+### 思路
+使用一维状态方程，考虑下面两种情况：
+1. s[i] = ')' && s[i - 1] = '(' 时      dp[i] = 2 + dp[i - 2] ;
+2. s[i] = ')' && s[i -dp[i - 1] - 1] = '(' 时    dp[i] = dp[i - 1] + dp[i -dp[i - 1] - 2] ;
+
+情况1是刚好与前面的括号匹配，情况2是里面包含了一串括号；
+
+#### 实现过程
+```
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        int len = s.size();
+        if (!len || len == 1)
+            return 0;
+        vector<int> dp(len + 1, 0);
+        if (s[1] == ')' && s[0] == '(')
+            dp[1] = 2;
+        int ans = dp[1];
+        for (int i = 1; i < len; i++) {
+            if (s[i] == ')') {
+                if (s[i - 1] == '(') {
+                    dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
+                } else if (i - dp[i - 1] > 0 && s[i - dp[i - 1] - 1] == '(')
+                    dp[i] = dp[i - 1] +
+                            ((i - dp[i - 1]) >= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+                ans = std::max(ans, dp[i]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+- 时间复杂度：遍历了一次括号序列，故为O(N)；
+- 空间复杂度：使用了一维状态方程 dp ，故为O(N)；

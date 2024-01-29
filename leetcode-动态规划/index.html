@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "动态规划","wordcount":  1882 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "动态规划","wordcount":  2578 ,
         "url": "https:\/\/wxs-605.github.io\/leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/","datePublished": "2024-01-28T21:01:23+08:00","dateModified": "2024-01-28T21:01:23+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/i.postimg.cc\/vB5kHShv\/head-Sculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 动态规划</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-28">2024-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1882 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="leancloud_visitors" data-flag-title="LeetCode 动态规划">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-28">2024-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2578 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="leancloud_visitors" data-flag-title="LeetCode 动态规划">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -158,6 +158,24 @@
         <li><a href="#思路-4">思路</a>
           <ul>
             <li><a href="#实现过程-4">实现过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#分割等和子集">分割等和子集</a>
+      <ul>
+        <li><a href="#思路-5">思路</a>
+          <ul>
+            <li><a href="#实现过程-5">实现过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#最长有效括号">最长有效括号</a>
+      <ul>
+        <li><a href="#思路-6">思路</a>
+          <ul>
+            <li><a href="#实现过程-6">实现过程</a></li>
           </ul>
         </li>
       </ul>
@@ -440,6 +458,127 @@
 </div><ul>
 <li>时间复杂度：遍历一次 nums ，故为O(N)；</li>
 <li>空间复杂度：使用了常熟个变量，故为O(1)；</li>
+</ul>
+<h2 id="分割等和子集">分割等和子集</h2>
+<p>给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<h3 id="思路-5">思路</h3>
+<p>分割等和子集，换一种角度思考，就是看给出的 nums 中是否有元素可以的和等于 sum 的一半( sum 是 nums 各元素之和，且 nums 中的元素不能重复使用)。此时这道题又与完全平方和、零钱兑换的思路一致了。这里有个剪枝，如果 sum 为奇数，那么不可能分割成两个相等的子集，因为两个偶数相加必然等于偶数。</p>
+<h4 id="实现过程-5">实现过程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    bool canPartition(vector&lt;int&gt;&amp; nums) {
+</span></span><span class="line"><span class="cl">        int sum = 0;
+</span></span><span class="line"><span class="cl">        for (auto&amp; num : nums)
+</span></span><span class="line"><span class="cl">            sum += num;
+</span></span><span class="line"><span class="cl">        if (sum % 2 == 1 || nums.size() == 1)
+</span></span><span class="line"><span class="cl">            return false;
+</span></span><span class="line"><span class="cl">        sum /= 2;
+</span></span><span class="line"><span class="cl">        sort(nums.begin(), nums.end());
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; dp(sum + 2, 0);
+</span></span><span class="line"><span class="cl">        for (int i = 0; i &lt; nums.size(); i++)
+</span></span><span class="line"><span class="cl">            for (int j = sum; j &gt;= 1; j--) {
+</span></span><span class="line"><span class="cl">                if (nums[i] &gt; j)
+</span></span><span class="line"><span class="cl">                    continue;
+</span></span><span class="line"><span class="cl">                dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        return dp[sum] == sum;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：遍历整个 nums ，每次从 target 遍历到 1 ，故为o(N*target)；</li>
+<li>空间复杂度：使用了一维状态转移方程，故为O(N)；</li>
+</ul>
+<h2 id="最长有效括号">最长有效括号</h2>
+<p>给你一个只包含 &lsquo;(&rsquo; 和 &lsquo;)&rsquo; 的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p>
+<h3 id="思路-6">思路</h3>
+<p>使用一维状态方程，考虑下面两种情况：</p>
+<ol>
+<li>s[i] = &lsquo;)&rsquo; &amp;&amp; s[i - 1] = &lsquo;(&rsquo; 时      dp[i] = 2 + dp[i - 2] ;</li>
+<li>s[i] = &lsquo;)&rsquo; &amp;&amp; s[i -dp[i - 1] - 1] = &lsquo;(&rsquo; 时    dp[i] = dp[i - 1] + dp[i -dp[i - 1] - 2] ;</li>
+</ol>
+<p>情况1是刚好与前面的括号匹配，情况2是里面包含了一串括号；</p>
+<h4 id="实现过程-6">实现过程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
+</span></span><span class="line"><span class="cl">public:
+</span></span><span class="line"><span class="cl">    int longestValidParentheses(string s) {
+</span></span><span class="line"><span class="cl">        int len = s.size();
+</span></span><span class="line"><span class="cl">        if (!len || len == 1)
+</span></span><span class="line"><span class="cl">            return 0;
+</span></span><span class="line"><span class="cl">        vector&lt;int&gt; dp(len + 1, 0);
+</span></span><span class="line"><span class="cl">        if (s[1] == &#39;)&#39; &amp;&amp; s[0] == &#39;(&#39;)
+</span></span><span class="line"><span class="cl">            dp[1] = 2;
+</span></span><span class="line"><span class="cl">        int ans = dp[1];
+</span></span><span class="line"><span class="cl">        for (int i = 1; i &lt; len; i++) {
+</span></span><span class="line"><span class="cl">            if (s[i] == &#39;)&#39;) {
+</span></span><span class="line"><span class="cl">                if (s[i - 1] == &#39;(&#39;) {
+</span></span><span class="line"><span class="cl">                    dp[i] = (i &gt;= 2 ? dp[i - 2] : 0) + 2;
+</span></span><span class="line"><span class="cl">                } else if (i - dp[i - 1] &gt; 0 &amp;&amp; s[i - dp[i - 1] - 1] == &#39;(&#39;)
+</span></span><span class="line"><span class="cl">                    dp[i] = dp[i - 1] +
+</span></span><span class="line"><span class="cl">                            ((i - dp[i - 1]) &gt;= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+</span></span><span class="line"><span class="cl">                ans = std::max(ans, dp[i]);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return ans;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：遍历了一次括号序列，故为O(N)；</li>
+<li>空间复杂度：使用了一维状态方程 dp ，故为O(N)；</li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
