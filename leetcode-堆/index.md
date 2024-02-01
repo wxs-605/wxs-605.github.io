@@ -10,7 +10,7 @@
 这道题中说明了，不用考虑重复元素，若需要考虑重复元素时，使用哈希表去重即可。维护一个容量为 K 的小根堆(优先队列 priority_queue )，先将前 K 个元素放入堆中，然后遍历整个数组，将每个元素与堆顶元素比较，若其大于堆顶元素，则弹出堆顶元素，并将当前的元素入堆；遍历完之后，对顶元素既是第 K 大的元素。
 
 #### 实现代码
-```
+```c++
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -42,7 +42,7 @@ public:
 先用哈希表记录各个元素出现的次数，然后将这些记录对加入到一个vector中，以出现次数进行排序，倒数 K 个记录对即为前 K 个高频单词。
 
 #### 实现代码
-```
+```c++
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -78,7 +78,7 @@ public:
 这道题可以说是考察大根堆的运用，采用大根堆存储遍历到的元素，若堆顶元素的下标大于或等于窗口的左边界，那么这个值就是窗口内的最大值，否则弹出堆顶元素，继续判断。依此类推，遍历完整个数组，即可找打窗口中的所有最大值。
 
 #### 实现代码
-```
+```c++
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
@@ -121,7 +121,7 @@ public:
 
 
 #### 实现过程
-```
+```c++
 class MedianFinder {
     priority_queue<int, vector<int>, greater<int>> min_heap;
     priority_queue<int> max_heap;
@@ -160,7 +160,7 @@ public:
 **注意**
 使用优先队列大小根堆时，要先引入头文件 queue ,同时，使用priority_queue默认是大根堆，使用小根堆时，需要这样写
 
-```
+```shell
 #include<queue>	// 优先队列要引入这个头文件
 priority_queue<int, vector, greater> name		// 小根堆的写法
 ```

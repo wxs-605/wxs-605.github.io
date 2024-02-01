@@ -18,7 +18,7 @@
     <pubDate>Sun, 28 Jan 2024 21:01:23 &#43;0800</pubDate>
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
-    <description><![CDATA[今天刷了动态规划的题，总结一下其中的收获。 思想 使用动态规划解题，得出的解是全局最优解，那么可以知道，在求解的过程中每一个解都是最优的。既 dp[i] 是]]></description>
+    <description><![CDATA[今天刷了动态规划的题，总结一下其中的收获。 一维动态规划思想 使用动态规划解题，得出的解是全局最优解，那么可以知道，在求解的过程中每一个解都是最]]></description>
 </item>
 <item>
     <title>CPP 八股文</title>

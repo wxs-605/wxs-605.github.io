@@ -275,85 +275,85 @@
 </span><span class="lnt">79
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Node {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    int key;
-</span></span><span class="line"><span class="cl">    int value;
-</span></span><span class="line"><span class="cl">    Node* pre;
-</span></span><span class="line"><span class="cl">    Node* next;
-</span></span><span class="line"><span class="cl">    Node(int k, int v) : key(k), value(v) { pre = next = nullptr; }
-</span></span><span class="line"><span class="cl">};
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="o">:</span> <span class="n">key</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">next</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">class LRUCache {
-</span></span><span class="line"><span class="cl">    int capacity;
-</span></span><span class="line"><span class="cl">    unordered_map&lt;int, Node*&gt; map;
-</span></span><span class="line"><span class="cl">    Node* head;
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LRUCache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">capacity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Node</span><span class="o">*&gt;</span> <span class="n">map</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">head</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    LRUCache(int capacity) {
-</span></span><span class="line"><span class="cl">        this-&gt;capacity = capacity;
-</span></span><span class="line"><span class="cl">        head = new Node(0, 0);
-</span></span><span class="line"><span class="cl">        head-&gt;next = head;
-</span></span><span class="line"><span class="cl">        head-&gt;pre = head;
-</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LRUCache</span><span class="p">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">-&gt;</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    int get(int key) {
-</span></span><span class="line"><span class="cl">        auto cur = map.find(key);
-</span></span><span class="line"><span class="cl">        if (cur == map.end())
-</span></span><span class="line"><span class="cl">            return -1;
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">get</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">map</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">cur</span> <span class="o">==</span> <span class="n">map</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 将访问过的节点调到头节点后面；
-</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;pre-&gt;next = cur-&gt;second-&gt;next;
-</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;next-&gt;pre = cur-&gt;second-&gt;pre;
-</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;next = head-&gt;next;
-</span></span><span class="line"><span class="cl">        head-&gt;next-&gt;pre = cur-&gt;second;
-</span></span><span class="line"><span class="cl">        head-&gt;next = cur-&gt;second;
-</span></span><span class="line"><span class="cl">        cur-&gt;second-&gt;pre = head;
-</span></span><span class="line"><span class="cl">        return cur-&gt;second-&gt;value;
-</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 将访问过的节点调到头节点后面；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    void put(int key, int value) {
-</span></span><span class="line"><span class="cl">        auto cur = map.find(key);
-</span></span><span class="line"><span class="cl">        if (cur != map.end()) {
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">put</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">map</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="n">map</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		// 节点存在时，修改器value值， 并将其调到头节点后面；
-</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;value = value;
-</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;pre-&gt;next = cur-&gt;second-&gt;next;
-</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;next-&gt;pre = cur-&gt;second-&gt;pre;
-</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;next = head-&gt;next;
-</span></span><span class="line"><span class="cl">            head-&gt;next-&gt;pre = cur-&gt;second;
-</span></span><span class="line"><span class="cl">            head-&gt;next = cur-&gt;second;
-</span></span><span class="line"><span class="cl">            cur-&gt;second-&gt;pre = head;
-</span></span><span class="line"><span class="cl">            return;
-</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">		<span class="c1">// 节点存在时，修改器value值， 并将其调到头节点后面；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 节点不存在，则新间节点，加入到头节点后面；
-</span></span><span class="line"><span class="cl">        Node* node = new Node(key, value);
-</span></span><span class="line"><span class="cl">        map[key] = node;
-</span></span><span class="line"><span class="cl">        node-&gt;next = head-&gt;next;
-</span></span><span class="line"><span class="cl">        head-&gt;next-&gt;pre = node;
-</span></span><span class="line"><span class="cl">        head-&gt;next = node;
-</span></span><span class="line"><span class="cl">        node-&gt;pre = head;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 节点不存在，则新间节点，加入到头节点后面；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Node</span><span class="o">*</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">node</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	  // 判断节点数量有没有达到阈值；
-</span></span><span class="line"><span class="cl">        if (map.size() &lt;= capacity)
-</span></span><span class="line"><span class="cl">            return;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 判断节点数量有没有达到阈值；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	  
-</span></span><span class="line"><span class="cl">	  // 到达阈值时，删除链表最后一个节点；
-</span></span><span class="line"><span class="cl">        Node* temp = head-&gt;pre;
-</span></span><span class="line"><span class="cl">        map.erase(temp-&gt;key);
-</span></span><span class="line"><span class="cl">        temp-&gt;pre-&gt;next = temp-&gt;next;
-</span></span><span class="line"><span class="cl">        temp-&gt;next-&gt;pre = temp-&gt;pre;
-</span></span><span class="line"><span class="cl">        delete temp;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 到达阈值时，删除链表最后一个节点；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Node</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">temp</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">pre</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/**
-</span></span><span class="line"><span class="cl"> * Your LRUCache object will be instantiated and called as such:
-</span></span><span class="line"><span class="cl"> * LRUCache* obj = new LRUCache(capacity);
-</span></span><span class="line"><span class="cl"> * int param_1 = obj-&gt;get(key);
-</span></span><span class="line"><span class="cl"> * obj-&gt;put(key,value);
-</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Your LRUCache object will be instantiated and called as such:
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * LRUCache* obj = new LRUCache(capacity);
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * int param_1 = obj-&gt;get(key);
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * obj-&gt;put(key,value);
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">

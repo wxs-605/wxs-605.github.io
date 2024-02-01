@@ -240,46 +240,46 @@
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    bool canFinish(int numCourses, vector&lt;vector&lt;int&gt;&gt;&amp; prerequisites) {
-</span></span><span class="line"><span class="cl">	  // matrix 相当于邻接表，存储图中的边；
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; matrix[numCourses];
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">canFinish</span><span class="p">(</span><span class="kt">int</span> <span class="n">numCourses</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">prerequisites</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	  <span class="c1">// matrix 相当于邻接表，存储图中的边；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="n">numCourses</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // in_degree 记录每个顶点的入度；
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; in_degree(numCourses, 0);
+</span></span><span class="line"><span class="cl">	  <span class="c1">// in_degree 记录每个顶点的入度；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">in_degree</span><span class="p">(</span><span class="n">numCourses</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 计算各边的入度；
-</span></span><span class="line"><span class="cl">        for (auto&amp; e : prerequisites) {
-</span></span><span class="line"><span class="cl">            matrix[e[1]].push_back(e[0]);
-</span></span><span class="line"><span class="cl">            in_degree[e[0]]++;
-</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 计算各边的入度；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">prerequisites</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">matrix</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]].</span><span class="n">push_back</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">in_degree</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 辅助队列q，用以实现拓扑排序，用栈也可；
-</span></span><span class="line"><span class="cl">        queue&lt;int&gt; q;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 辅助队列q，用以实现拓扑排序，用栈也可；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 找到第一个入度为零的顶点，并加入到队列中；
-</span></span><span class="line"><span class="cl">        for (int i =0;i&lt;numCourses;i++) {
-</span></span><span class="line"><span class="cl">            if (!in_degree[i])
-</span></span><span class="line"><span class="cl">                q.push(i);
-</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 找到第一个入度为零的顶点，并加入到队列中；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">numCourses</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">in_degree</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 进行拓扑排序， 用 count 统计序列中顶点的数量；
-</span></span><span class="line"><span class="cl">        int count = 0;
-</span></span><span class="line"><span class="cl">        while (!q.empty()) {
-</span></span><span class="line"><span class="cl">            int idx = q.front();
-</span></span><span class="line"><span class="cl">            q.pop();
-</span></span><span class="line"><span class="cl">            count++;
-</span></span><span class="line"><span class="cl">            for (auto&amp; i : matrix[idx]) {
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 进行拓扑排序， 用 count 统计序列中顶点的数量；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">matrix</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		    // 若入度减一之后为零，将其加入到队列中；
-</span></span><span class="line"><span class="cl">                if (--in_degree[i] == 0)
-</span></span><span class="line"><span class="cl">                    q.push(i);
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        return count == numCourses;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">		    <span class="c1">// 若入度减一之后为零，将其加入到队列中；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="p">(</span><span class="o">--</span><span class="n">in_degree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">count</span> <span class="o">==</span> <span class="n">numCourses</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这段代码为拓扑排序的模板的代码，贴这供以后学习用~~</p>
@@ -366,48 +366,48 @@
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Trie {
-</span></span><span class="line"><span class="cl">    bool isEnd;
-</span></span><span class="line"><span class="cl">    Trie* next[26];
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Trie</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">isEnd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Trie</span><span class="o">*</span> <span class="n">next</span><span class="p">[</span><span class="mi">26</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    Trie() {
-</span></span><span class="line"><span class="cl">        isEnd = false;
-</span></span><span class="line"><span class="cl">        for(auto &amp; e : next)
-</span></span><span class="line"><span class="cl">            e = nullptr;
-</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Trie</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">isEnd</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">e</span> <span class="p">:</span> <span class="n">next</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    void insert(string word) {
-</span></span><span class="line"><span class="cl">        Trie* cur_node = this;
-</span></span><span class="line"><span class="cl">        for (auto ch : word) {
-</span></span><span class="line"><span class="cl">            if (cur_node-&gt;next[ch - &#39;a&#39;] == nullptr) {
-</span></span><span class="line"><span class="cl">                cur_node-&gt;next[ch - &#39;a&#39;] = new Trie();
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">            cur_node = cur_node-&gt;next[ch - &#39;a&#39;];
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        cur_node-&gt;isEnd = true;
-</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">string</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Trie</span><span class="o">*</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">ch</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">ch</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Trie</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur_node</span> <span class="o">=</span> <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">ch</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">isEnd</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    bool search(string word) {
-</span></span><span class="line"><span class="cl">        Trie* cur_node = this;
-</span></span><span class="line"><span class="cl">        for (auto ch : word) {
-</span></span><span class="line"><span class="cl">            cur_node = cur_node-&gt;next[ch - &#39;a&#39;];
-</span></span><span class="line"><span class="cl">            if (cur_node == nullptr)
-</span></span><span class="line"><span class="cl">                return false;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        return cur_node-&gt;isEnd;
-</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">search</span><span class="p">(</span><span class="n">string</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Trie</span><span class="o">*</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur_node</span> <span class="o">=</span> <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">ch</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">cur_node</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">isEnd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    bool startsWith(string prefix) { 
-</span></span><span class="line"><span class="cl">        Trie* cur_node = this;
-</span></span><span class="line"><span class="cl">        for (auto ch : prefix) {
-</span></span><span class="line"><span class="cl">            cur_node = cur_node-&gt;next[ch - &#39;a&#39;];
-</span></span><span class="line"><span class="cl">            if (cur_node == nullptr)
-</span></span><span class="line"><span class="cl">                return false;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        return true;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">startsWith</span><span class="p">(</span><span class="n">string</span> <span class="n">prefix</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">Trie</span><span class="o">*</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">prefix</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cur_node</span> <span class="o">=</span> <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">ch</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">cur_node</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">

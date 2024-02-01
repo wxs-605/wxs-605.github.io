@@ -14,7 +14,7 @@
 用两个变量分别记录最大利润和股票的最低价，先计算先前买的股票的最大利润，既 max_profit = max(max_profit, prices[i] - purchase) , 再判断今天是否是股票的最低价，既 purchase = min(purchase, prices[i])；注意，这两个步骤不能反，因为你不能出售未来买的股票。
 
 #### 代码实现
-```
+```c++
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -45,7 +45,7 @@ public:
 如果可以从开头跳到结尾，那么必然可以从结尾跳到开头。所以可以从结尾往前跳，一个一个判断，能跳到开头，就返回true，否则返回false。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
@@ -84,7 +84,7 @@ public:
 一跳接着一跳跳。先找出从当前可以跳到的下一个区间，跳数加一，再以找到下一个区间作为当前这一跳的区间，再去找下一跳的区间，以此类推，直到跳到最后一个下标。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int jump(vector<int>& nums) {
@@ -121,7 +121,7 @@ public:
 记录每个字符最后出现的位置，从字符开始出现 start 到最后出现 end 这个区间中，如果存在字符的最后出现位置超过 end ，那么就更新 end ，当遍历到 end 时，说明这个区间的字符已经遍历完了，将这个区间加入到 answer 中即可，然后更新 start 和 end ，依此类推直到遍历完整个字符串。
 
 #### 代码实现
-```
+```c++
 class Solution {
 public:
     vector<int> partitionLabels(string s) {

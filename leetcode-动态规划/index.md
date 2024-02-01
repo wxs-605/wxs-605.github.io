@@ -3,11 +3,15 @@
 
 今天刷了动态规划的题，总结一下其中的收获。
 
-**思想**
+**一维动态规划思想**
 
 使用动态规划解题，得出的解是全局最优解，那么可以知道，在求解的过程中每一个解都是最优的。既 dp[i] 是 i 位置处的最优解，dp[i - 1] 是 i - 1 状态的最优解。故动态规划的核心是找到这两者之间的关系。当然，这并不是绝对的，也有些题是找 dp[i] 与 dp[0...i - 1]之间的关系。
 - dp[i] 与 dp[i - 1] 之间的关系；
 - dp[i] 与 [ dp[0], dp[i - 1] ]之间的关系；
+
+**多维动态规划思想**
+
+思想与一维动态规划类似，状态转移方程 dp 是多维的，变成找 dp[i][j] 与 dp[i - 1][j] / dp[i][j - 1] / dp[i - 1][j - 1] 之间的关系；
 
 ## 打家劫舍
 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
@@ -21,7 +25,7 @@ dp[i] = max(dp[i - 2], dp[i - 3]) + nums[i] ；
 
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int rob(vector<int>& nums) {
@@ -60,7 +64,7 @@ public:
 dp[i] = dp[i - j * j] + 1； 其中 j<sup>2</sup> ∈ [1, i)；
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int numSquares(int n) {
@@ -91,7 +95,7 @@ public:
 思路与完全平方数差不多，不过这里的可用的序列已经给出。一步一步算，从 1 算到 amount 。这里有个小剪枝，将 coins 序列从小到大排序一下，若 coins[i] > i ，说明下一个coins也会大于，此时可以直接退出遍历；
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
@@ -130,7 +134,7 @@ public:
 这道题就是寻找 dp[i] 与 [ dp[0], dp[i - 1] ] 之间的关系。这里说明一下为什么不能只找 dp[i - 1]的关系，若 nums[i - 1] 同时大于 nums[i] 、nums[i - 2]，但是又存在 nums[i - 2] < nums[i] < nums[i + 1] 的情况，这时 dp[i] 得到的就不是最优解。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -164,7 +168,7 @@ public:
 不考虑特殊情况下，dp[i] = max(dp[i] * nums[i]，nums[i]) ；若 nums[i] 是负数呢？会出现什么情况？这时表示最大值的 dp[i] 变成了最小值，继续计算下去，将会得到一个错误答案。因此，可以记录连续子数组的最大值和最小值，当 nums[i] 是负数时，最大值变成最小值，最小值变成最大值，此时只需要交换最大值和最小值，按照上面的规则继续计算即可。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
@@ -196,7 +200,7 @@ public:
 分割等和子集，换一种角度思考，就是看给出的 nums 中是否有元素可以的和等于 sum 的一半( sum 是 nums 各元素之和，且 nums 中的元素不能重复使用)。此时这道题又与完全平方和、零钱兑换的思路一致了。这里有个剪枝，如果 sum 为奇数，那么不可能分割成两个相等的子集，因为两个偶数相加必然等于偶数。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
@@ -234,7 +238,7 @@ public:
 情况1是刚好与前面的括号匹配，情况2是里面包含了一串括号；
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     int longestValidParentheses(string s) {
@@ -262,3 +266,103 @@ public:
 
 - 时间复杂度：遍历了一次括号序列，故为O(N)；
 - 空间复杂度：使用了一维状态方程 dp ，故为O(N)；
+
+
+## 最小路径和
+给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+
+说明：每次只能向下或者向右移动一步。
+
+### 思路
+找关系，找 dp[i][ij] 与 dp[i - 1][j]、 dp[i][j - 1] 之间的关系。因为每次只能向下或者向右移动，所以 dp[i][j] 只能由 dp[i - 1][j] 和 p[i][j - 1] 的其中之一得来。若 
+-  dp[i - 1][j] < p[i][j - 1] ; dp[i][j] = dp[i - 1][j] + grid[i][j] ;
+- dp[i - 1][j] >= p[i][j - 1] ; dp[i][j] = dp[i][j - 1] + grid[i][j] ;
+
+#### 实现
+```c++
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        vector<vector<int>> dp(m + 2, vector<int>(n + 2, 0));
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                int temp = 0;
+                if (i > 0)
+                    temp = dp[i - 1][j];
+                if (j > 0) {
+                    if (i == 0)
+                        temp = dp[i][j - 1];
+                    else
+                        temp = min(dp[i][j - 1], temp);
+                }
+                dp[i][j] = grid[i][j] + temp;
+            }
+        return dp[m - 1][n - 1];
+    }
+};
+```
+
+- 时间复杂度：遍历完整个 grid ，故为O(MN)；
+- 空间复杂度：采用了二维 dp 数组，故为O(MN)；
+
+
+## 不同路径
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+
+问总共有多少条不同的路径？
+
+### 思路
+机器人每次只能向下或者向右移动一步，所以 dp[i][j] = dp[i][j - 1] + dp[i - 1][j]；
+
+- 时间复杂度：遍历二维数组，故为O(MN)；
+- 空间复杂度：采用了二维 dp ，故为O(MN)；
+
+
+## 编辑距离
+给你两个单词 word1 和 word2， 请返回将 word1 转换成 word2 所使用的最少操作数  。
+
+你可以对一个单词进行如下三种操作：
+
+- 插入一个字符
+- 删除一个字符
+- 替换一个字符
+
+### 思路
+假设由 A 和 B 两个单词，以上三种操作相当于在二维 dp 中找 dp[i][j ]的关系：
+- 插入一个字符：若 world1[i - 1] == world2[j - 1] ，dp[i][j] = dp[i - 1][j - 1] ;
+- 否则替换一个字符 dp[i][j] = dp[i - 1][j - 1] + 1;
+- 删除一个字符：dp[i][j] = dp[i - 1][j]  + 1或 dp[i][j - 1] + 1；
+实际上就是找 dp[i][j] 与 dp[i - 1][j - 1] 、dp[i - 1][j] 、dp[i][j - 1] 的关系，最后让 dp[i][j] 等于三者中的最小值;
+
+#### 实现思路
+```c++
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        int len1 = word1.size();
+        int len2 = word2.size();
+        vector<vector<int>> dp(len1 + 1, vector<int>(len2 + 1, 0));
+        for (int i = 0; i <= len1; i++)
+            dp[i][0] = i;
+        for (int i = 0; i <= len2; i++)
+            dp[0][i] = i;
+        for (int i = 1; i <= len1; i++)
+            for (int j = 1; j <= len2; j++) {
+                int left = dp[i][j - 1] + 1;
+                int down = dp[i - 1][j] + 1;
+                int left_down = dp[i - 1][j - 1];
+                if (word1[i - 1] != word2[j - 1])
+                    left_down++;
+                dp[i][j] = min(left_down, min(left, down));
+            }
+        return dp[len1][len2];
+    }
+};
+```
+
+- 时间复杂度：O(MN), M、N 分别为 world1 和 world2 的长度；
+- 空间复杂度：o(mn)，采用了二维 dp 数组；

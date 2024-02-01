@@ -30,7 +30,7 @@
 采用由深度优先搜索改造成的回溯函数，先一步步“试错”，找到最终答案，然后撤销选择，遍历完整个状态空间。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     void backTrack(vector<vector<int>> & ans,vector<int>&nums, int start, int length){
@@ -70,7 +70,7 @@ public:
 采用回溯算法，递归树中使用一个参数 start，来标识当前的选择列表的起始位置。标识每一层的状态，然后start  + 1，进入下一层的递归，直到找到所有子集。
 
 #### 实现代码
-```
+```c++
 class Solution {
 public:
 void backTrack(vector<vector<int>>&ans, vector<int>&nums, vector<int>&path, int start){
@@ -110,7 +110,7 @@ void backTrack(vector<vector<int>>&ans, vector<int>&nums, vector<int>&path, int 
 套用上面总结的回溯模板，找到、找准结束条件，选择列表即可。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     void backTrack(vector<vector<int>>& ans, vector<int>&nums, vector<int> &path, int start, int sum, int target){
@@ -151,7 +151,7 @@ public:
 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 **有效的** 括号组合。
 
 #### 实现过程
-```
+```c++
 class Solution {
 public:
     void backTrack(vector<string>&ans, string cur, int left, int right, int len){
@@ -190,7 +190,7 @@ public:
 给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。回文串 是正着读和反着读都一样的字符串。
 
 ##### 实现过程
-```
+```c++
 class Solution {
     vector<vector<string>> ans;
     vector<string> path;
@@ -243,7 +243,7 @@ public:
 复原IP地址的思路与分割回文串的思路一致，都是分割，但是这里的回溯结束条件是子串中划分成了四个部分，既有三个'.'；
 
 ##### 实现过程
-```
+```c++
 class Solution {
     vector<string>ans;
     void backTrack(string &s, int start, int point){

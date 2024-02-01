@@ -209,38 +209,38 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) {
-</span></span><span class="line"><span class="cl">	  // 如果是一颗空树，直接返回空指针；
-</span></span><span class="line"><span class="cl">        if(!preorder.size())
-</span></span><span class="line"><span class="cl">            return nullptr;
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TreeNode</span><span class="o">*</span> <span class="n">buildTree</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">preorder</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">inorder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 如果是一颗空树，直接返回空指针；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">preorder</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 申请节点并初始化
-</span></span><span class="line"><span class="cl">        TreeNode *root = new TreeNode();
-</span></span><span class="line"><span class="cl">        root-&gt;val = preorder[0];
-</span></span><span class="line"><span class="cl">        root-&gt;left = nullptr;
-</span></span><span class="line"><span class="cl">        root-&gt;right = nullptr;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 申请节点并初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">preorder</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 如果这棵树只有根节点，直接返回这个节点；
-</span></span><span class="line"><span class="cl">        if(preorder.size() == 1)
-</span></span><span class="line"><span class="cl">            return root;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 如果这棵树只有根节点，直接返回这个节点；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">preorder</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 查找当前节点在中序序列中的位置；
-</span></span><span class="line"><span class="cl">        auto it = find(inorder.begin(), inorder.end(), preorder[0]);
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 查找当前节点在中序序列中的位置；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">inorder</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inorder</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">preorder</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // //创建左子树前序序列, 右子树前序序列，左子树中序序列, 右子树中序序列；
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; pl(preorder.begin() + 1,preorder.begin() + 1 + (it - inorder.begin()));
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt;pr(preorder.begin() + 1 + (it - inorder.begin()), preorder.end());
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; il(inorder.begin(), it);
-</span></span><span class="line"><span class="cl">        vector&lt;int&gt; ir(it + 1, inorder.end());
+</span></span><span class="line"><span class="cl">	  <span class="c1">// //创建左子树前序序列, 右子树前序序列，左子树中序序列, 右子树中序序列；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">pl</span><span class="p">(</span><span class="n">preorder</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span><span class="n">preorder</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">it</span> <span class="o">-</span> <span class="n">inorder</span><span class="p">.</span><span class="n">begin</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="n">pr</span><span class="p">(</span><span class="n">preorder</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">it</span> <span class="o">-</span> <span class="n">inorder</span><span class="p">.</span><span class="n">begin</span><span class="p">()),</span> <span class="n">preorder</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">il</span><span class="p">(</span><span class="n">inorder</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">it</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ir</span><span class="p">(</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inorder</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 创建左右子树, 并将它们的根节点赋值给当前节点的指针；
-</span></span><span class="line"><span class="cl">        root-&gt;left = buildTree(pl, il);
-</span></span><span class="line"><span class="cl">        root-&gt;right = buildTree(pr, ir);
-</span></span><span class="line"><span class="cl">        return root;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 创建左右子树, 并将它们的根节点赋值给当前节点的指针；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">buildTree</span><span class="p">(</span><span class="n">pl</span><span class="p">,</span> <span class="n">il</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">buildTree</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span> <span class="n">ir</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这段代码的递归思路很nice，值得记录下来学习！</p>
@@ -279,23 +279,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-</span></span><span class="line"><span class="cl">        if(root == p || root == q || root == NULL)
-</span></span><span class="line"><span class="cl">            return root;
-</span></span><span class="line"><span class="cl">        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);
-</span></span><span class="line"><span class="cl">        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TreeNode</span><span class="o">*</span> <span class="n">lowestCommonAncestor</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="n">p</span> <span class="o">||</span> <span class="n">root</span> <span class="o">==</span> <span class="n">q</span> <span class="o">||</span> <span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TreeNode</span><span class="o">*</span> <span class="n">left</span> <span class="o">=</span> <span class="n">lowestCommonAncestor</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TreeNode</span><span class="o">*</span> <span class="n">right</span> <span class="o">=</span> <span class="n">lowestCommonAncestor</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // left 和 right都不为空，说明此时root就是最近公共节点;
-</span></span><span class="line"><span class="cl">        if(left &amp;&amp; right)
-</span></span><span class="line"><span class="cl">            return root;
-</span></span><span class="line"><span class="cl">	  // 如果left为空，right不为空，就返回right，说明目标节点是通过right返回的，反之亦然;
-</span></span><span class="line"><span class="cl">        if(!left)
-</span></span><span class="line"><span class="cl">            return right;
-</span></span><span class="line"><span class="cl">        return left;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	  <span class="c1">// left 和 right都不为空，说明此时root就是最近公共节点;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">left</span> <span class="o">&amp;&amp;</span> <span class="n">right</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 如果left为空，right不为空，就返回right，说明目标节点是通过right返回的，反之亦然;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">left</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -358,34 +358,34 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Solution {
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">    int(getMax(TreeNode* root, int &amp;ans)){
-</span></span><span class="line"><span class="cl">	  // 当前节点为空，其对最大路径和的贡献为0，故返回0；
-</span></span><span class="line"><span class="cl">        if(!root)
-</span></span><span class="line"><span class="cl">            return 0;
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="p">(</span><span class="n">getMax</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">ans</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 当前节点为空，其对最大路径和的贡献为0，故返回0；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 求左子树的最大贡献，若左子树是负贡献，则其为0；
-</span></span><span class="line"><span class="cl">        int left_max = max(getMax(root-&gt;left, ans), 0);
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 求左子树的最大贡献，若左子树是负贡献，则其为0；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">left_max</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">getMax</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">ans</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 求右子树的最大贡献，若右子树是负贡献，则其为0；
-</span></span><span class="line"><span class="cl">        int right_max = max(getMax(root-&gt;right, ans), 0);
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 求右子树的最大贡献，若右子树是负贡献，则其为0；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">right_max</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">getMax</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">ans</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 计算当前节点的最大路径和；
-</span></span><span class="line"><span class="cl">        int cur_max = root-&gt;val + left_max + right_max;
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 计算当前节点的最大路径和；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">cur_max</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">+</span> <span class="n">left_max</span> <span class="o">+</span> <span class="n">right_max</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 更新最大路径和
-</span></span><span class="line"><span class="cl">        ans = max(ans, cur_max);
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 更新最大路径和
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">cur_max</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	  // 返回当前节点对最大路径的贡献(当前节点值 + 左右孩子中的最大值)；
-</span></span><span class="line"><span class="cl">        return root-&gt;val + max(left_max, right_max);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    int maxPathSum(TreeNode* root) {
-</span></span><span class="line"><span class="cl">        int ans = INT_MIN;
-</span></span><span class="line"><span class="cl">        getMax(root, ans);
-</span></span><span class="line"><span class="cl">        return ans;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	  <span class="c1">// 返回当前节点对最大路径的贡献(当前节点值 + 左右孩子中的最大值)；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">+</span> <span class="n">max</span><span class="p">(</span><span class="n">left_max</span><span class="p">,</span> <span class="n">right_max</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">maxPathSum</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">getMax</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
