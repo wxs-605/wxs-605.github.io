@@ -4,7 +4,23 @@
         <link>https://wxs-605.github.io/posts/</link>
         <description>所有文章 | 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Jan 2024 21:53:27 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 07 Feb 2024 21:43:42 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>LeetCode 双指针</title>
+    <link>https://wxs-605.github.io/leetcode-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+    <pubDate>Wed, 07 Feb 2024 21:43:42 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+    <description><![CDATA[总结一下一些双指针题目的思路。 接雨水 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。 思路 这道题与 ‘]]></description>
+</item>
+<item>
+    <title>LeetCode 技巧</title>
+    <link>https://wxs-605.github.io/leetcode-%E6%8A%80%E5%B7%A7/</link>
+    <pubDate>Tue, 06 Feb 2024 23:00:46 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E6%8A%80%E5%B7%A7/</guid>
+    <description><![CDATA[前两天家里搞卫生啥的，没有做题，今天终于搞得差不多了，赶紧刷几道题。总结一下今天刷到的技巧题。 只出现一次的数字 给你一个 非空 整数数组 nums ，除了某]]></description>
+</item>
+<item>
     <title>CPP 面经</title>
     <link>https://wxs-605.github.io/cpp-%E9%9D%A2%E7%BB%8F/</link>
     <pubDate>Sun, 28 Jan 2024 21:53:27 &#43;0800</pubDate>
@@ -67,22 +83,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E5%A0%86/</guid>
     <description><![CDATA[小结一下今天刷到的关于堆的题目。 数组中的第K个最大元素 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。请注意，你需要找的是数组排序后的]]></description>
-</item>
-<item>
-    <title>LeetCode 图论</title>
-    <link>https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/</link>
-    <pubDate>Sun, 14 Jan 2024 23:41:11 &#43;0800</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/leetcode-%E5%9B%BE%E8%AE%BA/</guid>
-    <description><![CDATA[小结一下今天LeetCode上关于图论的几道题。 岛屿数量 给你一个由 &lsquo;1&rsquo;（陆地）和 &lsquo;0&rsquo;（水]]></description>
-</item>
-<item>
-    <title>LeetCode 二叉树</title>
-    <link>https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
-    <pubDate>Sat, 13 Jan 2024 00:00:00 &#43;0000</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/leetcode-%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-    <description><![CDATA[总结一下今天刷二叉树遇到的难题和一些思路。 从前序与中序遍历序列构造二叉树 给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序]]></description>
 </item>
 </channel>
 </rss>
