@@ -10,7 +10,7 @@
 这道题与  ‘除自身以外数组的乘积’ 有异曲同工的之妙。在这里是找到 height[i] 中的左边界值和右边界值，然后用其中的最小值减去 height[i] 即可。而在  ‘除自身以外数组的乘积’ 中则是计算从 nums[0] 乘到 nums[i - 1] 的乘积 left[i] ，计算出从 nums[n - 1] 乘到 nums[i + 1] 的乘积 right[i] ，最后用 left[i] * right[i] 既是答案。
 
 #### 实现过程
-```C++
+```cpp
 class Solution {
 public:
     int trap(vector<int>& height) {

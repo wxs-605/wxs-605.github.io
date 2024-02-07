@@ -21,7 +21,7 @@
 
 #### 代码实现过程C++
 
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
@@ -73,7 +73,7 @@ public:
 3. 若左右孩子都返回了一个非空指针，则说明当前节点是他们的最近公共祖先，返回当前节点即可；若右孩子扎到了，则返回右孩子；若左孩子找到了，则返回左孩子；否则返回NULL；
 
 #### 代码实现过程
-```c++
+```cpp
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
@@ -125,7 +125,7 @@ easy，就是求树中节点左右孩子高度和的最大值，对求二叉树�
 2. 对于一个节点来说，它对最大路径和的贡献来与源于其本身的值与其左右孩子中的最大值，所以在求左右子树最大值的时候，返回其节点值与其最大的孩子值即可；
 
 #### 代码实现
-```c++
+```cpp
 class Solution {
 public:
     int(getMax(TreeNode* root, int &ans)){

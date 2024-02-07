@@ -30,7 +30,7 @@
 数组旋转后，以第一个元素为枢轴值，采用二分查找。如果 nums[mid] >= nums[0] , 说明当前遍历的是 nums 的前半部分，且[nums[0], nums[mid]]有序，若是target位于前半部分，则继续进行二分查找即可；若target不位于前半部分，则令 low = mid + 1, 往后半部分进行查找即可。如果 nums[mid] < nums[0]，说明当前便利的是后半部分，且[nums[mid], nums[len - 1]] 有序。按照上面的思路进行搜索即可。
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -80,7 +80,7 @@ public:
 思路与上一题大差不差，同样以第一个元素为枢轴进行比较，如果 nums[mid] > nums[0] ，说明当前位于前半部分，最小的元素在后半部分，需要后移，故令 low = mid + 1;否则说明遍历的是后半部分，令 high = mid - 1， 往前移找到最小值即可。
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int findMin(vector<int>& nums) {

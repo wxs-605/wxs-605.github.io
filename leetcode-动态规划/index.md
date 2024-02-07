@@ -25,7 +25,7 @@ dp[i] = max(dp[i - 2], dp[i - 3]) + nums[i] ；
 
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int rob(vector<int>& nums) {
@@ -64,7 +64,7 @@ public:
 dp[i] = dp[i - j * j] + 1； 其中 j<sup>2</sup> ∈ [1, i)；
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int numSquares(int n) {
@@ -95,7 +95,7 @@ public:
 思路与完全平方数差不多，不过这里的可用的序列已经给出。一步一步算，从 1 算到 amount 。这里有个小剪枝，将 coins 序列从小到大排序一下，若 coins[i] > i ，说明下一个coins也会大于，此时可以直接退出遍历；
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
@@ -134,7 +134,7 @@ public:
 这道题就是寻找 dp[i] 与 [ dp[0], dp[i - 1] ] 之间的关系。这里说明一下为什么不能只找 dp[i - 1]的关系，若 nums[i - 1] 同时大于 nums[i] 、nums[i - 2]，但是又存在 nums[i - 2] < nums[i] < nums[i + 1] 的情况，这时 dp[i] 得到的就不是最优解。
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -168,7 +168,7 @@ public:
 不考虑特殊情况下，dp[i] = max(dp[i] * nums[i]，nums[i]) ；若 nums[i] 是负数呢？会出现什么情况？这时表示最大值的 dp[i] 变成了最小值，继续计算下去，将会得到一个错误答案。因此，可以记录连续子数组的最大值和最小值，当 nums[i] 是负数时，最大值变成最小值，最小值变成最大值，此时只需要交换最大值和最小值，按照上面的规则继续计算即可。
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
@@ -200,7 +200,7 @@ public:
 分割等和子集，换一种角度思考，就是看给出的 nums 中是否有元素可以的和等于 sum 的一半( sum 是 nums 各元素之和，且 nums 中的元素不能重复使用)。此时这道题又与完全平方和、零钱兑换的思路一致了。这里有个剪枝，如果 sum 为奇数，那么不可能分割成两个相等的子集，因为两个偶数相加必然等于偶数。
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
@@ -238,7 +238,7 @@ public:
 情况1是刚好与前面的括号匹配，情况2是里面包含了一串括号；
 
 #### 实现过程
-```c++
+```cpp
 class Solution {
 public:
     int longestValidParentheses(string s) {
@@ -279,7 +279,7 @@ public:
 - dp[i - 1][j] >= p[i][j - 1] ; dp[i][j] = dp[i][j - 1] + grid[i][j] ;
 
 #### 实现
-```c++
+```cpp
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
@@ -339,7 +339,7 @@ public:
 实际上就是找 dp[i][j] 与 dp[i - 1][j - 1] 、dp[i - 1][j] 、dp[i][j - 1] 的关系，最后让 dp[i][j] 等于三者中的最小值;
 
 #### 实现思路
-```c++
+```cpp
 class Solution {
 public:
     int minDistance(string word1, string word2) {
