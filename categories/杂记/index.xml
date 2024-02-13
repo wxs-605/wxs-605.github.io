@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/%E6%9D%82%E8%AE%B0/</link>
         <description>杂记 - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 05 Mar 2023 12:48:04 &#43;0000</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E6%9D%82%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Feb 2024 22:16:09 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E6%9D%82%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>Vim 主题颜色配置</title>
+    <link>https://wxs-605.github.io/vim-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Mon, 12 Feb 2024 22:16:09 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/vim-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[记录一下 ‘vim’ 更换主题颜色，这里我使用的是 onedark 主题。安装 onedark 之前需要安装&rsquo;vim&rsquo;的插件管理器，我用的是 &lsquo]]></description>
+</item>
+<item>
     <title>Markdown编写规范</title>
     <link>https://wxs-605.github.io/markdown%E6%96%87%E7%AB%A0%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/</link>
     <pubDate>Sun, 05 Mar 2023 12:48:04 &#43;0000</pubDate>

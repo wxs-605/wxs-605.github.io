@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/linux/</link>
+        <description>Linux - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 12 Mar 2023 15:50:10 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>操作系统 进程通信</title>
+    <link>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</link>
+    <pubDate>Sun, 12 Mar 2023 15:50:10 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</guid>
+    <description><![CDATA[今天详细学学Linux中的进程是如何通信的。总的来说，进程之间通信的方式有五种，分别是管道、消息队列、信号、信号量和共享内存。 管道通信 管道通]]></description>
+</item>
+</channel>
+</rss>
