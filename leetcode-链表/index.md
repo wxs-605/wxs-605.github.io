@@ -136,3 +136,76 @@ public:
  * obj->put(key,value);
  */
 ```
+
+
+## 重排链表
+给定一个单链表 L 的头节点 head ，单链表 L 表示为：
+
+L0 → L1 → … → Ln - 1 → Ln
+请将其重新排列后变为：
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+
+### 思路
+1. 使用快慢指针找到后半部分的链表；
+2. 反转后半部分的链表；
+3. 合并前半部分链表和反转后的后半链表；
+
+#### 实现
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        if (!head->next)
+            return;
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        fast = slow->next;
+        slow->next = nullptr;
+        // reverse last list nodes
+        ListNode* temp_head = fast;
+        ListNode* cur = fast->next;
+        temp_head->next = nullptr;
+        ListNode* temp;
+        while (cur) {
+            temp = cur->next;
+            cur->next = temp_head;
+            temp_head = cur;
+            cur = temp;
+        }
+        cur = head;
+        temp = head->next;
+        while (temp != nullptr || temp_head != nullptr) {
+            if (temp_head) {
+                cur->next = temp_head;
+                temp_head = temp_head->next;
+                cur = cur->next;
+            }
+            if (temp) {
+                cur->next = temp;
+                temp = temp->next;
+                cur = cur->next;
+            }
+        }
+        cur->next = nullptr;
+    }
+};
+```
+
+- 时间复杂度：快慢指针时遍历了链表一次，合并时也遍历了一次，故为O(N)；
+- 空间复杂度：使用了几个临时变量，故为O(1)；

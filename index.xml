@@ -4,9 +4,25 @@
         <link>https://wxs-605.github.io/</link>
         <description>不知名的小网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 12 Feb 2024 22:16:09 &#43;0800</lastBuildDate>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 17 Feb 2024 16:57:22 &#43;0800</lastBuildDate>
             <atom:link href="https://wxs-605.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LeetCode 排序</title>
+    <link>https://wxs-605.github.io/leetcode-%E6%8E%92%E5%BA%8F/</link>
+    <pubDate>Sat, 17 Feb 2024 16:57:22 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E6%8E%92%E5%BA%8F/</guid>
+    <description><![CDATA[多级排序 此类题目一般涉及不同情况的排序，如两元素值不等时升序排序，值相等时降序排序。通常调用库函数sort实现，在里面使用lambda表达式]]></description>
+</item>
+<item>
+    <title>LeetCode 字符串</title>
+    <link>https://wxs-605.github.io/leetcode-%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+    <pubDate>Fri, 16 Feb 2024 17:17:36 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/leetcode-%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+    <description><![CDATA[总结记录一下字符串题的思路及做法。 字符串相加 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和并同样以字符串形式返回。 你不能使用任何內建]]></description>
+</item>
+<item>
     <title>Vim 主题颜色配置</title>
     <link>https://wxs-605.github.io/vim-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/</link>
     <pubDate>Mon, 12 Feb 2024 22:16:09 &#43;0800</pubDate>
@@ -29,14 +45,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E6%8A%80%E5%B7%A7/</guid>
     <description><![CDATA[前两天家里搞卫生啥的，没有做题，今天终于搞得差不多了，赶紧刷几道题。总结一下今天刷到的技巧题。 只出现一次的数字 给你一个 非空 整数数组 nums ，除了某]]></description>
-</item>
-<item>
-    <title>CPP 面经</title>
-    <link>https://wxs-605.github.io/cpp-%E9%9D%A2%E7%BB%8F/</link>
-    <pubDate>Sun, 28 Jan 2024 21:53:27 &#43;0800</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/cpp-%E9%9D%A2%E7%BB%8F/</guid>
-    <description><![CDATA[写在前头 这篇文章用来记录面试过程中的一些题目，以及自己在面试过程中请教HR指出的自己的不足之处，均在此记录，加以改正！ 公司一 这家公司的技术面]]></description>
 </item>
 <item>
     <title>LeetCode 动态规划</title>
@@ -77,14 +85,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E6%A0%88/</guid>
     <description><![CDATA[总结一下今天刷栈类题目的思路或学到的思路。 有效的括号 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsqu]]></description>
-</item>
-<item>
-    <title>LeetCode 回溯</title>
-    <link>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</link>
-    <pubDate>Tue, 16 Jan 2024 16:14:34 &#43;0800</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/leetcode-%E5%9B%9E%E6%BA%AF/</guid>
-    <description><![CDATA[今天刷的专题是回溯，对于回溯这块，比较陌生，这里记录一下一些题的思路以及大神总结的回溯题思路。 回溯算法 回溯算法是一种在搜索空间中寻找解的算法]]></description>
 </item>
 </channel>
 </rss>
