@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>网络编程 - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+        <description>网络编程 - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 20 Feb 2024 21:13:05 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>Socket 网络编程</title>
+    <link>https://wxs-605.github.io/socket-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+    <pubDate>Tue, 20 Feb 2024 21:13:05 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/socket-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+    <description><![CDATA[今天学习了Socket网络编程，记录一下相关的知识点。 什么是 Socket ？ Socket 既套接字，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。一]]></description>
+</item>
+</channel>
+</rss>
