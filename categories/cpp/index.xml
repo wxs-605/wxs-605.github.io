@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/cpp/</link>
         <description>CPP - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/cpp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/cpp/" rel="self" type="application/rss+xml" /><item>
+    <title>CPP 线程管理</title>
+    <link>https://wxs-605.github.io/cpp-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/cpp-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[每个程序至少有一个线程：执行 main() 函数的线程，其余线程有其各自的入口函数。线程与原始线程(以main()为入口函数的线程)同时运行。 线程在什么时]]></description>
+</item>
+<item>
     <title>CPP 八股文</title>
     <link>https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/</link>
     <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>线程管理 - 标签 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/tags/%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+        <description>线程管理 - 标签 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>CPP 线程管理</title>
+    <link>https://wxs-605.github.io/cpp-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/cpp-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[每个程序至少有一个线程：执行 main() 函数的线程，其余线程有其各自的入口函数。线程与原始线程(以main()为入口函数的线程)同时运行。 线程在什么时]]></description>
+</item>
+</channel>
+</rss>
