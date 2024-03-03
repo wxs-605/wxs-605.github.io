@@ -107,3 +107,34 @@ public:
 
 - 时间复杂度：遍历了两次字符串，故为O(N)；
 - 空间复杂度：O(1);
+
+
+## 破解闯关密码
+闯关游戏需要破解一组密码，闯关组给出的有关密码的线索是：
+- 一个拥有密码所有元素的非负整数数组 password
+- 密码是 password 中所有元素拼接后得到的最小的一个数
+请编写一个程序返回这个密码。
+
+### 思路
+先将password中元素转成string类型，然后按照 规则 `x + y < y + x` 的规则排序即可。最简单的方式就是调用排序库函数。
+
+### 实现过程
+```cpp
+class Solution {
+public:
+    string crackPassword(vector<int>& password) {
+        vector<string> pd;
+        for (auto num : password)
+            pd.push_back(std::to_string(num));
+        std::sort(pd.begin(), pd.end(),
+                  [](string x, string y) { return x + y < y + x; });
+        string ans;
+        for (auto num : pd)
+            ans += num;
+        return ans;
+    }
+};
+```
+
+- 时间复杂度：调用库排序函数，为O(NlogN);
+- 空间复杂度：排序时的递归深度为O(logN)，故为O(logN);

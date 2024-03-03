@@ -25,7 +25,7 @@
 
 2. 运行时多态(动态多态，运行阶段，地址晚绑定)：
 运行时多态通过继承和虚函数来实现。在运行时，程序根据对象的实际类型来确定调用哪个函数。在 C++ 中，通过在基类中声名虚函数，在派生类中重写这些虚函数，然后通过基类的指针或引用来调用这些函数，就可实现动态多态。
-```
+```cpp
 class Fruit{
 public:
 	virtual void fruitName(){cout << "I am ..\n" << endl;}
@@ -283,7 +283,7 @@ C++里面的四个智能指针: auto_ptr, unique_ptr,shared_ptr, weak_ptr 其中
 ### auto_ptr
 
 （C++98的方案，C++11已经抛弃）采用所有权模式。
-```
+```cpp
 auto_ptr<string> p (new string ("I reigned lonely as a cloud.")); 
 
 auto_ptr<string> q; 
@@ -297,7 +297,7 @@ q = p; //auto_ptr不会报错.
 ### unique_ptr
 
 unique_ptr实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象。它对于避免资源泄露(例如“以new创建对象后因为发生异常而忘记调用delete”)特别有用。
-```
+```cpp
 unique_ptr<string> p (new string ("auto"));   
 
 unique_ptr<string> q；
@@ -308,7 +308,7 @@ q = p;//此时会报错！！
 
 #### unique_ptr常用操作
 
-```
+```cpp
 unique_ptr<T> u1 // 空unique_ptr，可以指向类型为T的对象。u1会使用delete来释放它的指针
 
 unique_ptr<T, D> u2 // u2会使用一个类型为D的可调用对象来释放它的指针
@@ -336,7 +336,7 @@ shared_ptr 实现共享式拥有概念。多个智能指针可以指向相同对
 shared_ptr 是为了解决 auto_ptr 在对象所有权上的局限性(auto_ptr 是独占的), 在使用引用计数的机制上提供了可以共享所有权的智能指针。
 
 shared_ptr 的成员函数：
-```
+```cpp
 shared_ptr<T>：类模板，用于定义一个shared_ptr对象，其中T表示所指向对象的类型。
 
 shared_ptr<T>::shared_ptr()：默认构造函数，创建一个空的shared_ptr对象。
@@ -367,7 +367,7 @@ shared_ptr<T>::swap(shared_ptr<T>& other)：交换两个shared_ptr对象的内�
 
 #### shared_ptr 的初始化
 最安全的分配和使用动态内存的方法是调用一个名为 make_shared 的标准库函数。此函数在动态内存中分配一个对象并初始化它，返回指向此对象的 shared_ptr。与智能指针一样，make_shared 也定义在头文件 memory 中。
-```
+```cpp
 // p 指向一个值为42的 int 的 shared_ptr 
 shared_ptr<int> p = make_shared<int>(42);
 
@@ -440,7 +440,7 @@ emplace_back() 和 push_back() 的主要区别，就在于底层实现的机制�
 - 迭代器失效：插入，迭代器不会失效。删除，指向被删除节点的迭代器失效
 
 常用函数
-```
+```cpp
 list.push_back(elem)    在尾部加入一个数据
 
 list.pop_back()         删除尾部数据
@@ -475,7 +475,7 @@ deque为了维持整体连续的假象，设计一个中控器，其用来记录
 2. deque 的迭代器是怎么回事？
 - deque提供的是一个随机访问迭代器，由于是分段连续空间，其必须记录当前元素所在段的信息，从而在该段连续空间的边缘进行前进或者后退的时候能知道跳跃到的上一个或下一个缓冲区。deque必须完完整整的掌握和控制这些信息，以达到正确的跳跃；
 
-```
+```cpp
 static size_t buffer_size(){
     return __deque_buf_size(BufSiz, sizeof(T));
 }
@@ -490,7 +490,7 @@ inline size_t __deque_buf_size(size_t n, size_t sz)
 
 - 当迭代器处在当前缓冲区的边缘时，一旦前进或者后退，就要考虑超过当前缓冲区的情况，此时需要跳转到下一个缓冲区，这时候需要用到set_node函数：
 
-```
+```cpp
 void set_node(map_pointer new_node)
 {
   node = new_node;      // 跳转到相应缓冲区
@@ -503,7 +503,7 @@ void set_node(map_pointer new_node)
 deque维护着一个map，用来记录每个缓冲区的位置。除了map外，deque的数据结构还维护着start和finish两个迭代器，分别指向deque的首尾。此外，他还必须知道map的大小，一旦map提供的节点不足，就需要配置一块更大的map;
 
 常用函数
-```
+```cpp
 deque.push_back(elem)在尾部加入一个数据。
 
 deque.pop_back()删除尾部数据。
@@ -594,7 +594,7 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 ### 冒泡排序
 从前往后（或从后往前）两两比较相邻元素的值，若为逆序（即A[I-1]>A[I]）,则交换它们，直到序列比较完。我们称它为第一趟冒泡，结果是将最小的元素交换到待排序列的第一个位置（或将最大的元素交换到待排序列的最后一个位置），关键字最小的元素如气泡一样逐渐向上“漂浮”。最终一个一个排好了位置；
 
-```
+```cpp
 void bubbleSort(vector<int>& nums) {
     int n = nums.size();
     for (int i = 0; i < n - 1; i++) {
@@ -611,7 +611,7 @@ void bubbleSort(vector<int>& nums) {
 ### 快速排序
 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据比另一部分的所有数据要小，再按这种方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，使整个数据变成有序序列。每一趟中，都至少可以确定一个元素的最终位置。
 
-```
+```cpp
 // 快速排序 注：开始时right = 数组的最大有效下标
 void QuickSort(int *arr, int left, int right){
   if(left >= right)
@@ -647,7 +647,7 @@ void QuickSort(int *arr, int left, int right){
 ### 选择排序
 每次从待排序序列中选择最小的元素，与序列的第一个元素交换位置。这样，序列的第一个位置就是最小的元素。然后在剩下的元素中继续执行上述操作，直到整个序列排序完成。
 
-```
+```cpp
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;
@@ -671,7 +671,7 @@ void selectionSort(int arr[], int n) {
 
 插入排序的工作方式像许多人排序一手扑克牌。开始时，我们的左手为空并且桌子上的牌面向下。然后，我们每次从桌子上拿走一张牌并将它插入左手中正确的位置。为了找到一张牌的正确位置，我们从右到左将它与已在手中的每张牌进行比较。拿在左手上的牌总是排序好的，原来这些牌是桌子上牌堆中顶部的牌;
 
-```
+```cpp
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];
@@ -695,7 +695,7 @@ void insertionSort(int arr[], int n) {
 2. 对于每个增量di，将序列分成di个子序列，分别对每个子序列进行插入排序；增量逐渐缩小，重复步骤2，直到增量为1。
 在实际应用中，希尔排序常常使用一些常见的增量序列，如希尔增量（n/2，n/4，...，1）、Hibbard增量（1，3，7，...，2^k-1）、Sedgewick增量等，以提高排序的效率；
 
-```
+```cpp
 void shellSort(int arr[], int n) {
     for (int gap = n / 2; gap > 0; gap /= 2) {
         for (int i = gap; i < n; i++) {
@@ -716,7 +716,7 @@ void shellSort(int arr[], int n) {
 ### 归并排序
 归并排序是一种基于分治思想的排序算法，它的基本思想是将待排序的序列不断地二分为两个子序列，直到每个子序列只剩下一个元素。然后，将两个子序列归并成一个有序序列，不断地归并，直到最终得到一个有序序列；
 
-```
+```cpp
 void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -771,7 +771,7 @@ void mergeSort(int arr[], int left, int right) {
 
 堆排序的时间复杂度为O(NlogN)，空间复杂度为O(1)。堆排序是一种不稳定的排序算法，因为交换操作会改变相同元素之间的相对位置；
 
-```
+```cpp
 // 堆排序(大根堆) 注：length = 数组的最大有效下标
 void HeapAdjust(int *arr, int length, int aj_idx){
   arr[0] = arr[aj_idx];
@@ -811,7 +811,7 @@ void BigHeapSort(int *arr, int length){
 ### 计数排序
 计数排序的基本思想是对于给定的输入序列中的每一个元素x，确定该序列中值小于x的元素的个数（此处并非比较各元素的大小，而是通过对元素值的计数和计数值的累加来确定）。一旦有了这个信息，就可以将x直接存放到最终的输出序列的正确位置上。例如，如果输入序列中只有17个元素的值小于x的值，则x可以直接存放在输出序列的第18个位置上;
 
-```
+```cpp
 void countingSort(int arr[], int n, int k) {
     int count[k + 1] = {0};
     int output[n];
@@ -843,7 +843,7 @@ void countingSort(int arr[], int n, int k) {
 3. 桶内排序：对每个非空桶内的元素进行排序，可以使用其他排序算法（如插入排序、快速排序等）或递归地使用桶排序。
 4. 合并桶中元素：按照桶的顺序依次输出所有元素，即可得到有序序列。
 
-```
+```cpp
 void bucketSort(float arr[], int n) {
     vector<float> bucket[n];
     for (int i = 0; i < n; i++) {
@@ -871,7 +871,7 @@ void bucketSort(float arr[], int n) {
 
 基数排序的时间复杂度为O(NK)，其中K为最大数的位数，N为数组元素个数。当k比较小的时候，基数排序的效率较高。但是当k比较大时，需要分配较大的桶或计数器，空间复杂度会变高。
 
-```
+```cpp
 void countingSort(int arr[], int n, int exp) {
     int count[10] = {0};
     int output[n];

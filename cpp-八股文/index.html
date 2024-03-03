@@ -271,25 +271,25 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class Fruit{
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">	virtual void fruitName(){cout &lt;&lt; &#34;I am ..\n&#34; &lt;&lt; endl;}
-</span></span><span class="line"><span class="cl">};
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Fruit</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">fruitName</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am ..</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">class Apple : public Fruit{
-</span></span><span class="line"><span class="cl">public:
-</span></span><span class="line"><span class="cl">	void fruitName(){cout &lt;&lt; &#34;I am Apple!\n&#34; &lt;&lt; endl;}
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Apple</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Fruit</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="n">fruitName</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am Apple!</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">int main(){
-</span></span><span class="line"><span class="cl">	Fruit* fruit1 = new Apple();
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Fruit</span><span class="o">*</span> <span class="n">fruit1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Apple</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	fruit1-&gt;fruitName();	// print I am Apple!
+</span></span><span class="line"><span class="cl">	<span class="n">fruit1</span><span class="o">-&gt;</span><span class="n">fruitName</span><span class="p">();</span>	<span class="c1">// print I am Apple!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="k">delete</span> <span class="n">fruit1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	delete fruit1;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	return 0;
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="虚函数表的位置">虚函数表的位置？</h3>
@@ -562,12 +562,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auto_ptr&lt;string&gt; p (new string (&#34;I reigned lonely as a cloud.&#34;)); 
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">(</span><span class="k">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;I reigned lonely as a cloud.&#34;</span><span class="p">));</span> 
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">auto_ptr&lt;string&gt; q; 
+</span></span><span class="line"><span class="cl"><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">q = p; //auto_ptr不会报错.
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="c1">//auto_ptr不会报错.
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时不会报错，q剥夺了p的所有权，但是当程序运行时访问p将会报错。所以auto_ptr的缺点是：存在潜在的内存崩溃问题！</p>
 <h3 id="unique_ptr">unique_ptr</h3>
@@ -581,12 +581,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unique_ptr&lt;string&gt; p (new string (&#34;auto&#34;));   
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">(</span><span class="k">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;auto&#34;</span><span class="p">));</span>   
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">unique_ptr&lt;string&gt; q；
+</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span><span class="err">；</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">q = p;//此时会报错！！
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span><span class="c1">//此时会报错！！
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>编译器认为 q = p 非法，避免了 p 不再指向有效数据的问题。尝试复制 p 时会编译期出错，而auto_ptr能通过编译期从而在运行期埋下出错的隐患。因此，unique_ptr比auto_ptr更安全。</p>
 <h4 id="unique_ptr常用操作">unique_ptr常用操作</h4>
@@ -609,21 +609,21 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unique_ptr&lt;T&gt; u1 // 空unique_ptr，可以指向类型为T的对象。u1会使用delete来释放它的指针
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">unique_ptr&lt;T, D&gt; u2 // u2会使用一个类型为D的可调用对象来释放它的指针
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">unique_ptr&lt;T, D&gt; u(d) // 空unique_ptr，指向类型为T的对象，用类型为D的对象d替代delete
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">u = nullptr // 释放u指向的对象，将u置为空
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">u.release() // u放弃对指针的控制权，返回指针，并将u置为空
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">u.reset() // 释放u指向的对象
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">u.reset(q) // 如果提供了内置指针q，另u指向这个对象；否则将u置为空
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">u.reset(nullptr)  
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">u1</span> <span class="c1">// 空unique_ptr，可以指向类型为T的对象。u1会使用delete来释放它的指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span> <span class="n">u2</span> <span class="c1">// u2会使用一个类型为D的可调用对象来释放它的指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="c1">// 空unique_ptr，指向类型为T的对象，用类型为D的对象d替代delete
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="k">nullptr</span> <span class="c1">// 释放u指向的对象，将u置为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">release</span><span class="p">()</span> <span class="c1">// u放弃对指针的控制权，返回指针，并将u置为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1">// 释放u指向的对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="c1">// 如果提供了内置指针q，另u指向这个对象；否则将u置为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span>  
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>虽然我们不能拷贝或赋值unique_ptr，但可以通过调用 release 或 reset 将指针的所有权从一个（非const）unique_ptr转移给另一个unique_ptr；</p>
@@ -660,31 +660,31 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">：类模板，用于定义一个</span><span class="n">shared_ptr对象</span><span class="err">，其中</span><span class="n">T表示所指向对象的类型</span><span class="err">。</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">：类模板，用于定义一个</span><span class="n">shared_ptr对象</span><span class="err">，其中</span><span class="n">T表示所指向对象的类型</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">shared_ptr</span><span class="p">()</span><span class="err">：默认构造函数，创建一个空的</span><span class="n">shared_ptr对象</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">()</span><span class="err">：默认构造函数，创建一个空的</span><span class="n">shared_ptr对象</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span><span class="err">：构造函数，创建一个</span><span class="n">shared_ptr对象并初始化为指向ptr所指向的对象</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span><span class="err">：构造函数，创建一个</span><span class="n">shared_ptr对象并初始化为指向ptr所指向的对象</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：拷贝构造函数，创建一个新的</span><span class="n">shared_ptr对象</span><span class="err">，并与</span><span class="n">other共享同一对象</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：拷贝构造函数，创建一个新的</span><span class="n">shared_ptr对象</span><span class="err">，并与</span><span class="n">other共享同一对象</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：赋值运算符重载，将当前的</span><span class="n">shared_ptr对象与other共享同一对象</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：赋值运算符重载，将当前的</span><span class="n">shared_ptr对象与other共享同一对象</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">reset</span><span class="p">()</span><span class="err">：重置</span><span class="n">shared_ptr对象</span><span class="err">，将其置为空指针。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">reset</span><span class="p">()</span><span class="err">：重置</span><span class="n">shared_ptr对象</span><span class="err">，将其置为空指针。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">get</span><span class="p">()</span><span class="err">：获取</span><span class="n">shared_ptr所指向的原始指针</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">get</span><span class="p">()</span><span class="err">：获取</span><span class="n">shared_ptr所指向的原始指针</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">use_count</span><span class="p">()</span><span class="err">：获取当前</span><span class="n">shared_ptr对象的引用计数</span><span class="err">，即共享该对象的</span><span class="n">shared_ptr对象的数量</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">use_count</span><span class="p">()</span><span class="err">：获取当前</span><span class="n">shared_ptr对象的引用计数</span><span class="err">，即共享该对象的</span><span class="n">shared_ptr对象的数量</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">unique</span><span class="p">()</span><span class="err">：判断当前</span><span class="n">shared_ptr对象是否是唯一拥有所指对象的智能指针</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">unique</span><span class="p">()</span><span class="err">：判断当前</span><span class="n">shared_ptr对象是否是唯一拥有所指对象的智能指针</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">operator</span> <span class="ne">bool</span><span class="p">()</span> <span class="k">const</span><span class="err">：将</span><span class="n">shared_ptr对象转换为布尔值</span><span class="err">，判断其是否为空指针。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span> <span class="kt">bool</span><span class="p">()</span> <span class="k">const</span><span class="err">：将</span><span class="n">shared_ptr对象转换为布尔值</span><span class="err">，判断其是否为空指针。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">operator</span><span class="o">*</span> <span class="p">()</span><span class="err">：重载解引用操作符，返回所指对象的引用。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">*</span> <span class="p">()</span><span class="err">：重载解引用操作符，返回所指对象的引用。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">operator</span><span class="o">-&gt;</span> <span class="p">()</span><span class="err">：重载箭头操作符，返回所指对象的指针。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">-&gt;</span> <span class="p">()</span><span class="err">：重载箭头操作符，返回所指对象的指针。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">::</span><span class="n">swap</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：交换两个</span><span class="n">shared_ptr对象的内容</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">swap</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：交换两个</span><span class="n">shared_ptr对象的内容</span><span class="err">。</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="shared_ptr-的初始化">shared_ptr 的初始化</h4>
@@ -701,14 +701,14 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// p 指向一个值为42的 int 的 shared_ptr 
-</span></span><span class="line"><span class="cl">shared_ptr&lt;int&gt; p = make_shared&lt;int&gt;(42);
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// p 指向一个值为42的 int 的 shared_ptr 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// q 指向一个值为&#34;9999999999&#34;的 string
-</span></span><span class="line"><span class="cl">shared_ptr&lt;string&gt; q = make_shared&lt;string&gt;(10,&#39;9&#39;);
+</span></span><span class="line"><span class="cl"><span class="c1">// q 指向一个值为&#34;9999999999&#34;的 string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="sc">&#39;9&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// p5指向一个只初始化的int
-</span></span><span class="line"><span class="cl">shared_ptr&lt;int&gt; p5 = make_shared&lt;int&gt;();
+</span></span><span class="line"><span class="cl"><span class="c1">// p5指向一个只初始化的int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p5</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们还可以用 new 返回的指针来初始化智能指针，不过接受指针参数的智能指针构造函数是 explicit 的。因此，我们不能将一个内置指针隐式转换为一个智能指针，必须使用直接初始化形式来初始化一个智能指针；</p>
@@ -803,23 +803,23 @@ emplace_back() 和 push_back() 的主要区别，就在于底层实现的机制�
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">list.push_back(elem)    在尾部加入一个数据
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>    <span class="err">在尾部加入一个数据</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.pop_back()         删除尾部数据
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">pop_back</span><span class="p">()</span>         <span class="err">删除尾部数据</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.push_front(elem)   在头部插入一个数据
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>   <span class="err">在头部插入一个数据</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.pop_front()        删除头部数据
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">pop_front</span><span class="p">()</span>        <span class="err">删除头部数据</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.size()             返回容器中实际数据的个数
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">size</span><span class="p">()</span>             <span class="err">返回容器中实际数据的个数</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.sort()             排序，默认由小到大 
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>             <span class="err">排序，默认由小到大</span> 
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.unique()           移除数值相同的连续元素
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">unique</span><span class="p">()</span>           <span class="err">移除数值相同的连续元素</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.back()             取尾部迭代器
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">back</span><span class="p">()</span>             <span class="err">取尾部迭代器</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">list.erase(iterator)    删除一个元素，参数是迭代器，返回的是删除迭代器的下一个位置
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>    <span class="err">删除一个元素，参数是迭代器，返回的是删除迭代器的下一个位置</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="deque-双向队列容器">deque-双向队列容器</h4>
@@ -856,16 +856,16 @@ deque为了维持整体连续的假象，设计一个中控器，其用来记录
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">static size_t buffer_size(){
-</span></span><span class="line"><span class="cl">    return __deque_buf_size(BufSiz, sizeof(T));
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">//如果n不为0,传回n,表示buffer size 由自己定义
-</span></span><span class="line"><span class="cl">如果n为0,表示buffer_size 采用默认值
-</span></span><span class="line"><span class="cl">如果sz(元素大小) &lt; 512，传回512/sz,如果不小于512 ，传回1
-</span></span><span class="line"><span class="cl">inline size_t __deque_buf_size(size_t n, size_t sz)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">    return n != 0 ? n : (sz &lt; 512 ? size_t(512 / sz) : size_t(1));
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="n">size_t</span> <span class="nf">buffer_size</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">__deque_buf_size</span><span class="p">(</span><span class="n">BufSiz</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//如果n不为0,传回n,表示buffer size 由自己定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">如果</span><span class="n">n为0</span><span class="p">,</span><span class="err">表示</span><span class="n">buffer_size</span> <span class="err">采用默认值</span>
+</span></span><span class="line"><span class="cl"><span class="err">如果</span><span class="n">sz</span><span class="p">(</span><span class="err">元素大小</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">512</span><span class="err">，传回</span><span class="mi">512</span><span class="o">/</span><span class="n">sz</span><span class="p">,</span><span class="err">如果不小于</span><span class="mi">512</span> <span class="err">，传回</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="n">size_t</span> <span class="n">__deque_buf_size</span><span class="p">(</span><span class="n">size_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">sz</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">n</span> <span class="p">:</span> <span class="p">(</span><span class="n">sz</span> <span class="o">&lt;</span> <span class="mi">512</span> <span class="o">?</span> <span class="n">size_t</span><span class="p">(</span><span class="mi">512</span> <span class="o">/</span> <span class="n">sz</span><span class="p">)</span> <span class="o">:</span> <span class="n">size_t</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -881,12 +881,12 @@ deque为了维持整体连续的假象，设计一个中控器，其用来记录
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void set_node(map_pointer new_node)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">  node = new_node;      // 跳转到相应缓冲区
-</span></span><span class="line"><span class="cl">  first = *new_node;    // 更新跳转后缓冲区first信息
-</span></span><span class="line"><span class="cl">  last = first + difference_type(buffer_size());  // 更新跳转后缓冲区last的信息
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">set_node</span><span class="p">(</span><span class="n">map_pointer</span> <span class="n">new_node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">node</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>      <span class="c1">// 跳转到相应缓冲区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">first</span> <span class="o">=</span> <span class="o">*</span><span class="n">new_node</span><span class="p">;</span>    <span class="c1">// 更新跳转后缓冲区first信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">last</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">difference_type</span><span class="p">(</span><span class="n">buffer_size</span><span class="p">());</span>  <span class="c1">// 更新跳转后缓冲区last的信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -909,17 +909,17 @@ deque维护着一个map，用来记录每个缓冲区的位置。除了map外，
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deque.push_back(elem)在尾部加入一个数据。
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span><span class="err">在尾部加入一个数据。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">deque.pop_back()删除尾部数据。
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">pop_back</span><span class="p">()</span><span class="err">删除尾部数据。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">deque.push_front(elem)在头部插入一个数据。
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span><span class="err">在头部插入一个数据。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">deque.pop_front()删除头部数据。
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">pop_front</span><span class="p">()</span><span class="err">删除头部数据。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">deque.size() 返回容器中实际数据的个数。
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="err">返回容器中实际数据的个数。</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">deque.at(idx)传回索引idx所指的数据，如果idx越界，抛出out_of_range。
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="err">传回索引</span><span class="n">idx所指的数据</span><span class="err">，如果</span><span class="n">idx越界</span><span class="err">，抛出</span><span class="n">out_of_range</span><span class="err">。</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="map-映射">map-映射</h4>
@@ -1031,16 +1031,16 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void bubbleSort(vector&lt;int&gt;&amp; nums) {
-</span></span><span class="line"><span class="cl">    int n = nums.size();
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n - 1; i++) {
-</span></span><span class="line"><span class="cl">        for (int j = 0; j &lt; n - i - 1; j++) {
-</span></span><span class="line"><span class="cl">            if (nums[j] &gt; nums[j+1]) {
-</span></span><span class="line"><span class="cl">                swap(nums[j], nums[j+1]);
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1071,25 +1071,25 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// 快速排序 注：开始时right = 数组的最大有效下标
-</span></span><span class="line"><span class="cl">void QuickSort(int *arr, int left, int right){
-</span></span><span class="line"><span class="cl">  if(left &gt;= right)
-</span></span><span class="line"><span class="cl">    return;
-</span></span><span class="line"><span class="cl">  int key = arr[left];
-</span></span><span class="line"><span class="cl">  int low = left;
-</span></span><span class="line"><span class="cl">  int high = right;
-</span></span><span class="line"><span class="cl">  while(low &lt; high){
-</span></span><span class="line"><span class="cl">    while(low &lt; high &amp;&amp; arr[high] &gt;= key)
-</span></span><span class="line"><span class="cl">      high--;
-</span></span><span class="line"><span class="cl">    arr[low] = arr[high];
-</span></span><span class="line"><span class="cl">    while(low &lt; high &amp;&amp; arr[low] &lt;= key)
-</span></span><span class="line"><span class="cl">      low++;
-</span></span><span class="line"><span class="cl">    arr[high] = arr[low];
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  arr[low] = key;
-</span></span><span class="line"><span class="cl">  QuickSort(arr, left, low - 1);
-</span></span><span class="line"><span class="cl">  QuickSort(arr, low + 1, right);
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 快速排序 注：开始时right = 数组的最大有效下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">QuickSort</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="n">right</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">low</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">high</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arr</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">low</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arr</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">low</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arr</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">QuickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">low</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">QuickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>快速排序的优化</strong></p>
@@ -1126,19 +1126,19 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void selectionSort(int arr[], int n) {
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n - 1; i++) {
-</span></span><span class="line"><span class="cl">        int minIndex = i;
-</span></span><span class="line"><span class="cl">        for (int j = i + 1; j &lt; n; j++) {
-</span></span><span class="line"><span class="cl">            if (arr[j] &lt; arr[minIndex]) {
-</span></span><span class="line"><span class="cl">                minIndex = j;
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        int temp = arr[i];
-</span></span><span class="line"><span class="cl">        arr[i] = arr[minIndex];
-</span></span><span class="line"><span class="cl">        arr[minIndex] = temp;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">minIndex</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">minIndex</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1162,17 +1162,17 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void insertionSort(int arr[], int n) {
-</span></span><span class="line"><span class="cl">    for (int i = 1; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        int key = arr[i];
-</span></span><span class="line"><span class="cl">        int j = i - 1;
-</span></span><span class="line"><span class="cl">        while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) {
-</span></span><span class="line"><span class="cl">            arr[j + 1] = arr[j];
-</span></span><span class="line"><span class="cl">            j--;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        arr[j + 1] = key;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1201,18 +1201,18 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void shellSort(int arr[], int n) {
-</span></span><span class="line"><span class="cl">    for (int gap = n / 2; gap &gt; 0; gap /= 2) {
-</span></span><span class="line"><span class="cl">        for (int i = gap; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">            int temp = arr[i];
-</span></span><span class="line"><span class="cl">            int j;
-</span></span><span class="line"><span class="cl">            for (j = i; j &gt;= gap &amp;&amp; arr[j - gap] &gt; temp; j -= gap) {
-</span></span><span class="line"><span class="cl">                arr[j] = arr[j - gap];
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">            arr[j] = temp;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">shellSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">gap</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">gap</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">gap</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">gap</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">gap</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">gap</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">temp</span><span class="p">;</span> <span class="n">j</span> <span class="o">-=</span> <span class="n">gap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">gap</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1265,47 +1265,47 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void merge(int arr[], int left, int mid, int right) {
-</span></span><span class="line"><span class="cl">    int n1 = mid - left + 1;
-</span></span><span class="line"><span class="cl">    int n2 = right - mid;
-</span></span><span class="line"><span class="cl">    int leftArr[n1], rightArr[n2];
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n1; i++) {
-</span></span><span class="line"><span class="cl">        leftArr[i] = arr[left + i];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int j = 0; j &lt; n2; j++) {
-</span></span><span class="line"><span class="cl">        rightArr[j] = arr[mid + 1 + j];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    int i = 0, j = 0, k = left;
-</span></span><span class="line"><span class="cl">    while (i &lt; n1 &amp;&amp; j &lt; n2) {
-</span></span><span class="line"><span class="cl">        if (leftArr[i] &lt;= rightArr[j]) {
-</span></span><span class="line"><span class="cl">            arr[k] = leftArr[i];
-</span></span><span class="line"><span class="cl">            i++;
-</span></span><span class="line"><span class="cl">        } else {
-</span></span><span class="line"><span class="cl">            arr[k] = rightArr[j];
-</span></span><span class="line"><span class="cl">            j++;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">        k++;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    while (i &lt; n1) {
-</span></span><span class="line"><span class="cl">        arr[k] = leftArr[i];
-</span></span><span class="line"><span class="cl">        i++;
-</span></span><span class="line"><span class="cl">        k++;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    while (j &lt; n2) {
-</span></span><span class="line"><span class="cl">        arr[k] = rightArr[j];
-</span></span><span class="line"><span class="cl">        j++;
-</span></span><span class="line"><span class="cl">        k++;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">leftArr</span><span class="p">[</span><span class="n">n1</span><span class="p">],</span> <span class="n">rightArr</span><span class="p">[</span><span class="n">n2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">leftArr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rightArr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n1</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">leftArr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">rightArr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">arr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">leftArr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">arr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">rightArr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">leftArr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">n2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">rightArr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">void mergeSort(int arr[], int left, int right) {
-</span></span><span class="line"><span class="cl">    if (left &lt; right) {
-</span></span><span class="line"><span class="cl">        int mid = (left + right) / 2;
-</span></span><span class="line"><span class="cl">        mergeSort(arr, left, mid);
-</span></span><span class="line"><span class="cl">        mergeSort(arr, mid + 1, right);
-</span></span><span class="line"><span class="cl">        merge(arr, left, mid, right);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">mergeSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">merge</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1352,39 +1352,39 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// 堆排序(大根堆) 注：length = 数组的最大有效下标
-</span></span><span class="line"><span class="cl">void HeapAdjust(int *arr, int length, int aj_idx){
-</span></span><span class="line"><span class="cl">  arr[0] = arr[aj_idx];
-</span></span><span class="line"><span class="cl">  int i = 0;
-</span></span><span class="line"><span class="cl">  for(i = aj_idx * 2;i &lt;= length; i *= 2){
-</span></span><span class="line"><span class="cl">    if(i &lt; length &amp;&amp; arr[i] &lt; arr[i + 1])
-</span></span><span class="line"><span class="cl">      i++;
-</span></span><span class="line"><span class="cl">    if(arr[0] &lt; arr[i]){
-</span></span><span class="line"><span class="cl">      arr[aj_idx] = arr[i];
-</span></span><span class="line"><span class="cl">      aj_idx = i; 
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    else
-</span></span><span class="line"><span class="cl">      break;
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  arr[aj_idx] = arr[0];
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 堆排序(大根堆) 注：length = 数组的最大有效下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">HeapAdjust</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">,</span> <span class="kt">int</span> <span class="n">aj_idx</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">aj_idx</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">aj_idx</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">arr</span><span class="p">[</span><span class="n">aj_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="n">aj_idx</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arr</span><span class="p">[</span><span class="n">aj_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">void BigHeapBuild(int *arr, int length){
-</span></span><span class="line"><span class="cl">  for(int i = (length / 2) + 1; i &gt; 0; i--)
-</span></span><span class="line"><span class="cl">      HeapAdjust(arr, length, i);
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">BigHeapBuild</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">HeapAdjust</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">void BigHeapSort(int *arr, int length){
-</span></span><span class="line"><span class="cl">  // 调整成大根堆
-</span></span><span class="line"><span class="cl">  BigHeapBuild(arr, length);
-</span></span><span class="line"><span class="cl">  // 堆排序
-</span></span><span class="line"><span class="cl">  for(int i = length; i &gt; 1; i--){
-</span></span><span class="line"><span class="cl">    arr[0] = arr[i];
-</span></span><span class="line"><span class="cl">    arr[i] = arr[1];
-</span></span><span class="line"><span class="cl">    arr[1] = arr[0];
-</span></span><span class="line"><span class="cl">    HeapAdjust(arr, i - 1, 1);
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">BigHeapSort</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 调整成大根堆
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">BigHeapBuild</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 堆排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HeapAdjust</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="计数排序">计数排序</h3>
@@ -1410,23 +1410,23 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void countingSort(int arr[], int n, int k) {
-</span></span><span class="line"><span class="cl">    int count[k + 1] = {0};
-</span></span><span class="line"><span class="cl">    int output[n];
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        count[arr[i]]++;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = 1; i &lt;= k; i++) {
-</span></span><span class="line"><span class="cl">        count[i] += count[i - 1];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = n - 1; i &gt;= 0; i--) {
-</span></span><span class="line"><span class="cl">        output[count[arr[i]] - 1] = arr[i];
-</span></span><span class="line"><span class="cl">        count[arr[i]]--;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        arr[i] = output[i];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">count</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">output</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">count</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span><span class="p">[</span><span class="n">count</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -1461,22 +1461,22 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void bucketSort(float arr[], int n) {
-</span></span><span class="line"><span class="cl">    vector&lt;float&gt; bucket[n];
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        int index = n * arr[i];
-</span></span><span class="line"><span class="cl">        bucket[index].push_back(arr[i]);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        sort(bucket[i].begin(), bucket[i].end());
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    int index = 0;
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        for (int j = 0; j &lt; bucket[i].size(); j++) {
-</span></span><span class="line"><span class="cl">            arr[index++] = bucket[i][j];
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">bucketSort</span><span class="p">(</span><span class="kt">float</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">bucket</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bucket</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sort</span><span class="p">(</span><span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">begin</span><span class="p">(),</span> <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">end</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">arr</span><span class="p">[</span><span class="n">index</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="基数排序">基数排序</h3>
@@ -1520,35 +1520,35 @@ unordered_map内部实现了一个哈希表（也叫散列表），通过把关�
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void countingSort(int arr[], int n, int exp) {
-</span></span><span class="line"><span class="cl">    int count[10] = {0};
-</span></span><span class="line"><span class="cl">    int output[n];
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        count[(arr[i] / exp) % 10]++;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = 1; i &lt; 10; i++) {
-</span></span><span class="line"><span class="cl">        count[i] += count[i - 1];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = n - 1; i &gt;= 0; i--) {
-</span></span><span class="line"><span class="cl">        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-</span></span><span class="line"><span class="cl">        count[(arr[i] / exp) % 10]--;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int i = 0; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        arr[i] = output[i];
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">exp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">count</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">output</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">exp</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">count</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span><span class="p">[</span><span class="n">count</span><span class="p">[(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">exp</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="p">[(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">exp</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">void radixSort(int arr[], int n) {
-</span></span><span class="line"><span class="cl">    int maxVal = arr[0];
-</span></span><span class="line"><span class="cl">    for (int i = 1; i &lt; n; i++) {
-</span></span><span class="line"><span class="cl">        if (arr[i] &gt; maxVal) {
-</span></span><span class="line"><span class="cl">            maxVal = arr[i];
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    for (int exp = 1; maxVal / exp &gt; 0; exp *= 10) {
-</span></span><span class="line"><span class="cl">        countingSort(arr, n, exp);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">radixSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">maxVal</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">maxVal</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">maxVal</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">exp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">maxVal</span> <span class="o">/</span> <span class="n">exp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">exp</span> <span class="o">*=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">countingSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">exp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">

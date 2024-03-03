@@ -159,6 +159,63 @@ public:
 - 时间复杂度：使用的是先序遍历的递归模型，时间复杂度为O(N)；
 - 空间复杂度：使用了常数个临时变量，故为O(1)；
 
+
+## 路径总II
+给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
+
+叶子节点 是指没有子节点的节点。
+
+### 思路
+对前序遍历加以改造，每次访问一个节点，将其加入到当前路径，将节点值加入到cur中，接着进行判断，如果当前节点和 `cur == target` 则将当前路径加入到答案中，然后分别遍历左子树和右子树。以此类推即可。
+
+### 实现过程
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
+ * };
+ */
+class Solution {
+    void myPathTarget(TreeNode* root, const int target, int& cur,
+                      vector<int>& temp, vector<vector<int>>& ans) {
+        if (!root)
+            return;
+        cur += root->val;
+        temp.push_back(root->val);
+
+        myPathTarget(root->left, target, cur, temp, ans);
+        myPathTarget(root->right, target, cur, temp, ans);
+        if (cur == target && (!root->left && !root->right))
+            ans.push_back(temp);
+        temp.pop_back();
+        cur -= root->val;
+    }
+
+public:
+    vector<vector<int>> pathTarget(TreeNode* root, int target) {
+        vector<vector<int>> ans;
+        if (!root)
+            return ans;
+        int cur = 0;
+        vector<int> temp;
+        myPathTarget(root, target, cur, temp, ans);
+        return ans;
+    }
+};
+```
+
+- 时间复杂度：采用了前序遍历的模板加以改造，故为0(N)，N为二叉树中的节点数；
+- 空间复杂度：采用了递归方式进行遍历，递归站的深度为O(longN)，故为O(logN);
+
+-------------------
+
 **总结**
 
 关于二叉树的题，大部分都是运用递归的思想解决。使用递归时，关键是通过分析当前节点与所求值的关系，理清递归时左右孩子需不需要返回，返回时需要返回什么样的值的问题，最后再看怎么处理空节点，从而得到递归的整个边界关系，完成递归代码的编写。
