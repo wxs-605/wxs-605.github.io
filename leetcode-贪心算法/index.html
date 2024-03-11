@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "贪心算法","wordcount":  1393 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "贪心算法","wordcount":  1839 ,
         "url": "https:\/\/wxs-605.github.io\/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95\/","datePublished": "2024-01-23T22:04:26+08:00","dateModified": "2024-01-23T22:04:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LeetCode 贪心算法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/leetcode/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>LeetCode</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1393 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="leancloud_visitors" data-flag-title="LeetCode 贪心算法">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1839 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="leancloud_visitors" data-flag-title="LeetCode 贪心算法">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -126,9 +126,18 @@
         </li>
       </ul>
     </li>
-    <li><a href="#跳跃游戏">跳跃游戏</a>
+    <li><a href="#买卖股票的最佳时机ii">买卖股票的最佳时机II</a>
       <ul>
         <li><a href="#思路-1">思路</a>
+          <ul>
+            <li><a href="#代码实现-1">代码实现</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#跳跃游戏">跳跃游戏</a>
+      <ul>
+        <li><a href="#思路-2">思路</a>
           <ul>
             <li><a href="#实现过程">实现过程</a></li>
           </ul>
@@ -137,7 +146,7 @@
     </li>
     <li><a href="#跳跃游戏-ii">跳跃游戏 II</a>
       <ul>
-        <li><a href="#思路-2">思路</a>
+        <li><a href="#思路-3">思路</a>
           <ul>
             <li><a href="#实现过程-1">实现过程</a></li>
           </ul>
@@ -146,9 +155,9 @@
     </li>
     <li><a href="#划分字母区间">划分字母区间</a>
       <ul>
-        <li><a href="#思路-3">思路</a>
+        <li><a href="#思路-4">思路</a>
           <ul>
-            <li><a href="#代码实现-1">代码实现</a></li>
+            <li><a href="#代码实现-2">代码实现</a></li>
           </ul>
         </li>
       </ul>
@@ -203,10 +212,81 @@
 <li>时间复杂度：遍历了一次 prices ，故为O(N)；</li>
 <li>空间复杂度：使用了三个临时变量，故为O(1)；</li>
 </ul>
+<h2 id="买卖股票的最佳时机ii">买卖股票的最佳时机II</h2>
+<p>给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。</p>
+<p>在每一天，你可以决定是否购买和/或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。</p>
+<p>返回 你能获得的 最大 利润 。</p>
+<h3 id="思路-1">思路</h3>
+<p>这道题典型的贪心算法，我先购买第一个的股票，记录下购买时间 purchase_time = 0 和购买价格 purchase_price = prices[i]，紧接着开始遍历股票序列：</p>
+<ol>
+<li>如果当前的股票价格高于我购买时的价格，则出售手里的股票，在重新买回；</li>
+</ol>
+<ul>
+<li>profit += prices[i] - purchase_prices; // 计算总的利润之和</li>
+<li>purchase_time = i; // 记录购买时间</li>
+<li>purchase_prices = prices[i]; // 记录购买价格</li>
+</ul>
+<ol start="2">
+<li>如果当前股票价格低于我之前所购买的股票价格：
+则重新购买这只股票，之前购买的股票所得利润为0（相当于当天买当天卖）；</li>
+</ol>
+<ul>
+<li>purchase_time = i; // 记录购买时间</li>
+<li>purchase_prices = prices[i]; // 记录购买价格</li>
+</ul>
+<h4 id="代码实现-1">代码实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">maxProfit</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">prices</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">profit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">purchase_prices</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">purchase_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">purchase_prices</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">profit</span> <span class="o">+=</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">purchase_prices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">purchase_time</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">purchase_prices</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">purchase_time</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">purchase_prices</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">profit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>时间复杂度：遍历了一次股票序列，故为O(N);</li>
+<li>空间复杂度，使用几个临时变量，故空间复杂度为(1)；</li>
+</ul>
 <h2 id="跳跃游戏">跳跃游戏</h2>
 <p>给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
 <p>判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。</p>
-<h3 id="思路-1">思路</h3>
+<h3 id="思路-2">思路</h3>
 <p>如果可以从开头跳到结尾，那么必然可以从结尾跳到开头。所以可以从结尾往前跳，一个一个判断，能跳到开头，就返回true，否则返回false。</p>
 <h4 id="实现过程">实现过程</h4>
 <div class="highlight"><div class="chroma">
@@ -265,7 +345,7 @@
 <li>i + j &lt; n
 返回到达 nums[n - 1] 的最小跳跃次数。生成的测试用例可以到达 nums[n - 1]。</li>
 </ul>
-<h3 id="思路-2">思路</h3>
+<h3 id="思路-3">思路</h3>
 <p>一跳接着一跳跳。先找出从当前可以跳到的下一个区间，跳数加一，再以找到下一个区间作为当前这一跳的区间，再去找下一跳的区间，以此类推，直到跳到最后一个下标。</p>
 <h4 id="实现过程-1">实现过程</h4>
 <div class="highlight"><div class="chroma">
@@ -320,9 +400,9 @@
 <p>给你一个字符串 s 。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。</p>
 <p>注意，划分结果需要满足：将所有划分结果按顺序连接，得到的字符串仍然是 s 。</p>
 <p>返回一个表示每个字符串片段的长度的列表。</p>
-<h3 id="思路-3">思路</h3>
+<h3 id="思路-4">思路</h3>
 <p>记录每个字符最后出现的位置，从字符开始出现 start 到最后出现 end 这个区间中，如果存在字符的最后出现位置超过 end ，那么就更新 end ，当遍历到 end 时，说明这个区间的字符已经遍历完了，将这个区间加入到 answer 中即可，然后更新 start 和 end ，依此类推直到遍历完整个字符串。</p>
-<h4 id="代码实现-1">代码实现</h4>
+<h4 id="代码实现-2">代码实现</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1

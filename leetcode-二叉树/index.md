@@ -214,6 +214,41 @@ public:
 - 时间复杂度：采用了前序遍历的模板加以改造，故为0(N)，N为二叉树中的节点数；
 - 空间复杂度：采用了递归方式进行遍历，递归站的深度为O(longN)，故为O(logN);
 
+
+## 验证二叉搜索树的后序遍历序列
+请实现一个函数来判断整数数组 postorder 是否为二叉搜索树的后序遍历结果
+
+### 思路
+递归 + 分治，序列中最后一个节点为根节点，先找到整棵树的左子树序列，接着找整棵树的右子树序列，如果右子树序列中有元素小于根节点，则说明这个序列不是二叉搜索树的后序遍历结果；否则也递归地对左子树和右子树进行上面的判断，只有左右子树均符合时，才返回true。
+
+#### 实现过程
+```cpp
+class Solution {
+    bool verify(vector<int>& postorder, int start, int end) {
+        if (start >= end)
+            return true;
+        int temp_start = start;
+        while (postorder[temp_start] < postorder[end])
+            temp_start++;
+        int temp = temp_start;
+        while (postorder[temp] > postorder[end])
+            temp++;
+        return temp == end && verify(postorder, start, temp - 1) &&
+               verify(postorder, temp, end - 1);
+    }
+
+public:
+    bool verifyTreeOrder(vector<int>& postorder) {
+        return verify(postorder, 0, postorder.size() - 1);
+    }
+};
+```
+
+- 时间复杂度：每次调用 判断时 减去一个根节点，因此递归占用 O(N)；最差情况下（即当树退化为链表），每轮递归都需遍历树所有节点，占用 O(N)，故总的为O(N<sup>2</sup>)；
+- 空间复杂度：最坏情况下，二叉树退化为链表，故为O(N)；
+
+
+
 -------------------
 
 **总结**

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>操作系统 - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+        <description>操作系统 - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 04 Mar 2024 21:25:08 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+    <title>操作系统 CPU</title>
+    <link>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-cpu/</link>
+    <pubDate>Mon, 04 Mar 2024 21:25:08 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-cpu/</guid>
+    <description><![CDATA[常见的寄存器种类 通用寄存器，用来存放进行运算的数据，比如需进行加和运算的两个数据。 程序计数器，⽤来存储 CPU 要执⾏下⼀条指令「所在的内存地址」，]]></description>
+</item>
+</channel>
+</rss>

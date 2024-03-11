@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/cpp-%E5%85%AB%E8%82%A1%E6%96%87\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  19361 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  20554 ,
         "url": "https:\/\/wxs-605.github.io\/cpp-%E5%85%AB%E8%82%A1%E6%96%87\/","datePublished": "2024-01-23T23:27:14+08:00","dateModified": "2024-01-23T23:27:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CPP 八股文</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/cpp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CPP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 19361 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 39 分钟&nbsp;<span id="/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="CPP 八股文">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 20554 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 42 分钟&nbsp;<span id="/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="CPP 八股文">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -124,7 +124,7 @@
         <li><a href="#虚函数表的位置">虚函数表的位置？</a></li>
         <li><a href="#运行时刻能把虚函数表拿出来吗">运行时刻能把虚函数表拿出来吗？</a></li>
         <li><a href="#拿到虚函数表的地址后是否可以改写虚函数表的内容">拿到虚函数表的地址后，是否可以改写虚函数表的内容？</a></li>
-        <li><a href="#heading"></a></li>
+        <li><a href="#对虚函数表的另一种看法">对虚函数表的另一种看法</a></li>
       </ul>
     </li>
     <li><a href="#基础知识--联系--区别">基础知识  联系 &lt;=&gt; 区别</a>
@@ -151,30 +151,31 @@
     </li>
     <li><a href="#基础知识--定义概念">基础知识 =&gt; 定义/概念</a>
       <ul>
+        <li><a href="#c的三大特性">C++的三大特性？</a>
+          <ul>
+            <li><a href="#封装">封装</a></li>
+            <li><a href="#继承">继承</a></li>
+            <li><a href="#多态">多态</a></li>
+          </ul>
+        </li>
         <li><a href="#类有哪几种构造方式">类有哪几种构造方式？</a></li>
         <li><a href="#说一下你对虚函数纯虚函数抽象类的理解">说一下你对虚函数、纯虚函数、抽象类的理解？</a></li>
         <li><a href="#你对空类了解多少">你对空类了解多少？</a></li>
+        <li><a href="#c中类对象的初始化顺序">C++中类对象的初始化顺序？</a></li>
         <li><a href="#引用会占用内存空间吗">引用会占用内存空间吗？</a></li>
         <li><a href="#c的内存分配">C++的内存分配？</a></li>
         <li><a href="#c-编译过程">C++ 编译过程？</a></li>
         <li><a href="#explicit-的作用">explicit 的作用？</a></li>
-      </ul>
-    </li>
-    <li><a href="#智能指针">智能指针</a>
-      <ul>
-        <li><a href="#智能指针介绍">智能指针介绍</a></li>
-        <li><a href="#auto_ptr">auto_ptr</a></li>
-        <li><a href="#unique_ptr">unique_ptr</a>
+        <li><a href="#c中-const-关键字">C++中 <code>const</code> 关键字？</a></li>
+        <li><a href="#c中-static-关键字">C++中 <code>static</code> 关键字？</a></li>
+        <li><a href="#什么是内存泄漏">什么是内存泄漏？</a></li>
+        <li><a href="#内存泄漏产生的原因">内存泄漏产生的原因？</a></li>
+        <li><a href="#如何避免内存泄漏">如何避免内存泄漏？</a>
           <ul>
-            <li><a href="#unique_ptr常用操作">unique_ptr常用操作</a></li>
+            <li><a href="#什么是raii机制">什么是RAII机制</a></li>
+            <li><a href="#raii的实现步骤"><code>RAII</code>的实现步骤：</a></li>
           </ul>
         </li>
-        <li><a href="#shared_ptr">shared_ptr</a>
-          <ul>
-            <li><a href="#shared_ptr-的初始化">shared_ptr 的初始化</a></li>
-          </ul>
-        </li>
-        <li><a href="#weak_ptr">weak_ptr</a></li>
       </ul>
     </li>
     <li><a href="#stl库">STL库</a>
@@ -220,6 +221,9 @@
 </nav></div>
             </div><div class="content" id="content"><p>参考文章：https://blog.csdn.net/Awesomewan/article/details/123948929 <a href="https://blog.csdn.net/Awesomewan/article/details/123948929" target="_blank" rel="noopener noreffer ">链接</a></p>
 <p>参考公众号：阿Q技术站</p>
+<p>参考博客：编程指北
+链接: <a href="https://csguide.cn/cpp/object_oriented/virtual_function.html#c-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener noreffer ">https://csguide.cn/cpp/object_oriented/virtual_function.html#c-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B</a>
+来源: <a href="https://csguide.cn" target="_blank" rel="noopener noreffer ">https://csguide.cn</a></p>
 <h2 id="变量初始化虚函数多态">变量初始化/虚函数/多态</h2>
 <h3 id="全局静态变量和函数静态变量的初始化顺序">全局静态变量和函数静态变量的初始化顺序？</h3>
 <ol>
@@ -294,7 +298,7 @@
 </div>
 </div><h3 id="虚函数表的位置">虚函数表的位置？</h3>
 <p>在C++中，虚函数表(virtual function table ， 简称vtable)适用于实现动态多态的一种机制，它存储了类的虚函数的地址，虚函数表通常是针对每个包含虚函数的类生成的，每个对象的内存中都有一个指向其所属类的虚函数表的指针，，用于在运行时确定调用哪个函数。</p>
-<p>虚函数表的存储位置通常是在每个对象的内存布局中，具体位置取决于编译器和操作系统的是实现。一般来说，虚函数表位于对象的内存布局的起始位置或者末尾，但并不是标准规定。虚函数表本身是一个指针数组，其中存储了指向每个虚函数的指针。</p>
+<p>虚函数表的存储位置通常是在每个对象的内存布局中，具体位置取决于编译器和操作系统的是实现。一般来说，虚函数表位于对象的内存布局的起始位置，但并不是标准规定。虚函数表本身是一个指针数组，其中存储了指向每个虚函数的指针。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -335,8 +339,195 @@
 <p>虚函数表存储在对象的内存布局中，一般作为对象的第一个成员，位于对象的起始位置处。这样做的目的是为了在运行时能够快速地找到对象所属类的虚函数表，从而实现动态多态性。每个包含虚函数的类都有自己的虚函数表，当对象被创建时，编译器会在对象的内存中插入一个指向类的虚函数表的指针(虚指针)，用于在运行时动态绑定。</p>
 <h3 id="拿到虚函数表的地址后是否可以改写虚函数表的内容">拿到虚函数表的地址后，是否可以改写虚函数表的内容？</h3>
 <p>一般情况下，虚函数表是存储在程序的只读数据段中的，这意味着虚函数表的内容是只读的，不能被修改。如果尝试修改只读数据段的内容，通常会导致操作系统抛出段错误，或访问权限错误，从而导致程序异常终止。</p>
-<h3 id="heading"></h3>
-<h2 id="基础知识--联系--区别">基础知识  联系 &lt;=&gt; 区别</h2>
+<h3 id="对虚函数表的另一种看法">对虚函数表的另一种看法</h3>
+<p>虚函数是通过一张虚函数表Virtual Table）来实现的，简称为V-Table。在这个表中，存放的是一个类的虚函数的地址表，这张表解决了继承、覆盖的问题，保证其真实反应实际的函数。</p>
+<p>这个类的实例内存中都有一个虚函数表的指针，当我们用父类的指针来操作一个子类的时候，这张虚函数表指明了实际所应该调用的函数。</p>
+<p>一个对象在内存中一般由成员变量（非静态）、虚函数表指针(vptr)构成。虚函数表指针指向一个数组，数组的元素就是各个虚函数的地址，通过函数的索引，我们就能直接访问对应的虚函数。</p>
+<p>更底层一点，当基类指针或引用指向一个派生类对象时，调用虚函数时，实际上会调用派生类中的虚函数，而不是基类中的虚函数。**当一个类声明一个虚函数时，编译器会为该类创建一个虚函数表（Virtual Table）。**这个表存储着该类的虚函数指针，这些指针指向实际实现该虚函数的代码地址。</p>
+<p><strong>每个对象</strong>都包含一个指向该类的虚函数表的指针，这个指针<strong>在对象创建时被初始化</strong>，通常是作为对象的<strong>第一个成员变量</strong>。</p>
+<p>当调用一个虚函数时，<strong>编译器</strong>会通过对象的<strong>虚函数指针</strong>查找到该对象所属的类的<strong>虚函数表</strong>，并根据函数的索引值（通常是函数在表中的位置，编译时就能确定）来找到对应的虚函数地址。</p>
+<p>然后将控制转移到该地址，实际执行该函数的代码。对于派生类，其虚函数表通常是<strong>在基类的虚函数表的基础上扩展而来</strong>的。在派生类中，如果<strong>重写了基类的虚函数，那么该函数在派生类的虚函数表中的地址会被更新为指向派生类中实际实现该函数的代码地址。</strong></p>
+<p>代码源自 编程指北</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 函数指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">Func</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyBaseClass</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">virtualMethod1</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;BaseClass::virtualMethod1()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">virtualMethod2</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;BaseClass::virtualMethod2()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">virtualMethod3</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;BaseClass::virtualMethod3()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyDerivedClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">MyBaseClass</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">virtualMethod3</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DerivedClass::virtualMethod3()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">virtualMethod4</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DerivedClass::virtualMethod4()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">virtualMethod5</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DerivedClass::virtualMethod5()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">PrintVtable</span><span class="p">(</span><span class="kt">void</span><span class="o">**</span> <span class="n">vtable</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 输出虚函数表中每个函数的地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">vtable</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 最多调用五个函数，怕访问到虚函数表非法的地址，因为就五个函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Function &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">vtable</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 将虚函数表中的虚函数转换为函数指针，然后进行调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Func</span> <span class="n">func</span> <span class="o">=</span> <span class="p">(</span><span class="n">Func</span><span class="p">)</span> <span class="n">vtable</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MyDerivedClass</span> <span class="n">obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 取对象的首地址，然后转换为的指针，就取到了虚函数表指针，指向 obj 对象的虚函数表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 因为大多数实现上，虚函数表指针一般都放在对象第一个位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span><span class="o">**</span> <span class="n">vtable</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DerivedClass Vetable:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 打印子类的虚函数表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">PrintVtable</span><span class="p">(</span><span class="n">vtable</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span>  <span class="s">&#34;BaseClass Vetable:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MyBaseClass</span> <span class="n">base_obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span><span class="o">**</span> <span class="n">vbtable</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">base_obj</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 打印父类的虚函数表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">PrintVtable</span><span class="p">(</span><span class="n">vbtable</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本机执行结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DerivedClass Vetable:
+</span></span><span class="line"><span class="cl">Function 0: 0x402e30
+</span></span><span class="line"><span class="cl">BaseClass::virtualMethod1()
+</span></span><span class="line"><span class="cl">Function 1: 0x402e70
+</span></span><span class="line"><span class="cl">BaseClass::virtualMethod2()
+</span></span><span class="line"><span class="cl">Function 2: 0x402ef0
+</span></span><span class="line"><span class="cl">DerivedClass::virtualMethod3()
+</span></span><span class="line"><span class="cl">Function 3: 0x402f30
+</span></span><span class="line"><span class="cl">DerivedClass::virtualMethod4()
+</span></span><span class="line"><span class="cl">Function 4: 0x402f70
+</span></span><span class="line"><span class="cl">DerivedClass::virtualMethod5()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BaseClass Vetable:
+</span></span><span class="line"><span class="cl">Function 0: 0x402e30
+</span></span><span class="line"><span class="cl">BaseClass::virtualMethod1()
+</span></span><span class="line"><span class="cl">Function 1: 0x402e70
+</span></span><span class="line"><span class="cl">BaseClass::virtualMethod2()
+</span></span><span class="line"><span class="cl">Function 2: 0x402eb0
+</span></span><span class="line"><span class="cl">BaseClass::virtualMethod3()
+</span></span><span class="line"><span class="cl">PS D:\code\cpp&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="基础知识--联系--区别">基础知识  联系 &lt;=&gt; 区别</h2>
 <h3 id="指针和引用的区别">指针和引用的区别？</h3>
 <ol>
 <li>指针是一个变量，存储的是一个地址，指向内存的一个单元；引用跟原来的变量是同一个东西，是原变量的别名；</li>
@@ -356,14 +547,17 @@
 <h3 id="new-和-delete-是如何实现的new-和-malloc-的异同">new 和 delete 是如何实现的？new 和 malloc 的异同？</h3>
 <ol>
 <li>new 和 delete 搭配使用，malloc 和 free 搭配使用；</li>
-<li>malloc/free 是库函数，需要引入头文件 “#include&lt;stdlib.h&gt;”；new/delete 是关键字，需要编译器支持参数；</li>
+<li>malloc/free 是库函数，需要引入头文件 <code>#include&lt;stdlib.h&gt;</code>；new/delete 是关键字，需要编译器支持参数；</li>
 <li>malloc 申请空间时需要确定申请的空间大小，new 申请空间时，无需指定分配空间大大小，编译器会根据类型自动计算；</li>
 <li>maloc 申请空间时，返回的是 void* 类型，需要强制转换成对象类型的指针；new 申请空间时，返回的类型是对象的指针类型，无需强制类型转换；</li>
 <li>malloc分配失败时，返回空指针，new 分配失败时，抛出 bad_alloc 异常；</li>
-<li>自定义类型：new 首先调用 operator new 函数申请空间(底层通过 malloc 实现)，然后调用对象的构造函数初始化，最后返回定义类型的指针；delete 先调用析构函数，然后嗲用operator delete 释放空间(底层通过 free )实现。malloc/free 不支持自定义类型的对象的析构和构造；</li>
-<li>内存区域：new 操作是从自由存储去上为对象动态分配内存，而 malloc 函数从堆上动态分配内存；</li>
+<li>自定义类型：new 首先调用 operator new 函数申请空间(底层通过 malloc 实现)，然后调用对象的构造函数初始化，最后返回定义类型的指针；delete 先调用析构函数，然后调用operator delete 释放空间(底层通过 free )实现。malloc/free 不支持自定义类型的对象的析构和构造；</li>
+<li>使用 <code>malloc</code>分配内存后，如果在使用的过程中发现内存不足，可以使用 <code>realloc</code>函数进行内存重新分配实现内存的扩充；而 new 没有直观的内存扩充方式，需要手动实现；</li>
+<li>new 可以调用 malloc， 而 <code>malloc</code> 不可以调用 <code>new</code>；</li>
+<li>new 操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存；</li>
 </ol>
 <p><strong>自由存储区和堆区的区别</strong></p>
+<p>自由存储区是 C++ 基于new操作符的一个抽象概念，凡是通过 new 操作符进行内存申请，该内存即为自由存储区。那么自由存储区是否能够是堆（问题等价于new是否能在堆上动态分配内存），这取决于operator new 的实现细节。自由存储区<strong>不仅可以是堆</strong>，还可以是<strong>静态存储区</strong>，这都看operator new在哪里为对象分配内存。不过我们一般可以将自由存储区等价为堆。</p>
 <p>自由存储区（或堆区）是用于动态分配内存的一块较大的、连续的内存区域。与栈区不同，自由存储区的生命周期不受函数的调用和返回限制，可以在程序的任意位置进行内存的分配和释放。主要区别如下：</p>
 <ul>
 <li>分配方式：自由存储区使用new操作符来分配内存。</li>
@@ -429,6 +623,8 @@
 <li>const 定义的常量，在C语言中是存储在内存中、需要额外的内存空间的；define 定义的常量，运行时是直接的操作数，并不会存放在内存中；</li>
 <li>const 定义的常量是带类型的；define 定义的常量不带类型。define 定义的常量不利于类型检查；</li>
 </ul>
+<p><strong>宏定义函数</strong></p>
+<p><code>#define ADD(x, y) (x + y)</code></p>
 <h3 id="内联函数和宏函数的区别">内联函数和宏函数的区别？</h3>
 <ol>
 <li>宏定义不是函数，但是使用起来像函数。预处理器用复制宏代码的方式代替函数的调用，省去了函数压栈退栈过程，提高了效率；而内联函数本质上是一个函数，内联函数一般用于函数体的代码比较简单的函数，不能包含复杂的控制语句，while、switch，并且内联函数本身不能直接调用自身；</li>
@@ -461,13 +657,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// i++
-</span></span><span class="line"><span class="cl">i = i;
-</span></span><span class="line"><span class="cl">i += 1;
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// i++
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// ++i
-</span></span><span class="line"><span class="cl">i += 1;
-</span></span><span class="line"><span class="cl">i = i;
+</span></span><span class="line"><span class="cl"><span class="c1">// ++i
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
@@ -481,10 +677,42 @@
 <li>联合体的大小为其内部所有变量的最大值，按照最大类型的倍数进行分配大小；结构体分配内存的大小遵循内存对齐原则；</li>
 </ul>
 <p><strong>内存对齐</strong></p>
-<p>内存对齐是指将数据结构中的每个成员按照一定的规则进行排列，使得每个成员的起始地址相对于该结构的起始地址偏移量为该成员大小的整数倍。这样做的目的是为了让处理器在读取数据时更加高效，因为处理器可以一次性读取多个连续地址上的数据，如果数据不对齐，处理器就需要多次读取，降低了读取速度</p>
-<h2 id="基础知识--定义概念">基础知识 =&gt; 定义/概念</h2>
+<p>内存对齐是指将数据结构中的每个成员按照一定的规则进行排列，使得每个成员的起始地址相对于该结构的起始地址偏移量为该成员大小的整数倍。这样做的目的是为了让处理器在读取数据时更加高效，因为处理器可以一次性读取多个连续地址上的数据，如果数据不对齐，处理器就需要多次读取，降低了读取速度。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp"># pragma pack(oush, 1) </span><span class="c1">// 设置字节对齐为1字节，取消自动对齐
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">test</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">short</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp"># pragma pack(pop) </span><span class="c1">// 恢复默认的字节对齐设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">sizeof</span><span class="p">(</span><span class="n">test</span><span class="p">);</span> <span class="c1">// 结果为7
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="基础知识--定义概念">基础知识 =&gt; 定义/概念</h2>
+<h3 id="c的三大特性">C++的三大特性？</h3>
+<p>C++的三大特性既是封装、继承、多态嘛。</p>
+<h4 id="封装">封装</h4>
+<p>封装就是将数据的属性和这些数据的函数组合在一个类的过程。封装的主要目的是隐藏数据函数的内部实现，仅暴露一个必要的调用接口。通过封装，我们可以控制成员的访问级别，如public、private和protected，限制对类内部数据的直接访问，确保数据的完整性和安全性。</p>
+<h4 id="继承">继承</h4>
+<p>继承就是一个类(派生类)从另一个类(基类)那里获得其属性和方法的过程。继承允许我们创建具有共享代码的类层次结构，减少重复代码，提高代码的复用性和可维护性。</p>
+<h4 id="多态">多态</h4>
+<p>多态就是允许不同类的对象使用相同的接口名字，但具有不同实现的特性。C++中多态主要通过虚函数来实现。</p>
 <h3 id="类有哪几种构造方式">类有哪几种构造方式？</h3>
-<p>默认构造函数(没有参数)，有参构造函数(有参数)，拷贝构造函数(形参是本类对象的引用)，转换构造函数(形参是其他类型的变量，且只有一个形参)</p>
+<p>默认构造函数(没有参数)，有参构造函数(有参数)，拷贝构造函数(形参是本类对象的引用)，转换构造函数(形参是其他类型的变量，且只有一个形参)。</p>
 <h3 id="说一下你对虚函数纯虚函数抽象类的理解">说一下你对虚函数、纯虚函数、抽象类的理解？</h3>
 <ul>
 <li>虚函数：被 virtual 关键字修饰的成员函数；</li>
@@ -501,6 +729,21 @@
 <h3 id="你对空类了解多少">你对空类了解多少？</h3>
 <p>空类声明时编译器不会生成任何成员函数，只会生成1个字节的占位符；</p>
 <p>空类定义时编译器会生成 6 个成员函数：缺省的构造函数、拷贝构造函数、析构函数、赋值运算符、两个取址运算符(其中一个是 const 版)；</p>
+<h3 id="c中类对象的初始化顺序">C++中类对象的初始化顺序？</h3>
+<p>C++中类对象的初始化顺序遵循三条规则：</p>
+<ol>
+<li>基类初始化顺序：</li>
+</ol>
+<p>如果当前类继承了多个基类，他们将按照生命的顺序进行初始化，但是在有虚继承了一般继承的情况下，优先虚继承；</p>
+<ol start="2">
+<li>成员变量初始化顺序：</li>
+</ol>
+<p>类的成员变量按照它们在类定义中的声明顺序进行初始化。(成员变量的初始化顺序只与声明的顺序有关)</p>
+<ol start="3">
+<li>执行构造函数：</li>
+</ol>
+<p>在基类和成员变量初始化完成后，执行类的构造函数。</p>
+<p><strong>注意：</strong> 类析构函数的执行顺序和构造函数执行的顺序完全相反。</p>
 <h3 id="引用会占用内存空间吗">引用会占用内存空间吗？</h3>
 <p>在大多数编程语言中，引用不会占用内存空间，因为引用只是指向现有的内存空间的别名。在C++中，引用是指向变量的别名，与指针不同的是，引用不能为null或指向其他变量。当程序使用引用时，它们只是将变量名与内存地址关联起来，因此不会产生额外的内存分配。</p>
 <h3 id="c的内存分配">C++的内存分配？</h3>
@@ -538,193 +781,62 @@
 </ol>
 <h3 id="explicit-的作用">explicit 的作用？</h3>
 <p>用来声明类构造函数是显示调用的，而非隐式调用，可以阻止调用构造函数时进行隐式转换。只可用于修饰单参构造函数，因为无参构造函数和多参构造函数本身就是显示调用的，再加上 explicit 关键字也没有什么意义；</p>
-<h2 id="智能指针">智能指针</h2>
-<p>C++里面的四个智能指针: auto_ptr, unique_ptr,shared_ptr, weak_ptr 其中后三个是C++11支持，并且第一个已经被C++11弃用。使用时需要引入头文件 “<memory>”。</p>
-<h3 id="智能指针介绍">智能指针介绍</h3>
-<p>智能指针主要用于管理在堆上分配的内存，它将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。智能指针实质是一个对象，行为表现的却像一个指针。</p>
-<p><strong>什么是内存泄漏？</strong></p>
-<p>由于疏忽或错误导致的程序未能释放已经不再使用的内存。内存泄漏是指程序在运行过程中，由于疏忽或错误而失去了对该内存的控制，从而造成了内存的浪费。</p>
-<p><strong>内存泄漏产生的原因？</strong></p>
+<p><strong>什么是隐式类型转换？</strong></p>
+<p>比如说你有一个 <code>int</code> 型的变量 a ，当你 执行代码 <code>long b = a + 1；</code>时，<code>int</code> 型的 a 就隐式变成 <code>long</code> 型了，这就是隐式类型转换。</p>
+<h3 id="c中-const-关键字">C++中 <code>const</code> 关键字？</h3>
+<p>在 C/C++ 中，<code>const</code> 是一个关键字，用于表示常量。<code>const</code> 可以用于修饰变量、函数、指针等，主要作用有以下几种：</p>
+<ol>
+<li>当 <code>const</code> 修饰变量时，该变量被视为只读变量，既不能被修改；</li>
+<li>当 <code>const</code> 修饰参数时，表示函数内部不会修改该参数的值，在引用传参时使用的比较多；</li>
+<li>当 <code>const</code> 修饰函数返回值时，表示函数的返回值为只读，不能被修改； 如<code>const int func(){}</code></li>
+<li>当 <code>const</code> 修饰成员函数时，表示该函数不会修改成员的状态； 如<code>int func() const{}</code></li>
+<li>当 <code>const</code> 修饰指针时，可以分为以下三种情况：</li>
+</ol>
+<ul>
+<li>指向只读变量的指针：这种情况下，const 关键字修饰的是指针所指向的变量，而不是指针本身。指针本身可以被修改（意思是指针可以指向新的变量），但是不能通过指针修改所指向的变量。 <code>const int* p;</code></li>
+<li>只读指针：这种情况下，const 关键字修饰的是指针本身，使得指针本身成为只读变量。指针本身不能被修改（即指针一旦初始化就不能指向其它变量），但是可以通过指针修改所指向的变量。<code>int* const p = &amp;a</code> , a的值可以改变，但p不能指向其他变量；</li>
+<li>只读指针指向只读变量：这种情况下，const 关键字同时修饰了指针本身和指针所指向的变量，使得指针本身和所指向的变量都成为只读变量。指针本身不能被修改，也不能通过指针修改所指向的变量。 <code>const int* const p = &amp;a;</code></li>
+</ul>
+<h3 id="c中-static-关键字">C++中 <code>static</code> 关键字？</h3>
+<p><code>static</code> 是C++中一个重要的关键字，它可以用于变量、函数和类中。</p>
+<ol>
+<li><code>static</code>修饰全局变量：<code>static</code>修饰全局变量可以将变量的作用域限定在当前文件中，使得其他文件无法访问该变量。 同时，static 修饰的全局变量在程序启动时被初始化（可以简单理解为在执行 main 函数之前，会执行一个全局的初始化函数，在那里会执行全局变量的初始化），生命周期和程序一样长。</li>
+<li><code>static</code>修饰局部变量：<code>static</code>修饰的局部变量使得变量在函数调用结束后一直在内存中，不被销毁，下次调用该函数时可以继续使用。且该局部变量仅在第一次调用函数时进行一次初始化。同时，该变量的作用域只在函数里，其他函数无法访问该变量；</li>
+<li><code>static</code> 修饰函数：<code>static</code> 修饰函数可以将该函数的作用域限定在该文件中，使得其他文件无法访该函数，因此也可以避免命名冲突和代码重复定义。</li>
+<li><code>static</code> 修饰类成员变量和函数：<code>static</code> 修饰的成员变量和函数可以使得它们在所有该类对象中共享，且不需要创建对镜就可以直接访问。</li>
+</ol>
+<h3 id="什么是内存泄漏">什么是内存泄漏？</h3>
+<p>由于疏忽或错误导致的程序未能释放已经不再使用的内存造成了内存的浪费。以发生的方式分类，内存泄漏可以分为4类：</p>
+<ol>
+<li>常发性内存泄漏：发生发生内存泄漏的代码被多次执行到，每次被执行的时候都会导致一块内存泄漏</li>
+<li>偶发性内存泄漏：发生内存泄漏的代码只在某些特定环境或操作过程下才会发生。</li>
+<li>一次性内存泄漏：发生内存泄漏的代码只会被执行一次，或者由于算法上的缺陷，导致总会有一块且仅一块内存发生泄漏。比如，在类的构造函数中分配内存，在析构函数中却没有释放该内存。</li>
+<li>隐式内存泄漏。程序在运行过程中不停的分配内存，但是直到结束时才释放内存。严格来说没有发生内存泄漏，但是不及时释放内存也可能导致最终耗尽系统的内存，所以称为隐式内存泄漏</li>
+</ol>
+<h3 id="内存泄漏产生的原因">内存泄漏产生的原因？</h3>
 <ol>
 <li>堆内存泄漏，new 跟 delete 、malloc 和 free 未成对使用；</li>
 <li>系统资源泄漏， Bitmap, handle,socket 等资源未释放；</li>
 <li>没有将基类析构函数定义称为虚函数，（使用基类指针或者引用指向派生类对象时）派生类对象释放时将不能正确释放派生对象部分；</li>
 <li>指针重新赋值，指针重新赋值后原来指向的内存空间丢失，发生了内存泄漏；</li>
 </ol>
-<h3 id="auto_ptr">auto_ptr</h3>
-<p>（C++98的方案，C++11已经抛弃）采用所有权模式。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">(</span><span class="k">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;I reigned lonely as a cloud.&#34;</span><span class="p">));</span> 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="c1">//auto_ptr不会报错.
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>此时不会报错，q剥夺了p的所有权，但是当程序运行时访问p将会报错。所以auto_ptr的缺点是：存在潜在的内存崩溃问题！</p>
-<h3 id="unique_ptr">unique_ptr</h3>
-<p>unique_ptr实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象。它对于避免资源泄露(例如“以new创建对象后因为发生异常而忘记调用delete”)特别有用。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">(</span><span class="k">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;auto&#34;</span><span class="p">));</span>   
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span><span class="err">；</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span><span class="c1">//此时会报错！！
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>编译器认为 q = p 非法，避免了 p 不再指向有效数据的问题。尝试复制 p 时会编译期出错，而auto_ptr能通过编译期从而在运行期埋下出错的隐患。因此，unique_ptr比auto_ptr更安全。</p>
-<h4 id="unique_ptr常用操作">unique_ptr常用操作</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">u1</span> <span class="c1">// 空unique_ptr，可以指向类型为T的对象。u1会使用delete来释放它的指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span> <span class="n">u2</span> <span class="c1">// u2会使用一个类型为D的可调用对象来释放它的指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="o">&gt;</span> <span class="n">u</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="c1">// 空unique_ptr，指向类型为T的对象，用类型为D的对象d替代delete
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="k">nullptr</span> <span class="c1">// 释放u指向的对象，将u置为空
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">release</span><span class="p">()</span> <span class="c1">// u放弃对指针的控制权，返回指针，并将u置为空
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1">// 释放u指向的对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="c1">// 如果提供了内置指针q，另u指向这个对象；否则将u置为空
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span>  
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>虽然我们不能拷贝或赋值unique_ptr，但可以通过调用 release 或 reset 将指针的所有权从一个（非const）unique_ptr转移给另一个unique_ptr；</p>
-<h3 id="shared_ptr">shared_ptr</h3>
-<p>shared_ptr 实现共享式拥有概念。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时候释放。从名字 share 就可以看出了资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。可以通过成员函数 use_count() 来查看资源的所有者个数。除了可以通过new来构造，还可以通过传入  unique_ptr,weak_ptr 来构造。当我们调用 release() 时，当前指针会释放资源所有权，计数减一。当计数等于0时，资源会被释放。</p>
-<p>shared_ptr 是为了解决 auto_ptr 在对象所有权上的局限性(auto_ptr 是独占的), 在使用引用计数的机制上提供了可以共享所有权的智能指针。</p>
-<p>shared_ptr 的成员函数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">：类模板，用于定义一个</span><span class="n">shared_ptr对象</span><span class="err">，其中</span><span class="n">T表示所指向对象的类型</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">()</span><span class="err">：默认构造函数，创建一个空的</span><span class="n">shared_ptr对象</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span><span class="err">：构造函数，创建一个</span><span class="n">shared_ptr对象并初始化为指向ptr所指向的对象</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">shared_ptr</span><span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：拷贝构造函数，创建一个新的</span><span class="n">shared_ptr对象</span><span class="err">，并与</span><span class="n">other共享同一对象</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：赋值运算符重载，将当前的</span><span class="n">shared_ptr对象与other共享同一对象</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">reset</span><span class="p">()</span><span class="err">：重置</span><span class="n">shared_ptr对象</span><span class="err">，将其置为空指针。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">get</span><span class="p">()</span><span class="err">：获取</span><span class="n">shared_ptr所指向的原始指针</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">use_count</span><span class="p">()</span><span class="err">：获取当前</span><span class="n">shared_ptr对象的引用计数</span><span class="err">，即共享该对象的</span><span class="n">shared_ptr对象的数量</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">unique</span><span class="p">()</span><span class="err">：判断当前</span><span class="n">shared_ptr对象是否是唯一拥有所指对象的智能指针</span><span class="err">。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span> <span class="kt">bool</span><span class="p">()</span> <span class="k">const</span><span class="err">：将</span><span class="n">shared_ptr对象转换为布尔值</span><span class="err">，判断其是否为空指针。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">*</span> <span class="p">()</span><span class="err">：重载解引用操作符，返回所指对象的引用。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">-&gt;</span> <span class="p">()</span><span class="err">：重载箭头操作符，返回所指对象的指针。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">swap</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="err">：交换两个</span><span class="n">shared_ptr对象的内容</span><span class="err">。</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="shared_ptr-的初始化">shared_ptr 的初始化</h4>
-<p>最安全的分配和使用动态内存的方法是调用一个名为 make_shared 的标准库函数。此函数在动态内存中分配一个对象并初始化它，返回指向此对象的 shared_ptr。与智能指针一样，make_shared 也定义在头文件 memory 中。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// p 指向一个值为42的 int 的 shared_ptr 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// q 指向一个值为&#34;9999999999&#34;的 string
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="sc">&#39;9&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// p5指向一个只初始化的int
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p5</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>我们还可以用 new 返回的指针来初始化智能指针，不过接受指针参数的智能指针构造函数是 explicit 的。因此，我们不能将一个内置指针隐式转换为一个智能指针，必须使用直接初始化形式来初始化一个智能指针；</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">shared_ptr&lt;int&gt; pi = new int (1024); // 错误：必须使用直接初始化形式
-</span></span><span class="line"><span class="cl">shared_ptr&lt;int&gt; p2(new int(1024));    // 正确：使用了直接初始化形式
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="weak_ptr">weak_ptr</h3>
-<p>share_ptr虽然已经很好用了，但是有一点share_ptr智能指针还是有内存泄露的情况，当两个对象相互使用一个shared_ptr成员变量指向对方，会造成循环引用，使引用计数失效，从而导致内存泄漏。</p>
-<p>weak_ptr 是一种不控制对象生命周期的智能指针, 它指向一个 shared_ptr 管理的对象. 进行该对象的内存管理的是那个强引用的shared_ptr， weak_ptr只是提供了对管理对象的一个访问手段。weak_ptr 设计的目的是为配合 shared_ptr 而引入的一种智能指针来协助 shared_ptr 工作, 它只可以从一个 shared_ptr 或另一个 weak_ptr 对象构造, 它的构造和析构不会引起引用记数的增加或减少。weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果说两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。它是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，它可以通过调用lock函数来获得shared_ptr；</p>
+<h3 id="如何避免内存泄漏">如何避免内存泄漏？</h3>
+<ol>
+<li>程序员手动检查 new 与 delete , malloc 与 free 有没有成对使用；</li>
+<li>使用内存泄漏检测工具，如Linux下的 <code>valgrind</code>，它会显示你在堆区 <code>alloc</code>了多少次空间，<code>free</code>了多少次空间；</li>
+<li>使用RAII机制，将指针在使用前与某个对象的声明周期绑定在一起；</li>
+<li>使用智能指针；</li>
+</ol>
+<h4 id="什么是raii机制">什么是RAII机制</h4>
+<p><code>RAII</code>既是资源获取既初始化（Resource Acquisition Is Initialization，简称 RAII），它是一种C++编程技术，在使用前获取的资源与某个对象的生命那个周期绑定在一起。确保在控制对象的生命周期结束时，按照资源获取的顺序来释放所有资源。</p>
+<p><code>RAII</code>的核心原理：<strong>利用栈上局部变量的自动析构来保证资源一定会被释放</strong></p>
+<h4 id="raii的实现步骤"><code>RAII</code>的实现步骤：</h4>
+<ul>
+<li>设置一个类封装资源，资源可以是内存、文件、socket和锁等；</li>
+<li>在构造函数中执行资源的初始化。比如申请内存、打开文件、申请锁等；</li>
+<li>在析构函数中执行销毁操作，比如释放内存、关闭文件、释放锁等；</li>
+<li>使用时声明一个该对象的类，一般在你希望的作用域即可，比如在函数的开始，或者作为类的成员变量；</li>
+</ul>
 <h2 id="stl库">STL库</h2>
 <h3 id="各个常见容器">各个常见容器</h3>
 <h4 id="vector-向量容器">vector-向量容器</h4>

@@ -36,6 +36,52 @@ public:
 - 空间复杂度：使用了三个临时变量，故为O(1)；
 
 
+## 买卖股票的最佳时机II
+给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。
+
+在每一天，你可以决定是否购买和/或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。
+
+返回 你能获得的 最大 利润 。
+
+### 思路
+这道题典型的贪心算法，我先购买第一个的股票，记录下购买时间 purchase_time = 0 和购买价格 purchase_price = prices[i]，紧接着开始遍历股票序列：
+1. 如果当前的股票价格高于我购买时的价格，则出售手里的股票，在重新买回；
+- profit += prices[i] - purchase_prices; // 计算总的利润之和
+- purchase_time = i; // 记录购买时间
+- purchase_prices = prices[i]; // 记录购买价格
+
+2. 如果当前股票价格低于我之前所购买的股票价格：
+则重新购买这只股票，之前购买的股票所得利润为0（相当于当天买当天卖）；
+- purchase_time = i; // 记录购买时间
+- purchase_prices = prices[i]; // 记录购买价格
+
+#### 代码实现
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int profit = 0;
+        int purchase_prices = prices[0];
+        int purchase_time = 0;
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices[i] > purchase_prices) {
+                profit += prices[i] - purchase_prices;
+                purchase_time = i;
+                purchase_prices = prices[i];
+            } else {
+                purchase_time = i;
+                purchase_prices = prices[i];
+            }
+        }
+        return profit;
+    }
+};
+```
+
+- 时间复杂度：遍历了一次股票序列，故为O(N);
+- 空间复杂度，使用几个临时变量，故空间复杂度为(1)；
+
+
 ## 跳跃游戏
 给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。
 
