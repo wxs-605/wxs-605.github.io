@@ -1,7 +1,7 @@
 # CPP 智能指针
 
 
-就像谈到提起北京就会说到故宫一样，学习 C++ 时自然而然会提及智能指针，在 C++98 时推出了 `auto_ptr` ，在C++11时智能指针的功能更加完善，推出了更加安全和多功能的智能指针，同时弃用了首次提出的不严谨的 `quto_ptr`。
+就像谈到提起北京就会说到故宫一样，学习 C++ 时自然而然会提及智能指针，在 C++98 时推出了 `auto_ptr` ，在C++11时智能指针的功能更加完善，推出了更加安全和多功能的智能指针，同时弃用了首次提出的不严谨的 `auto_ptr`。
 
 ## 智能指针介绍
 
@@ -59,6 +59,8 @@ u.reset(q) // 如果提供了内置指针q，另u指向这个对象；否则将u
 u.reset(nullptr)  
 ```
 虽然我们不能拷贝或赋值unique_ptr，但可以通过调用 release 或 reset 将指针的所有权从一个（非const）unique_ptr转移给另一个unique_ptr；
+
+`unique_ptr`的实现要点：将拷贝构造函数和赋值运算符声明为 `delete`或 `private`。
 
 
 
@@ -155,18 +157,99 @@ std::shared_ptr<int> sp2(new int(0), FreeMemory()); // size: 8
 std::shared_ptr<int> sp3(new int(0), free_memory_lambda); // size: 8
 ```
 
-一个简化版的智能指针实现，不考虑线程安全、删除器和分配器
-```cpp
-
-```
-
-
 #### `shared_ptr`的引用计数如何实现，手写一个 `shared_ptr` ?
 
 引用计数本身也是使用指针实现的，将计数的变量存储在堆上，所有共享指针的 `shared_ptr`就存储一个指向堆内存的指针。
 
+**一个简化版的智能指针实现，不考虑线程安全、`weak_ptr`计数、 删除器和分配器**
+
+```cpp
+// 智能指针的定义
+template <typename T>
+class my_shared_ptr {
+   private:
+    T* ptr;
+    size_t* count;
+    // 引用计数减一，并判断是否需要释放内存
+    void release() {
+        if (count && --(*count) == 0) {
+            delete ptr;
+            delete count;
+        }
+    }
+
+   public:
+    // 构造函数，使用explicit修饰，不可进行隐式类型转换
+    explicit my_shared_ptr(T* _ptr = nullptr): ptr(_ptr), count(_ptr ? new size_t(1) : nullptr) {}
+
+    // 拷贝构造函数
+    my_shared_ptr(const my_shared_ptr& other): ptr(other.ptr), count(other.count) {
+        if (count)
+            ++(*count);
+    }
+
+    // 析构函数
+    ~my_shared_ptr() { release(); }
+
+    // 实现赋值运算符
+    my_shared_ptr& operator=(const my_shared_ptr& other) {
+        if (this != other) {
+            release();
+            ptr = other.ptr;
+            count = other.count;
+            if (count)
+                ++(*count);
+        }
+        return *this;
+    }
+
+    // 实现解引用函数
+    T& operator*() const { return *ptr; }
+
+    // 实现运算符->
+    T* operator->() const { return ptr; }
+
+    // 返回对象的裸指针
+    T* get() const { return ptr; }
+
+    // 返回引用计数
+    size_t use_count() { return count ? (*count) : 0; }
+};
+```
+**要点：**
+
+1. 智能指针的成员变量只有裸指针和指向引用计数的指针；
+2. 在构造函数中为裸指针和引用计数指针分配内存(RAII思想，资源获取既初始化);
+3. 拷贝构造函数要正确的更新引用计数；
+4. 需要实现 `= -> *` 运算符号
+
+#### `shared_ptr`的缺点？
+1. 可能存在 `double free`的问题。当我们使用同一个裸指针初始化多个 `shared_ptr`时，会产生多个独立的引用计数，这些引用计数为0后都释放原来的裸指针，导致程序错误。解决办法是使用 `make_shared`函数初始化指针而不是直接使用裸指针；
+2. 存在循坏引用问题，导致内存泄漏。比如类A中有一个B类型的 `shared_ptr`，类B中有一个A类型的 `shared_ptr`，它们就形成了一个环，引用计数永远不会为0，导致无法释放申请的内存，导致了内存泄漏。解决办法是将其中一个 `shared_ptr` 改成 `weak_ptr`。
+3. `shared_ptr`同时修改内存区域时，是线程不安全的，但其引用计数的更新是线程安全的。
+
 ### weak_ptr 
 
-share_ptr虽然已经很好用了，但是有一点share_ptr智能指针还是有内存泄露的情况，当两个对象相互使用一个shared_ptr成员变量指向对方，会造成循环引用，使引用计数失效，从而导致内存泄漏。
+`shared_ptr` 虽然已经很好用了，但是有一点 `shared_ptr` 智能指针还是有内存泄露的情况，当两个对象相互使用一个 `shared_ptr` 成员变量指向对方，会造成循环引用，使引用计数失效，从而导致内存泄漏。
 
-weak_ptr 是一种不控制对象生命周期的智能指针, 它指向一个 shared_ptr 管理的对象. 进行该对象的内存管理的是那个强引用的shared_ptr， weak_ptr只是提供了对管理对象的一个访问手段。weak_ptr 设计的目的是为配合 shared_ptr 而引入的一种智能指针来协助 shared_ptr 工作, 它只可以从一个 shared_ptr 或另一个 weak_ptr 对象构造, 它的构造和析构不会引起引用记数的增加或减少。weak_ptr是用来解决shared_ptr相互引用时的死锁问题,如果说两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。它是对对象的一种弱引用，不会增加对象的引用计数，和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，它可以通过调用lock函数来获得shared_ptr；
+`weak_ptr` 是一种不控制对象生命周期的智能指针, 它指向一个 `shared_ptr` 管理的对象. 进行该对象的内存管理的是那个强引用的 `shared_ptr`， `weak_ptr` 只是提供了对管理对象的一个访问手段。`weak_ptr` 设计的目的是为配合 `shared_ptr` 而引入的一种智能指针来协助 `shared_ptr` 工作, 它只可以从一个 `shared_ptr` 或另一个 `weak_ptr` 对象构造, 它的构造和析构不会引起引用记数的增加或减少。`weak_ptr` `是用来解决shared_ptr` 相互引用时的死锁问题,如果说两个 `shared_ptr` 相互引用,那么这两个指针的引用计数永远不可能下降为0,资源永远不会释放。它是对对象的一种弱引用，不会增加对象的引用计数，和 `shared_ptr` 之间可以相互转化，`shared_ptr` 可以直接赋值给它，它可以通过调用 `lock()` 函数来获得 `shared_ptr`；
+
+#### `weak_ptr`的常用函数
+
+```cpp
+// 构造函数
+weak_ptr() //默认构造函数，创建一个空的 std::weak_ptr 对象。
+weak_ptr(const std::shared_ptr<T>& ptr) // 接受一个 std::shared_ptr 对象，并创建一个指向相同对象的 std::weak_ptr 对象。
+
+// 复制和赋值：
+weak_ptr(const weak_ptr& r) // 拷贝构造函数，创建一个指向与 r 相同对象的 std::weak_ptr 对象。
+weak_ptr& operator=(const weak_ptr& r) // 拷贝赋值操作符，将当前对象指向与 r 相同对象。
+
+// 转换为 shared_ptr：
+std::shared_ptr<T> lock() const // 返回一个指向共享对象的 std::shared_ptr 对象，如果 std::weak_ptr 已经过期（指向的对象已被释放），则返回一个空的 std::shared_ptr。
+
+// 其他成员函数：
+void reset() // 重置 std::weak_ptr 对象，使其不再指向任何对象。
+long use_count() const // 返回与 std::shared_ptr 共享对象的引用计数。由于 std::weak_ptr 不会增加引用计数，因此 use_count() 返回的是 0 或者 1。
+bool expired() const // 检查 std::weak_ptr 是否已经过期，即其指向的对象是否已经被释放。
+```
