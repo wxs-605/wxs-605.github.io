@@ -12,5 +12,13 @@
     <guid>https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
     <description><![CDATA[参考文章：https://blog.csdn.net/Awesomewan/article/details/123948929 链接 参考公众号]]></description>
 </item>
+<item>
+    <title>操作系统 八股文</title>
+    <link>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[操作系统的特征？ 并发 并发指的是两个或多个事件在同⼀时间间隔内发⽣，计算机系统中同时存在多个运⾏的程序，因此具有处理和调度多个程序同时执⾏的能]]></description>
+</item>
 </channel>
 </rss>

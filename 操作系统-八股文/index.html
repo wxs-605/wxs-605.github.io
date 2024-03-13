@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>操作系统 八股文 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="操作系统 八股文" />
+<meta property="og:description" content="操作系统的特征？ 并发 并发指的是两个或多个事件在同⼀时间间隔内发⽣，计算机系统中同时存在多个运⾏的程序，因此具有处理和调度多个程序同时执⾏的能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-23T23:27:14+08:00" />
+<meta property="article:modified_time" content="2024-01-23T23:27:14+08:00" /><meta property="og:site_name" content="临海沐清风" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="操作系统 八股文"/>
+<meta name="twitter:description" content="操作系统的特征？ 并发 并发指的是两个或多个事件在同⼀时间间隔内发⽣，计算机系统中同时存在多个运⾏的程序，因此具有处理和调度多个程序同时执⾏的能"/>
+<meta name="application-name" content="临海沐清风">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" /><link rel="prev" href="https://wxs-605.github.io/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" /><link rel="next" href="https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "操作系统 八股文",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  4083 ,
+        "url": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87\/","datePublished": "2024-01-23T23:27:14+08:00","dateModified": "2024-01-23T23:27:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
+                "@type": "Person",
+                "name": "Mr.Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friend/"> 友链 </a><a class="menu-item" href="/about/"> 简历 </a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friend/" title="">友链</a><a class="menu-item" href="/about/" title="">简历</a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统 八股文</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>操作系统</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4083 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="操作系统 八股文">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#操作系统的特征">操作系统的特征？</a></li>
+    <li><a href="#线程和进程的区别">线程和进程的区别？</a></li>
+    <li><a href="#进程间的通信方式有哪些">进程间的通信方式有哪些？</a>
+      <ul>
+        <li><a href="#管道通信"><strong>管道通信：</strong></a>
+          <ul>
+            <li><a href="#匿名管道"><strong>匿名管道：</strong></a></li>
+            <li><a href="#命名管道"><strong>命名管道：</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#消息队列通信"><strong>消息队列通信：</strong></a></li>
+        <li><a href="#共享内存通信"><strong>共享内存通信：</strong></a></li>
+        <li><a href="#信号量通信"><strong>信号量通信：</strong></a>
+          <ul>
+            <li><a href="#控制信号量有两种操作一种是p操作一种是v操作">控制信号量有两种操作，一种是<strong>P操作</strong>，一种是<strong>V操作</strong>：</a></li>
+          </ul>
+        </li>
+        <li><a href="#信号通信"><strong>信号通信：</strong></a></li>
+        <li><a href="#socket通信"><strong>Socket通信：</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#线程间的通信方式">线程间的通信方式？</a></li>
+    <li><a href="#介绍一下你认识的锁">介绍一下你认识的锁？</a>
+      <ul>
+        <li><a href="#互斥锁">互斥锁</a></li>
+        <li><a href="#自旋锁">自旋锁</a></li>
+        <li><a href="#悲观锁">悲观锁</a></li>
+        <li><a href="#乐观锁">乐观锁</a></li>
+        <li><a href="#读写锁">读写锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#你知道死锁吗什么情况下会产生死锁">你知道死锁吗？什么情况下会产生死锁？</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="操作系统的特征">操作系统的特征？</h2>
+<ul>
+<li><strong>并发</strong> 并发指的是两个或多个事件在同⼀时间间隔内发⽣，计算机系统中同时存在多个运⾏的程序，因此具有处理和调度多个程序同时执⾏的能⼒。</li>
+<li><strong>共享：</strong> 系统中的资源可以供内存中多个并发执⾏的进程共同使⽤。
+<ul>
+<li><strong>互斥共享：</strong> ⼀段时间内只允许⼀个进程访问该资源。⼀段时间内只允许⼀个进程访问的资源称为临界资源。</li>
+<li><strong>同时访问：</strong> ⼀段时间内允许多个进程“同时”访问，“同时”通常是宏观的，实际上是交替的对该资源进⾏访问。</li>
+</ul>
+</li>
+<li><strong>虚拟</strong>：把⼀个物理上的实体变为若⼲逻辑上的对应物。</li>
+<li><strong>异步：</strong> 进程的执⾏并不是⼀贯到底的，⽽是以不可预知的速度向前推进。</li>
+</ul>
+<h2 id="线程和进程的区别">线程和进程的区别？</h2>
+<ol>
+<li><strong>资源方面：</strong> 进程是系统中拥有资源的基本单位，⽽线程不拥有系统资源（仅有⼀点必不可少的能保证运⾏的资源，⽐如寄存器和栈），但线程可以访问⾪属进程的系统资源。</li>
+<li><strong>调度方面：</strong> 线程切换的代价远低于进程，在同⼀个进程中，线程的切换不会引起进程切换，⽽从⼀个进程中的线程切换到另⼀个进程中的线程中，会引起进程切换。</li>
+<li><strong>独立性方面：</strong> 每个进程都拥有独⽴的地址空间和资源、除了共享全局变量，不允许其他进程访问。某进程中的线程对其他进程都不可⻅，同⼀进程中的不同线程是为了提⾼并发性以进⾏相互之间的合作⽽创建的，它们共享进程的地址空间和资源。</li>
+<li><strong>系统开销方面：</strong> 线程所需要的开销⽐进程⼩
+<ul>
+<li>线程的创建时间⽐进程快，因为进程在创建的过程中，还需要资源管理信息，⽐如内存管理信息、⽂件管理信息，⽽线程在创建的过程中，不会涉及这些资源管理信息，⽽是共享它们；</li>
+<li>线程的终⽌时间⽐进程快，因为线程释放的资源相⽐进程少很多；</li>
+<li>同⼀个进程内的线程切换⽐进程切换快，因为线程具有相同的地址空间（虚拟内存共享），这意味着同⼀个进程的线程都具有同⼀个⻚表，那么在切换的时候不需要切换⻚表。⽽对于进程之间的切换，切换的时候要把⻚表给切换掉，⽽⻚表的切换过程开销是⽐较⼤的。</li>
+<li>由于同⼀进程的各线程间共享内存和⽂件资源，那么在线程之间数据传递的时候，就不需要经过内核了，这就使得线程之间的数据交互效率更⾼。</li>
+</ul>
+</li>
+<li><strong>安全方面：</strong> 由于进程之间相互隔离，一个进程的崩溃不会直接影响到其他进程的稳定性；而线程由于共享相同的内存空间，一个线程的错误可能会影响整个进程的稳定性。</li>
+<li><strong>通信方面：</strong> 线程间可以通过直接读写同一进程中的数据进行通信，但是进程通信需要借助 IPC(进程通信技术)进行通信。</li>
+</ol>
+<h2 id="进程间的通信方式有哪些">进程间的通信方式有哪些？</h2>
+<p>总的来说，进程之间通信的方式有五种，分别是管道、消息队列、信号、信号量和共享内存和Socket。</p>
+<h3 id="管道通信"><strong>管道通信：</strong></h3>
+<p>在Linux和类Unix系统中，管道是一种特殊的文件描述符，它可以连接一个进程的输出和另一个进程的输入，从而实现进程间的单向通信。管道通信又分为匿名管道和有名管道。</p>
+<h4 id="匿名管道"><strong>匿名管道：</strong></h4>
+<p>一个单工的通信模式，具有固定的读端和写端，只能用于具有亲缘关系的进程之间通信，用完既销毁。匿名管道用 <code>fork()</code> 函数创建，可以将他看成一种特殊文件，对他的读写可以使用 read()，write() 函数；</p>
+<h4 id="命名管道"><strong>命名管道：</strong></h4>
+<p>该管道可通过路径名指出，在文件系统中可见，可以使两个相关的进程实现彼此通信，严格遵守先进先出的规则，在开始处读数据，末尾处写数据。命名管道用 <code>mkfifo()</code>函数创建；</p>
+<ul>
+<li>管道通信虽然简单，但是效率比较地，不适合进程间频繁地交换数据，并且管道智能传输无格式的字节流。</li>
+</ul>
+<h3 id="消息队列通信"><strong>消息队列通信：</strong></h3>
+<p>当A 进程要给 B 进程发送消息，A 进程把数据放在对应的消息队列后就可以正常返回了，B 进程在需要的时候自行去消息队列中读取数据就可以了。同样的，B 进程要给 A 进程发送消息也是如此。<strong>消息队列的本质就是存放在内存中的消息的链表，</strong> 而消息本质上是用户自定义的数据结构。如果进程从消息队列中读取了某个消息，这个消息就会被从消息队列中删除。</p>
+<ul>
+<li>消息队列允许一个或多个进程向他写入或者读取信息；</li>
+<li>消息队列可以实现消息的随机查询，不一定非要以先进先出的次序读取消息，也可以按消息的类型读取。比有名管道的先进先出原则更有优势；</li>
+<li>消息队列对于<strong>交换较少数量的数据</strong>很有用，因为无需避免冲突。但是，由于用户进程写入数据到内存中的消息队列时，会发生从<strong>用户态拷贝数据到内核态</strong>的过程；同样的，另一个用户进程<strong>读取内存中的消息数据时</strong>，会发生<strong>从内核态拷贝数据到用户态</strong>的过程。因此，如果数据量较大，使用消息队列就会造成<strong>频繁的系统调用</strong>，也就是需要消耗更多的时间以便内核介入。</li>
+</ul>
+<h3 id="共享内存通信"><strong>共享内存通信：</strong></h3>
+<p>共享内容可以很好的解决消息队列频繁的系统调用的问题。共享内存允许<strong>不相干的进程</strong>将<strong>同一段物理内存</strong>连接到它们<strong>各自的地址空间</strong>中，使得这些进程可以访问同一个物理内存，这个物理内存就成为共享内存。如果某个进程向共享内存写入数据，所做的改动将<strong>立即影响</strong>到可以访问同一段共享内存的任何<strong>其他进程</strong>。</p>
+<ol>
+<li>
+<p>每个进程都有属于自己的进程控制块（PCB）和逻辑地址空间（Addr Space），并且都有一个与之对应的页表，负责将进程的逻辑地址（虚拟地址）与物理地址进行映射，通过内存管理单元（MMU）进行管理。</p>
+</li>
+<li>
+<p><strong>两个不同进程的逻辑地址通过页表映射到物理空间的同一区域，它们所共同指向的这块区域就是共享内存。</strong></p>
+</li>
+<li>
+<p>共享内存机制仅在建立共享内存区域时需要系统调用，一旦建立共享内存，所有的访问都可作为常规内存访问，无需借助内核。这样，数据就不需要在进程之间来回拷贝，所以这是最快的一种进程通信方式。</p>
+</li>
+</ol>
+<h3 id="信号量通信"><strong>信号量通信：</strong></h3>
+<p>信号量其实是⼀个<strong>整型的计数器</strong>，主要⽤于实现进程间的<strong>互斥与同步</strong>，⽽不是⽤于缓存进程间通信的<strong>数据</strong>。可以⽤来控制多个进程对共享资源的访问，常作为⼀种锁机制，防⽌某进程正在访问共享资源时，其他进程也访问该资源。因此主要作为进程间以及同⼀进程内不同线程之间的同步⼿段。</p>
+<h4 id="控制信号量有两种操作一种是p操作一种是v操作">控制信号量有两种操作，一种是<strong>P操作</strong>，一种是<strong>V操作</strong>：</h4>
+<ul>
+<li><strong>P 操作</strong>，这个操作会把信号量减去 1，相减后如果信号量 &lt; 0，则表明资源已被占⽤，进程需阻塞等待；相减后如果信号量 &gt;= 0，则表明还有资源可使⽤，进程可正常继续执⾏；</li>
+<li><strong>V 操作</strong>，这个操作会把信号量加上 1，相加后如果信号量 &lt;= 0，则表明当前有阻塞中的进程，于是会将该进程唤醒运⾏；相加后如果信号量 &gt; 0，则表明当前没有阻塞中的进程；</li>
+</ul>
+<h3 id="信号通信"><strong>信号通信：</strong></h3>
+<p>⽤于通知接收进程某个事件已经发⽣，从⽽迫使进程执⾏信号处理程序，这也是一种信号通信的方式。<strong>信号是进程通信机制中唯一的异步通信机制</strong>，它可以在任何时候发送信号给某个进程。通过发送指定信号来通知进程某个异步事件的发送，以迫使进程执行信号处理程序。信号处理完毕后，被中断进程将恢复执行。用户、内核和进程都能生成和发送信号。</p>
+<ul>
+<li>信号事件的来源主要有<strong>硬件来源</strong>和<strong>软件来源</strong>。</li>
+<li></li>
+<li>所谓硬件来源就是说我们可以通过键盘输入某些组合键给进程发送信号，比如常见的组合键 Ctrl+C 产生 SIGINT 信号，表示终止该进程；</li>
+<li></li>
+<li>而软件来源就是通过 kill 系列的命令给进程发送信号，比如 kill -9 1111 ，表示给 PID 为 1111 的进程发送 SIGKILL 信号，让其立即结束。可通过 <code>kill -l</code>命令查看所有信号；</li>
+</ul>
+<h3 id="socket通信"><strong>Socket通信：</strong></h3>
+<p>上面介绍的5种方法都是用于同一台主机上的进程之间进行通信的，如果想要跨网络与不同主机上的进程进行通信就得使用 <code>Socket</code> 通信了。<code>Socket</code> 是支持TCP/IP的网络通信的基本操作单元，主要用于在客户端和服务器之间通过网络进行通信。</p>
+<h2 id="线程间的通信方式">线程间的通信方式？</h2>
+<p>同个进程下的线程之间都是共享进程的资源，只要是共享变量都可以做到线程间通信，⽐如全局变量，所以对于线程间关注的不是通信⽅式，⽽是关注多线程竞争共享资源的问题，<strong>信号量</strong>也同样可以在线程间实现<strong>互斥与同步</strong>：</p>
+<ol>
+<li>
+<p><strong>互斥锁：</strong> 互斥锁是最常⻅的线程同步机制。它允许只有⼀个线程同时访问被保护的临界区（共享资源）；</p>
+</li>
+<li>
+<p><strong>条件变量：</strong> 条件变量⽤于线程间通信，允许⼀个线程等待某个条件满⾜，⽽其他线程可以发出信号通知等待线程。通常与互斥锁⼀起使⽤；</p>
+</li>
+<li>
+<p><strong>读写锁：</strong> 读写锁允许多个线程同时读取共享资源，但只允许⼀个线程写⼊资源；</p>
+</li>
+<li>
+<p><strong>信号量：</strong> ⽤于控制多个线程对共享资源进⾏访问的⼯具。</p>
+</li>
+</ol>
+<h2 id="介绍一下你认识的锁">介绍一下你认识的锁？</h2>
+<p>锁是一个抽象概念，是一种<strong>保护共享资源的同步化技术</strong>。锁有两个操作：<code>acquire</code> 和 <code>release</code>。它一次最多只允许一个线程获取，一旦所有权被某一线程获取，其他线程只能等待该线程释放锁才能访问被保护的资源。</p>
+<p>根据线程调度方式，可以将锁分为互斥锁和自旋锁；</p>
+<h3 id="互斥锁">互斥锁</h3>
+<p>一个 CPU 上面的多个线程抢占一把锁，抢占失败的线程会被调度器置位 <code>WAIT</code> （睡眠）状态，直到下一次的 CPU 时间片到来时再次抢占。互斥锁适用于加锁时间较长的场景，此时线程上下文切换带来的开销可以被忽略。</p>
+<h3 id="自旋锁">自旋锁</h3>
+<p>线程获取自旋锁失败后，不会放弃 CPU，会一直处于忙等待状态并持续检查锁是否被释放。适用于加锁时间小于线程切换开销的场景。</p>
+<p>数据库中常见的两种锁是悲观锁和乐观锁。</p>
+<h3 id="悲观锁">悲观锁</h3>
+<p>悲观锁很悲观，它认为多线程同时修改共享资源的概率⽐较⾼，所以访问共享资源的时候先上锁；</p>
+<h3 id="乐观锁">乐观锁</h3>
+<p>乐观锁没有那么悲观，它假设数据一般情况不会造成冲突，即使当多用户同时修改数据后，只有一条被记录。当数据进行提交更新的时候，如果检测到数据不匹配，此时上报错误信息。乐观锁适用于读多写少的场景，这样可以提高程序的<strong>吞吐量</strong>。</p>
+<p>最后一种是读写锁</p>
+<h3 id="读写锁">读写锁</h3>
+<p>读写锁用于<strong>对共享资源的访问</strong>，它允许多个线程<strong>同时读</strong>共享资源，但在有线程要写共享资源时必须<strong>互斥排斥</strong>其他读者和写者。</p>
+<p>读写锁有两种状态：<strong>读模式和写模式</strong>。在<strong>读模式</strong>下可以有多个线程同时访问共享资源，而在<strong>写模式</strong>下只能有一个线程访问共享资源。当有线程在写模式下访问共享资源时，所有其他线程（无论读模式还是写模式）都会被<strong>阻塞</strong>，直到写操作完成。</p>
+<p>读写锁的好处是可以<strong>提高读并发性能</strong>。当共享资源被频繁读取而很少被写入时，读写锁可以允许更多线程并发地读取数据，从而提高系统的吞吐量和性能。</p>
+<h2 id="你知道死锁吗什么情况下会产生死锁">你知道死锁吗？什么情况下会产生死锁？</h2>
+<p>死锁是指两个或多个进程在争夺系统资源时，<strong>由于互相等待对⽅释放资源</strong>⽽⽆法继续执⾏的状态。死锁只有同时满⾜以下四个条件才会发⽣：</p>
+<ol>
+<li><strong>互斥条件</strong> ⼀个进程占⽤了某个资源时，其他进程⽆法同时占⽤该资源；</li>
+<li><strong>请求和保持</strong> 一个线程因为请求资源而阻塞的时候，不会释放自己的资源；</li>
+<li><strong>不可剥夺条件</strong> 资源不能被强制性地从⼀个进程中剥夺，只能由持有者⾃愿释放；</li>
+<li><strong>环路等待条件</strong> 多个进程之间形成⼀个循环等待资源的链，每个进程都在等待下⼀个进程所占有的资源；</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="prev" rel="prev" title="LeetCode 贪心算法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>LeetCode 贪心算法</a>
+            <a href="/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" class="next" rel="next" title="CPP 八股文">CPP 八股文<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript><div id="commento" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Mr.Wu</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.commento.io/js/commento.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"I5ZLW4RREN","algoliaIndex":"blog","algoliaSearchKey":"ca4030445104c5af93f86dcac75e9c6e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.f58ffea166ff5d840976e4af8e31ee736ea0e035126a6625ed1feb834ff61769d811827b5137532960ce6edff8ede85f.js" integrity="sha384-9Y/+oWb/XYQJduSvjjHuc26g4DUSamYl7R/rg0/2F2nYEYJ7UTdTKWDObt/47ehf"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', '4672765957', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=4672765957" async></script></body>
+</html>
