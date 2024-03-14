@@ -4,7 +4,15 @@
         <link>https://wxs-605.github.io/categories/cpp/</link>
         <description>CPP - 分类 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/cpp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Mar 2024 16:17:16 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/cpp/" rel="self" type="application/rss+xml" /><item>
+    <title>CPP 智能指针</title>
+    <link>https://wxs-605.github.io/cpp-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link>
+    <pubDate>Mon, 11 Mar 2024 16:17:16 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/cpp-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid>
+    <description><![CDATA[就像谈到提起北京就会说到故宫一样，学习 C++ 时自然而然会提及智能指针，在 C++98 时推出了 auto_ptr ，在C++11时智能指针的功能更加完善，推出了更加安全和多功]]></description>
+</item>
+<item>
     <title>CPP 线程管理</title>
     <link>https://wxs-605.github.io/cpp-%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
     <pubDate>Fri, 23 Feb 2024 21:19:15 &#43;0800</pubDate>
