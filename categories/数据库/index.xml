@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>数据库 - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+        <description>数据库 - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+    <title>数据库 八股文</title>
+    <link>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[数据库的三大范式？ 范式是数据库设计时遵循的一种规范，不同的规范要求遵循不同的范式。 第一范式(1NF) 属性不可分割，即每个属性都是不可分割的原]]></description>
+</item>
+</channel>
+</rss>

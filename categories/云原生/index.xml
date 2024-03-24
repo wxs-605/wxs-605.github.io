@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>云原生 - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+        <description>云原生 - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 14 Mar 2024 14:58:45 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="self" type="application/rss+xml" /><item>
+    <title>八股文 云原生</title>
+    <link>https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+    <pubDate>Thu, 14 Mar 2024 14:58:45 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/</guid>
+    <description><![CDATA[Docker篇 Docker 与 虚拟机的区别？ 启动速度不同 docker： 启动 Docker 相当于启动宿主操作系统上的一个进程，启动速度属于秒级别。 虚拟机： 启动虚拟机需]]></description>
+</item>
+</channel>
+</rss>

@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/cpp-%E5%85%AB%E8%82%A1%E6%96%87\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  21014 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  22219 ,
         "url": "https:\/\/wxs-605.github.io\/cpp-%E5%85%AB%E8%82%A1%E6%96%87\/","datePublished": "2024-01-23T23:27:14+08:00","dateModified": "2024-01-23T23:27:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CPP 八股文</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/cpp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CPP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 21014 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 42 分钟&nbsp;<span id="/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="CPP 八股文">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 22219 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 45 分钟&nbsp;<span id="/cpp-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="CPP 八股文">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -176,6 +176,16 @@
           <ul>
             <li><a href="#什么是raii机制">什么是RAII机制</a></li>
             <li><a href="#raii的实现步骤"><code>RAII</code>的实现步骤：</a></li>
+          </ul>
+        </li>
+        <li><a href="#面向对象设计原则">面向对象设计原则</a>
+          <ul>
+            <li><a href="#工厂模式">工厂模式</a></li>
+            <li><a href="#单例模式singleton">单例模式(Singleton)</a></li>
+            <li><a href="#懒汉模式">懒汉模式</a></li>
+            <li><a href="#饿汉模式">饿汉模式</a></li>
+            <li><a href="#代理模式">代理模式</a></li>
+            <li><a href="#观察者模式">观察者模式</a></li>
           </ul>
         </li>
       </ul>
@@ -560,6 +570,8 @@
 <li><code>new</code>是类型安全的，一个 <code>int</code>型的指针指向 <code>float</code>会报错；<code>malloc</code>不是类型安全的；( <code>malloc</code>类型转换为 <code>int</code>，分配 <code>double</code>数据类型大小的内存空间不会报错)</li>
 <li><code>delete</code>释放内存后会将指针值设置成 <code>nullptr</code>，以避免野指针，而 <code>free</code>不会修改指针的值，可能导致野指针的问题；</li>
 </ol>
+<p><strong>malloc 或者 new 最多可以申请多大的内存空间？</strong>
+在C语言中，malloc函数可以申请的最大空间取决于系统的物理内存大小以及系统的内存管理方式。一般来说，在32位系统上，由于地址空间有限，malloc函数一次最多可以分配大约2GB的内存空间</p>
 <p><strong>自由存储区和堆区的区别</strong></p>
 <p>自由存储区是 C++ 基于new操作符的一个抽象概念，凡是通过 new 操作符进行内存申请，该内存即为自由存储区。那么自由存储区是否能够是堆（问题等价于new是否能在堆上动态分配内存），这取决于operator new 的实现细节。自由存储区<strong>不仅可以是堆</strong>，还可以是<strong>静态存储区</strong>，这都看operator new在哪里为对象分配内存。不过我们一般可以将自由存储区等价为堆。</p>
 <p>自由存储区（或堆区）是用于动态分配内存的一块较大的、连续的内存区域。与栈区不同，自由存储区的生命周期不受函数的调用和返回限制，可以在程序的任意位置进行内存的分配和释放。主要区别如下：</p>
@@ -863,6 +875,42 @@
 <li>在构造函数中执行资源的初始化。比如申请内存、打开文件、申请锁等；</li>
 <li>在析构函数中执行销毁操作，比如释放内存、关闭文件、释放锁等；</li>
 <li>使用时声明一个该对象的类，一般在你希望的作用域即可，比如在函数的开始，或者作为类的成员变量；</li>
+</ul>
+<h3 id="面向对象设计原则">面向对象设计原则</h3>
+<ol>
+<li><strong>单一职责原则：</strong> 一个类只负责一个功能领域中的相应职责。或者说，一个类，最好只做一件事，只有一个引起它变化的原因。</li>
+<li><strong>开闭原则：</strong> 一个软件实体应当对拓展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行拓展。</li>
+<li><strong>里氏替换原则：</strong> 所有引用基类（父类）的地方必须能透明的使用其子类的对象，并且保证原来程序的逻辑行为不变以及正确性不被破坏。</li>
+<li><strong>依赖倒置原则：</strong> 抽象不应该依赖于细节，细节应当依赖于抽象。换句话说，要针对接口编程，而不是针对实现编程。</li>
+<li><strong>接口隔离原则：</strong> 使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些他不需要的接口。</li>
+<li><strong>合成复用原则：</strong> 尽量使用对象组合，而不是继承来达到复用的目的。</li>
+</ol>
+<h4 id="工厂模式">工厂模式</h4>
+<p>定义一个创建对象的接口，其子类去具体现实这个接口以完成具体的创建工作。如果需要增加新的产品类，只需要扩展一个相应的工厂类即可。缺点：产品类数据较多时，需要实现大量的工厂类，这无疑增加了代码量。</p>
+<h4 id="单例模式singleton">单例模式(Singleton)</h4>
+<p>单例模式顾名思义，保证一个类仅可以有一个实例化对象，并且提供一个可以访问它的全局接口。</p>
+<ul>
+<li>单例类只能由一个实例化对象。</li>
+<li>单例类必须自己提供一个实例化对象。</li>
+<li>单例类必须提供一个可以访问唯一实例化对象的接口。</li>
+</ul>
+<h4 id="懒汉模式">懒汉模式</h4>
+<p>懒汉：故名思义，不到万不得已就不会去实例化类，也就是说在第一次用到类实例的时候才会去实例化一个对象。在访问量较小，甚至可能不会去访问的情况下，采用懒汉实现，这是以时间换空间。</p>
+<h4 id="饿汉模式">饿汉模式</h4>
+<p>饿汉：饿了肯定要饥不择食。所以在单例类定义的时候就进行实例化。在访问量比较大，或者可能访问的线程比较多时，采用饿汉实现，可以实现更好的性能。这是以空间换时间。</p>
+<h4 id="代理模式">代理模式</h4>
+<p>代理模式：为其它对象提供一种代理以控制这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介作用。优点：</p>
+<ul>
+<li>职责清晰。真实的角色只负责实现实际的业务逻辑，不用关心其它非本职责的事务，通过后期的代理完成具体的任务。这样代码会简洁清晰。</li>
+<li>代理对象可以在客户端和目标对象之间起到中介的作用，这样就保护了目标对象。</li>
+<li>扩展性好。</li>
+</ul>
+<h4 id="观察者模式">观察者模式</h4>
+<p>观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都要得到通知并自动更新。</p>
+<p>观察者模式从根本上讲必须包含两个角色：观察者和被观察对象。</p>
+<ul>
+<li>被观察对象自身应该包含一个容器来存放观察者对象，当被观察者自身发生改变时通知容器内所有的观察者对象自动更新。</li>
+<li>观察者对象可以注册到被观察者的中，完成注册后可以检测被观察者的变化，接收被观察者的通知。当然观察者也可以被注销掉，停止对被观察者的监控。</li>
 </ul>
 <h2 id="stl库">STL库</h2>
 <h3 id="各个常见容器">各个常见容器</h3>

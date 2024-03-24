@@ -4,7 +4,31 @@
         <link>https://wxs-605.github.io/tags/%E5%85%AB%E8%82%A1%E6%96%87/</link>
         <description>八股文 - 标签 - 临海沐清风</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="self" type="application/rss+xml" /><item>
+    <title>数据库 八股文</title>
+    <link>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[数据库的三大范式？ 范式是数据库设计时遵循的一种规范，不同的规范要求遵循不同的范式。 第一范式(1NF) 属性不可分割，即每个属性都是不可分割的原]]></description>
+</item>
+<item>
+    <title>数据结构 八股文</title>
+    <link>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Thu, 14 Mar 2024 16:26:05 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[B树和B+树的区别？ B树 B树是平衡多叉树，每个节点既保存索引又保存数据，搜索时相当二分查找； B+树 B+树也是平衡多叉树，但只有叶子节点保存数]]></description>
+</item>
+<item>
+    <title>八股文 云原生</title>
+    <link>https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+    <pubDate>Thu, 14 Mar 2024 14:58:45 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/</guid>
+    <description><![CDATA[Docker篇 Docker 与 虚拟机的区别？ 启动速度不同 docker： 启动 Docker 相当于启动宿主操作系统上的一个进程，启动速度属于秒级别。 虚拟机： 启动虚拟机需]]></description>
+</item>
+<item>
     <title>CPP 八股文</title>
     <link>https://wxs-605.github.io/cpp-%E5%85%AB%E8%82%A1%E6%96%87/</link>
     <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>
@@ -19,6 +43,14 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
     <description><![CDATA[操作系统的特征？ 并发 并发指的是两个或多个事件在同⼀时间间隔内发⽣，计算机系统中同时存在多个运⾏的程序，因此具有处理和调度多个程序同时执⾏的能]]></description>
+</item>
+<item>
+    <title>计网 八股文</title>
+    <link>https://wxs-605.github.io/%E8%AE%A1%E7%BD%91-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E8%AE%A1%E7%BD%91-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[计算机网络架构层次 你知道OSI七层参考模型吗 一. 物理层 负责物理传输媒介的传输，例如电缆、光纤或⽆线信号。主要作⽤是传输⽐特流（就是由 1、0 转]]></description>
 </item>
 </channel>
 </rss>

@@ -216,6 +216,71 @@ class my_shared_ptr {
     size_t use_count() { return count ? (*count) : 0; }
 };
 ```
+
+一个升级的简化版的 `shared_ptr` ：
+
+```cpp
+#include<iostream>
+#include <atomic>
+#include <mutex>
+#include <thread>
+using namespace std;
+
+// 智能指针的定义
+template <typename T>
+class my_shared_ptr {
+   private:
+    T* ptr;
+    std::atomic<size_t>* ref_count;
+    // 引用计数减一，并判断是否需要释放内存
+    void release() {
+        if (*ref_count && --(*ref_count) == 0) {
+            delete ptr;
+            delete ref_count;
+        }
+    }
+
+   public:
+    // 构造函数，使用explicit修饰，不可进行隐式类型转换
+    explicit my_shared_ptr(T* _ptr = nullptr): ptr(_ptr), ref_count(_ptr ? new std::atomic<size_t>(1) : new std::atomic<size_t>(0)) {}
+
+    // 拷贝构造函数
+    my_shared_ptr(const my_shared_ptr& other): ptr(other.ptr), ref_count(other.ref_count) {
+        if (*ref_count)
+            ++(*ref_count);
+    }
+
+    // 析构函数
+    ~my_shared_ptr() { release(); }
+
+    // 实现赋值运算符
+    my_shared_ptr& operator=(const my_shared_ptr& other) {
+        if (this != other) {
+            release();
+            ptr = other.ptr;
+            ref_count = other.ref_count;
+            if (*ref_count)
+                ++(*ref_count);
+        }
+        return *this;
+    }
+
+    // 实现解引用函数
+    T& operator*() const { return *ptr; }
+
+    // 实现运算符->
+    T* operator->() const { return ptr; }
+
+    // 返回对象的裸指针
+    T* get() const { return ptr; }
+
+    // 返回引用计数
+    size_t use_count() { return (*ref_count); }
+};
+```
+
+`shared_ptr`的多个对象同时访问指向的共享内存时，是线程不安全的的，可以使用互斥锁来保证线程之间安全的访问共享内存。如访问之前先获得互斥锁，完成操作之后再释放掉。
+
 **要点：**
 
 1. 智能指针的成员变量只有裸指针和指向引用计数的指针；
@@ -226,7 +291,7 @@ class my_shared_ptr {
 #### `shared_ptr`的缺点？
 1. 可能存在 `double free`的问题。当我们使用同一个裸指针初始化多个 `shared_ptr`时，会产生多个独立的引用计数，这些引用计数为0后都释放原来的裸指针，导致程序错误。解决办法是使用 `make_shared`函数初始化指针而不是直接使用裸指针；
 2. 存在循坏引用问题，导致内存泄漏。比如类A中有一个B类型的 `shared_ptr`，类B中有一个A类型的 `shared_ptr`，它们就形成了一个环，引用计数永远不会为0，导致无法释放申请的内存，导致了内存泄漏。解决办法是将其中一个 `shared_ptr` 改成 `weak_ptr`。
-3. `shared_ptr`同时修改内存区域时，是线程不安全的，但其引用计数的更新是线程安全的。
+3. `shared_ptr`同时修改内存区域时，是线程不安全的，但其引用计数的更新是线程安全的,因为其在更新计数的时候操作是原子性的。
 
 ### weak_ptr 
 

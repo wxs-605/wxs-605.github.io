@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>计算机网络 - 分类 - 临海沐清风</title>
+        <link>https://wxs-605.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+        <description>计算机网络 - 分类 - 临海沐清风</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</lastBuildDate><atom:link href="https://wxs-605.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="self" type="application/rss+xml" /><item>
+    <title>计网 八股文</title>
+    <link>https://wxs-605.github.io/%E8%AE%A1%E7%BD%91-%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Tue, 23 Jan 2024 23:27:14 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/%E8%AE%A1%E7%BD%91-%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[计算机网络架构层次 你知道OSI七层参考模型吗 一. 物理层 负责物理传输媒介的传输，例如电缆、光纤或⽆线信号。主要作⽤是传输⽐特流（就是由 1、0 转]]></description>
+</item>
+</channel>
+</rss>

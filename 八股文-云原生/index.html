@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>八股文 云原生 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="八股文 云原生" />
+<meta property="og:description" content="Docker篇 Docker 与 虚拟机的区别？ 启动速度不同 docker： 启动 Docker 相当于启动宿主操作系统上的一个进程，启动速度属于秒级别。 虚拟机： 启动虚拟机需" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-14T14:58:45+08:00" />
+<meta property="article:modified_time" content="2024-03-14T14:58:45+08:00" /><meta property="og:site_name" content="临海沐清风" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="八股文 云原生"/>
+<meta name="twitter:description" content="Docker篇 Docker 与 虚拟机的区别？ 启动速度不同 docker： 启动 Docker 相当于启动宿主操作系统上的一个进程，启动速度属于秒级别。 虚拟机： 启动虚拟机需"/>
+<meta name="application-name" content="临海沐清风">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" /><link rel="prev" href="https://wxs-605.github.io/cpp-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" /><link rel="next" href="https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%85%AB%E8%82%A1%E6%96%87/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "八股文 云原生",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wxs-605.github.io\/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  1769 ,
+        "url": "https:\/\/wxs-605.github.io\/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F\/","datePublished": "2024-03-14T14:58:45+08:00","dateModified": "2024-03-14T14:58:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
+                "@type": "Person",
+                "name": "Mr.Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friend/"> 友链 </a><a class="menu-item" href="/about/"> 简历 </a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friend/" title="">友链</a><a class="menu-item" href="/about/" title="">简历</a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">八股文 云原生</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>云原生</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-14">2024-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1769 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" class="leancloud_visitors" data-flag-title="八股文 云原生">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker篇">Docker篇</a>
+      <ul>
+        <li><a href="#docker-与-虚拟机的区别">Docker 与 虚拟机的区别？</a>
+          <ul>
+            <li><a href="#启动速度不同">启动速度不同</a></li>
+            <li><a href="#占用资源不同">占用资源不同</a></li>
+            <li><a href="#隔离性不同">隔离性不同</a></li>
+            <li><a href="#安全性不同">安全性不同</a></li>
+            <li><a href="#交付部署不同">交付部署不同</a></li>
+          </ul>
+        </li>
+        <li><a href="#docker如何实现资源隔离-底层原理">Docker如何实现资源隔离？/ 底层原理？</a></li>
+      </ul>
+    </li>
+    <li><a href="#kubernetes篇">Kubernetes篇</a>
+      <ul>
+        <li><a href="#客户端如何从外部访问集群内部的服务">客户端如何从外部访问集群内部的服务？</a></li>
+        <li><a href="#kubernetes的调度策略有哪些">Kubernetes的调度策略有哪些？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="docker篇">Docker篇</h2>
+<h3 id="docker-与-虚拟机的区别">Docker 与 虚拟机的区别？</h3>
+<h4 id="启动速度不同">启动速度不同</h4>
+<p><strong>docker：</strong> 启动 Docker 相当于启动宿主操作系统上的一个进程，启动速度属于秒级别。</p>
+<p><strong>虚拟机：</strong> 启动虚拟机需要先启动虚拟机的操作系统，再启动应用，这个过程非常慢，通常需要几分钟。</p>
+<h4 id="占用资源不同">占用资源不同</h4>
+<p><strong>docker：</strong> Docker 只是一个进程，只需要将应用以及相关的组件打包，在运行时占用很少的资源，一台机器可以开启成千上万个 Docker。</p>
+<p><strong>虚拟机：</strong> 虚拟机是一个完整的操作系统，需要占用大量的磁盘、内存和 CPU 资源，一台机器只能开启几十个的虚拟机。</p>
+<h4 id="隔离性不同">隔离性不同</h4>
+<p><strong>docker：</strong> docker隔离性更弱，docker属于进程之间的隔离。</p>
+<p><strong>虚拟机：</strong> 虚拟机隔离性更强，可实现系统级别隔离。</p>
+<h4 id="安全性不同">安全性不同</h4>
+<p><strong>docker：</strong> docker的安全性更弱。Docker的租户root和宿主机root等同，一旦容器内的用户从普通用户权限提升为root权限，它就直接具备了宿主机的root权限，进而可进行无限制的操作，容器至今还没有任何形式的硬件隔离，这使得容器容易受到攻击。</p>
+<p><strong>虚拟机：</strong> 虚拟机租户root权限和宿主机的root虚拟机权限是分离的，并且虚拟机利用如Intel的VT-d和VT-x的ring-1硬件隔离技术，这种隔离技术可以防止虚拟机突破和彼此交互。</p>
+<h4 id="交付部署不同">交付部署不同</h4>
+<p><strong>docker：</strong> Docker在Dockerfile中记录了容器构建过程，可在集群中实现快速分发和快速部署。</p>
+<p><strong>虚拟机：</strong> 虚拟机可以通过镜像实现环境交付的⼀致性，但镜像分发⽆法体系化。</p>
+<h3 id="docker如何实现资源隔离-底层原理">Docker如何实现资源隔离？/ 底层原理？</h3>
+<ol>
+<li>
+<p><strong>Namespace：</strong> Docker 使用 Linux 内核提供的各种命名空间，如 PID 命名空间、网络命名空间、挂载点命名空间等，实现了进程间的隔离。每个容器都有自己独立的命名空间，使得容器内的进程看起来像在一个独立的系统中运行一样。</p>
+</li>
+<li>
+<p><strong>Cgroups：</strong> 通过 Cgroups 技术，Docker 可以限制容器可以使用的资源，如 CPU、内存、磁盘 I/O 等。这样可以避免某个容器占用过多资源影响其他容器的正常运行，实现资源的有效分配和隔离。</p>
+</li>
+<li>
+<p><strong>文件系统隔离：</strong> Docker 使用 Union 文件系统技术（如 AUFS、OverlayFS）将容器与宿主机进行隔离，容器内的文件系统只能访问容器内部的文件，而不会影响宿主机或其他容器的文件系统。</p>
+</li>
+</ol>
+<h2 id="kubernetes篇">Kubernetes篇</h2>
+<h3 id="客户端如何从外部访问集群内部的服务">客户端如何从外部访问集群内部的服务？</h3>
+<p>对于 Kubernetes，集群外的客户端默认情况，无法通过 Pod 的 IP 地址或者Service 的虚拟 IP 地址:虚拟端口号进行访问。通常可以通过以下方式进行访问Kubernetes 集群内的服务：</p>
+<ol>
+<li>
+<p><strong>映射 Pod 到物理机：</strong> 将 Pod 端口号映射到宿主机，即在 Pod 中采用 <code>hostPort</code> 方式，以使客户端应用能够通过物理机访问容器应用；</p>
+</li>
+<li>
+<p><strong>映射 Service 到物理机：</strong> 将 Service 端口号映射到宿主机，即在 Service 中采用 <code>nodePort</code> 方式，以使客户端应用能够通过物理机访问容器应用。</p>
+</li>
+<li>
+<p><strong>射 Sercie 到 <code>LoadBalancer</code> ：</strong> 通过设置 <code>LoadBalancer</code> 映射到云服务商提供的 <code>LoadBalancer</code> 地址。这种用法<strong>仅用于在公有云服务提供商的云平台上</strong>设置 Service 的场景。</p>
+</li>
+</ol>
+<h3 id="kubernetes的调度策略有哪些">Kubernetes的调度策略有哪些？</h3>
+<p>我记得住的话，有一下几种调度策略，</p>
+<ol>
+<li>
+<p><strong>均衡调度（Balance）：</strong> 默认的调度策略。它会尽量将 Pod 均匀地分布在可用节点上，以平衡集群中的负载。</p>
+</li>
+<li>
+<p><strong>节点亲和性调度（Node Affinity）：</strong> 通过节点亲和性调度策略，可以指定 Pod 应该被调度到特定的节点上。可以使用标签选择器来定义节点亲和性规则，以实现某些特定的调度需求。 比如将需用到GPU的容器调度到具有GPU的节点上。</p>
+</li>
+<li>
+<p><strong>Pod 亲和性调度（Pod Affinity）：</strong> 通过 Pod 亲和性调度策略，可以指定 Pod 应该被调度到与其他 Pod 相同或不同的节点上。这对于需要将相关的服务部署在相同节点上的场景非常有用。</p>
+</li>
+<li>
+<p><strong>Pod 反亲和性调度（Pod Anti-Affinity）：</strong> 与 Pod 亲和性相反，Pod 反亲和性调度策略会尽量将 Pod 调度到与其他 Pod 不同的节点上，以增加容灾能力和故障隔离性。</p>
+</li>
+</ol>
+<p>这是调度策略，然后在调度器调度的过程，会先后执行预选和优选两个算法。</p>
+<p><strong>过滤阶段也叫预选阶段：</strong> 执行各种函数来检查节点是否满足Pod运行的需要。比如说Pod需要的端口号有没有被占用、有没有污点等。其中有一个函数叫做NodeResourceFit，他会将Pod中设置的request值和节点上所有Pod的request之和相加看看是否超过节点的总资源，如果超过，就会淘汰这个节点；</p>
+<p><strong>打分阶段也叫优选阶段：</strong> 根据各种函数计算节点的得分，按得分排序，得分最高的节点就是最终绑定Pod的节点。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-03-14</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/cpp-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="prev" rel="prev" title="CPP 智能指针"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CPP 智能指针</a>
+            <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%85%AB%E8%82%A1%E6%96%87/" class="next" rel="next" title="数据结构 八股文">数据结构 八股文<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript><div id="commento" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Mr.Wu</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.commento.io/js/commento.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"I5ZLW4RREN","algoliaIndex":"blog","algoliaSearchKey":"ca4030445104c5af93f86dcac75e9c6e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.f58ffea166ff5d840976e4af8e31ee736ea0e035126a6625ed1feb834ff61769d811827b5137532960ce6edff8ede85f.js" integrity="sha384-9Y/+oWb/XYQJduSvjjHuc26g4DUSamYl7R/rg0/2F2nYEYJ7UTdTKWDObt/47ehf"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', '4672765957', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=4672765957" async></script></body>
+</html>
