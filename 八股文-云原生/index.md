@@ -70,3 +70,18 @@
 **过滤阶段也叫预选阶段：** 执行各种函数来检查节点是否满足Pod运行的需要。比如说Pod需要的端口号有没有被占用、有没有污点等。其中有一个函数叫做NodeResourceFit，他会将Pod中设置的request值和节点上所有Pod的request之和相加看看是否超过节点的总资源，如果超过，就会淘汰这个节点；
 
 **打分阶段也叫优选阶段：** 根据各种函数计算节点的得分，按得分排序，得分最高的节点就是最终绑定Pod的节点。
+
+### Kubernetes 调度 Pod 的详细过程？
+
+1. 用户提交创建Pod的信息；
+2. `APIserver`接收到Pod的创建信息，然后将信息写入到Etcd数据库；
+3. `Scheduler`监听到Etcd数据库里新增了一个Pod，然后调用一系列函数，通过预选和优选过程，为Pod选择一个合适的节点，并将其绑定到该节点上；
+4. `Scheduler`将Pod的绑定信息发送给`APIserver`，然后`APIserver`将该信息写入到Etcd数据库；
+5. 节点上的 `Kubelet`监听到有Pod绑定到自己节点上的信息，于是就通过 `Container` 将这个Pod运行起来，并Pod运行奇拉爹信息发送给 `APIserver` ；
+6. `APIserver`将信息写入到Etcd数据库，至此，Pod从创建到运行的过程执行完毕；
+
+<center>
+
+![Pod创建的详细过程](/img/Pod的创建过程.png)
+
+</center>

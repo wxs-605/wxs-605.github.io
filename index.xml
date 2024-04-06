@@ -4,9 +4,17 @@
         <link>https://wxs-605.github.io/</link>
         <description>不知名的小网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>849719605@qq.com (Mr.Wu)</managingEditor>
-            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</lastBuildDate>
+            <webMaster>849719605@qq.com (Mr.Wu)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 21 Mar 2024 11:04:04 &#43;0800</lastBuildDate>
             <atom:link href="https://wxs-605.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux 常用命令</title>
+    <link>https://wxs-605.github.io/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+    <pubDate>Thu, 21 Mar 2024 11:04:04 &#43;0800</pubDate>
+    <author>Mr.Wu</author>
+    <guid>https://wxs-605.github.io/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+    <description><![CDATA[grep 命令 grep 命令的使用指南 1 2 3 4 5 6 7 8 9 10 11 12 grep [选项] 模式 文件 -i：忽略大小写区别 -r 或 -R：递归搜索目录 -n：显示匹配行及行号 -v：显示不]]></description>
+</item>
+<item>
     <title>数据库 八股文</title>
     <link>https://wxs-605.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%85%AB%E8%82%A1%E6%96%87/</link>
     <pubDate>Sat, 16 Mar 2024 16:09:33 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>Mr.Wu</author>
     <guid>https://wxs-605.github.io/leetcode-%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
     <description><![CDATA[总结记录一下字符串题的思路及做法。 字符串相加 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和并同样以字符串形式返回。 你不能使用任何內建]]></description>
-</item>
-<item>
-    <title>Vim 主题颜色配置</title>
-    <link>https://wxs-605.github.io/vim-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/</link>
-    <pubDate>Mon, 12 Feb 2024 22:16:09 &#43;0800</pubDate>
-    <author>Mr.Wu</author>
-    <guid>https://wxs-605.github.io/vim-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[记录一下 ‘vim’ 更换主题颜色，这里我使用的是 onedark 主题。安装 onedark 之前需要安装&rsquo;vim&rsquo;的插件管理器，我用的是 &lsquo]]></description>
 </item>
 </channel>
 </rss>

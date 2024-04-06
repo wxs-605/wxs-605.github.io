@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  8866 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  9092 ,
         "url": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87\/","datePublished": "2024-01-23T23:27:14+08:00","dateModified": "2024-01-23T23:27:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统 八股文</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>操作系统</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8866 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 18 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="操作系统 八股文">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-23">2024-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 9092 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 19 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%85%AB%E8%82%A1%E6%96%87/" class="leancloud_visitors" data-flag-title="操作系统 八股文">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -140,6 +140,7 @@
         <li><a href="#socket通信"><strong>Socket通信：</strong></a></li>
       </ul>
     </li>
+    <li><a href="#windows间的进程通信方式">Windows间的进程通信方式？</a></li>
     <li><a href="#线程间的通信方式">线程间的通信方式？</a></li>
     <li><a href="#进程的内存分布是怎么样的">进程的内存分布是怎么样的？</a></li>
     <li><a href="#介绍一下你认识的锁">介绍一下你认识的锁？</a>
@@ -185,6 +186,7 @@
     <li><a href="#有什么办法解决内存碎片吗">有什么办法解决内存碎片吗？</a></li>
     <li><a href="#如何管理内存空间">如何管理内存空间？</a></li>
     <li><a href="#虚拟地址是怎么变到物理地址的">虚拟地址是怎么变到物理地址的？</a></li>
+    <li><a href="#io多路复用了解吗">IO多路复用了解吗？</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="操作系统的特征">操作系统的特征？</h2>
@@ -300,6 +302,8 @@
 </ul>
 <h3 id="socket通信"><strong>Socket通信：</strong></h3>
 <p>上面介绍的5种方法都是用于同一台主机上的进程之间进行通信的，如果想要跨网络与不同主机上的进程进行通信就得使用 <code>Socket</code> 通信了。<code>Socket</code> 是支持TCP/IP的网络通信的基本操作单元，主要用于在客户端和服务器之间通过网络进行通信。</p>
+<h2 id="windows间的进程通信方式">Windows间的进程通信方式？</h2>
+<p>文件映射、共享内存、管道、邮件槽、粘贴板和远程过程调用。</p>
 <h2 id="线程间的通信方式">线程间的通信方式？</h2>
 <p>同个进程下的线程之间都是共享进程的资源，只要是共享变量都可以做到线程间通信，⽐如全局变量，所以对于线程间关注的不是通信⽅式，⽽是关注多线程竞争共享资源的问题，<strong>信号量</strong>也同样可以在线程间实现<strong>互斥与同步</strong>：</p>
 <ol>
@@ -468,6 +472,9 @@
 <li><strong>MMU</strong> 将物理地址返回给CPU，CPU使用物理地址访问内存。</li>
 </ol>
 <p>通过这种虚拟地址到物理地址的映射机制，操作系统实现了虚拟内存管理，提高了内存的利用效率，并为程序提供了更大的地址空间。</p>
+<h2 id="io多路复用了解吗">IO多路复用了解吗？</h2>
+<p><strong>先答io多路复用是什么，再答select、poll、epoll</strong></p>
+<p>IO多路复用是一种同步的IO模型，利用IO多路复用模型，可以实现一个线程监视多个文件句柄。一旦某个文件句柄就绪，就能够通知到对应的应用程序进行相应的读写操作；如果没有句柄就绪时，就会阻塞应用程序，从而释放出CPU资源。 实现IO多路复用的原型有三种，select、poll、epoll</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>操作系统 IO多路复用 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="操作系统 IO多路复用" />
+<meta property="og:description" content="多路复用指的是，由一个执行单元，同时对多个对象提供服务，形成一对多的服务关系。 多路：存在多个需要处理的 IO event 的 fd 文件句柄； 复用：复用一个循环线" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-06T20:52:10+08:00" />
+<meta property="article:modified_time" content="2024-01-06T20:52:10+08:00" /><meta property="og:site_name" content="临海沐清风" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="操作系统 IO多路复用"/>
+<meta name="twitter:description" content="多路复用指的是，由一个执行单元，同时对多个对象提供服务，形成一对多的服务关系。 多路：存在多个需要处理的 IO event 的 fd 文件句柄； 复用：复用一个循环线"/>
+<meta name="application-name" content="临海沐清风">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" /><link rel="prev" href="https://wxs-605.github.io/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" /><link rel="next" href="https://wxs-605.github.io/leetcode-%E7%9F%A9%E9%98%B5/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "操作系统 IO多路复用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "IO多路复用","wordcount":  2751 ,
+        "url": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8\/","datePublished": "2024-01-06T20:52:10+08:00","dateModified": "2024-01-06T20:52:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
+                "@type": "Person",
+                "name": "Mr.Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friend/"> 友链 </a><a class="menu-item" href="/about/"> 简历 </a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friend/" title="">友链</a><a class="menu-item" href="/about/" title="">简历</a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统 IO多路复用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>操作系统</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-06">2024-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2751 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="leancloud_visitors" data-flag-title="操作系统 IO多路复用">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#select"><code>select</code></a>
+      <ul>
+        <li><a href="#优点">优点</a></li>
+        <li><a href="#缺点">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#poll"><code>poll</code></a>
+      <ul>
+        <li><a href="#优点-1">优点</a></li>
+        <li><a href="#缺点-1">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#epoll"><code>epoll</code></a>
+      <ul>
+        <li><a href="#优点-2">优点</a></li>
+        <li><a href="#缺点-2">缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#水平触发和边缘触发的区别">水平触发和边缘触发的区别？</a>
+      <ul>
+        <li><a href="#水平触发">水平触发</a></li>
+        <li><a href="#边缘触发">边缘触发</a></li>
+      </ul>
+    </li>
+    <li><a href="#select和-epoll-的区别"><code>select</code>和 <code>epoll</code> 的区别？</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>多路复用指的是，由一个执行单元，同时对多个对象提供服务，形成一对多的服务关系。</p>
+<ul>
+<li>
+<p>多路：存在多个需要处理的 IO event 的 fd 文件句柄；</p>
+</li>
+<li>
+<p>复用：复用一个循环线程同时为多个 FD 提供处理服务；</p>
+</li>
+<li>
+<p>IO：在操作系统中，数据在内核态和用户态之间的读写操作；</p>
+</li>
+</ul>
+<p>IO 多路复用是一种同步的IO模型，利用IO多路复用模型，可以实现一个线程监视多个文件句柄。一旦某个文件句柄就绪，就能够通知到对应的应用程序进行相应的读写操作；如果没有句柄就绪时，就会阻塞应用程序，从而释放出CPU资源。</p>
+<p>网络中：一个或多个线程处理多个TCP连接，无需创建和维护过多的线程</p>
+<p>实现IO多路复用的原型有三种，select、poll、epoll</p>
+<hr>
+<h2 id="select"><code>select</code></h2>
+<p>实现原理：轮询 + 遍历</p>
+<p><code>select</code> 实现多路复用的方式是，将已连接的 Socket 都放到一个<strong>文件描述符集合</strong>(通常是一个位图)，然后调用 select 函数将文件描述符集合<strong>拷贝</strong>到内核里，让内核来检查是否有网络事件产生，检查的方式很粗暴，就是通过<strong>遍历文件描述符集合</strong>的方式，当检查到有事件产生后，将此 Socket 标记为可读或可写， 接着再把整个文件描述符集合<strong>拷贝</strong>回用户态里，然后用户态还需要<strong>再通过遍历</strong>的方法找到可读或可写的 Socket，然后再对其处理。</p>
+<p><code>select</code> 的这种方式，需要进行 2 次 <strong>「遍历」</strong> 文件描述符集合，一次是在内核态里，一个次是在用户态里 ，而且还会发生 2 次 <strong>「拷贝」</strong> 文件描述符集合，先从用户空间传入内核空间，由内核修改后，再传出到用户空间中。</p>
+<h3 id="优点">优点</h3>
+<p><code>select</code> 应该是 <code>POSIX</code> 所规定，⼀般操作系统均有实现，几乎所有平台都支持；</p>
+<h3 id="缺点">缺点</h3>
+<ol>
+<li>需要<strong>两次遍历</strong>文件描述集合和<strong>两次拷贝</strong>数据，性能开销大；</li>
+<li>由于文件描述集合采用位图实现，32位系统下默认最多支持1024个fd，64位系统下默认最多支持2048个fd；</li>
+<li>文件描述集合不可重用，每次调⽤ <code>select</code> 时，需要重新设置⽂件描述符集合，函数调⽤的开销大；</li>
+<li><code>select</code>的工作模式为水平触发(LT)，不支持边缘触发(ET)，效率较低；</li>
+</ol>
+<p><code>select</code>中无法精确感知到哪些fd就绪，需要遍历一轮fd列表，时间复杂度为O(N)；</p>
+<hr>
+<h2 id="poll"><code>poll</code></h2>
+<p>实现原理：轮询 + 遍历</p>
+<p><code>poll</code> 是为了克服 <code>select</code> 的限制⽽引⼊的⼀种I/O多路复⽤技术。 <code>poll</code> 使⽤⼀个⽂件描述符数组（⼀个结构体数组）来表示要监视的⽂件描述符。与 <code>select</code> 类似， <code>poll</code> 可以监视多个⽂件描述符的I/O状态。</p>
+<h3 id="优点-1">优点</h3>
+<ol>
+<li>⽂件描述符数量不受限制：由于 <code>poll</code> 使⽤⼀个动态数组来表示⽂件描述符，因此它可以处理任意数量的⽂件描述符；</li>
+<li>效率相对较⾼： <code>poll</code> 在查找就绪的⽂件描述符时，只需要遍历实际使⽤的⽂件描述符数组，⽽不是整个⽂件描述符集合；</li>
+</ol>
+<h3 id="缺点-1">缺点</h3>
+<ol>
+<li>需要用户遍历监控的所有文件描述符，随着FD数量的增多而导致性能下降；</li>
+<li>存储文件描述符的链表不会保存在内核中，<code>poll</code> 每次调用时都要将<strong>链表</strong>从用户空间<strong>拷贝</strong>到内核空间，开销较大；</li>
+<li><code>poll</code> 的工作模式为水平触发(LT)，不支持边缘触发(ET)，效率低下；</li>
+</ol>
+<hr>
+<h2 id="epoll"><code>epoll</code></h2>
+<p>实现原理：回调</p>
+<p><code>epoll</code> 中内核态和用户态共享 <code>epfd</code>文件描述集合 <code>fds</code> ，省去了切换开销，每次会将 <code>fds</code> 重排，并且会返回当前内部有n个 <code>fds</code> 被置位了，因此只需要遍历前n个就可以。<code>epoll</code> 只关心活跃的链接，不需要遍历全部集合。</p>
+<p><code>epoll</code> 模型<strong>修改主动轮询为被动通知</strong>，当有事件发生时，被动接收通知。所以 <code>epoll</code> 模型注册套接字后，主程序可做其他事情，当事件发生时，接收到通知后再去处理。</p>
+<p><strong><code>epoll</code> 工作原理：</strong></p>
+<p>内核利用 <code>epoll_create</code> 创建一个 <code>epfd</code> 文件描述符，并利用<strong>红黑树</strong>数据结构将其存储到根结点上，再用 <code>epoll_ctl</code> 从红黑树中添加、修改或移除文件描述符，最后内核调用 <code>epoll_wait</code> 函数开始监听，。</p>
+<p><code>epoll</code> 处于阻塞状态，当有事件发生或设置的等待时间 <code>timeout</code> 到了就会返回，返回时传出有事件发生文件描述符的结构体数组。与 <code>select、poll</code> 不一样的是， <code>epoll</code> 直接传出有事件发生的文件描述符数组，不用遍历查询。</p>
+<ul>
+<li><strong><code>epoll_create</code></strong></li>
+</ul>
+<ol>
+<li>在内核开辟空间，创建一个 <code>epoll</code> 池子用于批量存储管理 fd，后续可以通过 <code>epoll_ctl</code> 往池子中增删改 fd</li>
+<li>在内核创建一颗红黑树的根节点。，保证了所有增、删、改操作的平均时间复杂度维持在 O(logN) 的对数级水平</li>
+<li>就绪队列： 针对于 fd 的就绪 io event，由于通常数量有限，且每个事件都需要逐一处理，没有优先级之分，采用简单的双向链表实现</li>
+</ol>
+<ul>
+<li><strong><code>epoll_ctl</code></strong></li>
+</ul>
+<p>在某个 <code>epoll</code> 池子中进行一个 fd 的增删改操作. 正是由于 <code>epoll</code> 中将 <code>epoll_ctl</code> 与 <code>epoll_create</code> 操作进行了解耦，才实现了对 <code>epoll_create</code> 时传递的 fd 数据的复用，减少了用户态和内核台之间对 fd 数据的重复传递。此外，在 <code>epoll_ctl</code> 实现时，也需要通过 <code>epollevent</code> 设置好回调事件，当 fd 有指定事件到达时，会被添加到就绪队列中，最终将 <code>loop thread</code> 唤醒</p>
+<ul>
+<li><strong><code>epoll_wait</code></strong></li>
+</ul>
+<p>从对应 epoll 池子中获取就绪的 epollevent，从中可以关联到对应的 fd 和 loop thread 信息</p>
+<p><code>epoll</code> 编程结构</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">epfd</span> <span class="o">=</span> <span class="n">epoll_crete</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//将 listen_fd 添加进 epoll 中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">listen_fd</span><span class="p">,</span><span class="o">&amp;</span><span class="n">listen_event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//阻塞等待 epoll 中 的fd 触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">active_cnt</span> <span class="o">=</span> <span class="n">epoll_wait</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">active_cnt</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">evnets</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span> <span class="o">==</span> <span class="n">listen_fd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//accept. 并且将新accept 的fd 加进epoll中.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">&amp;</span> <span class="n">EPOLLIN</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//对此fd 进行读操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">events</span> <span class="o">&amp;</span> <span class="n">EPOLLOUT</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//对此fd 进行写操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="优点-2">优点</h3>
+<ol>
+<li>将 <code>select、poll</code>中的 轮询改成了回调，大大提高了CPU的执行效率，也不会随着FD的数量增加而导致效率下降；</li>
+<li><code>epoll</code> 由一组函数实现，<code>epoll_create</code> 创建的红黑树保存在内核中，<code>epoll_ctl</code> 只需从红黑树中添加、删除或修改节点，无需重复将已有的文件描述符拷贝到内核态中，开销较小；</li>
+<li>与 <code>poll</code> 类似， <code>epoll</code> 可以处理任意数量的⽂件描述符，因为它使⽤⼀个动态数据结构来表示⽂件描述符；</li>
+<li><code>epoll</code> 使⽤⼀个内核事件表来记录要监视的⽂件描述符和事件，因此在每次调⽤ <code>epoll</code> 时⽆需重新设置⽂件描述符集合。这可以减少函数调⽤的开销，并提⾼实时性；</li>
+<li><code>epoll</code> 支持边缘触发和水平触发(默认工作方式)，边缘触发可减少 <code>epoll_wait</code> 调用次数，提高效率；</li>
+</ol>
+<h3 id="缺点-2">缺点</h3>
+<p>只能在 <code>Linux</code> 平台上使用</p>
+<hr>
+<h2 id="水平触发和边缘触发的区别">水平触发和边缘触发的区别？</h2>
+<h3 id="水平触发">水平触发</h3>
+<p>当被监控的 Socket 上有可读事件发⽣时，服务器不断地从阻塞中苏醒，直到内核缓冲区数据被 <code>read</code> 函数读完才结束，⽬的是告诉我们有数据，只要满⾜事件的条件，⽐如内核中有数据需要读，就⼀直不断地把这个事件传递给⽤户</p>
+<h3 id="边缘触发">边缘触发</h3>
+<p>当被监控的 Socket 描述符上有可读事件发⽣时，服务器只会从阻塞中苏醒⼀次，即使进程没有调⽤ read 函数从内核读取数据，也依然只苏醒⼀次，因此我们程序要保证⼀次性将内核缓冲区的数据读取完，只有第⼀次满⾜条件的时候才触发，之后就不会再传递同样的事件了</p>
+<hr>
+<h2 id="select和-epoll-的区别"><code>select</code>和 <code>epoll</code> 的区别？</h2>
+<ul>
+<li>
+<p><code>select</code> 和 <code>poll</code> 采⽤轮询的⽅式检查就绪事件，每次都要扫描整个⽂件描述符，复杂度O(N);</p>
+</li>
+<li>
+<p><code>epoll</code> 采⽤回调⽅式检查就绪事件，只会返回有事件发⽣的⽂件描述符的个数，复杂度O(1);</p>
+</li>
+<li>
+<p><code>select</code> 只⼯作在低效的LT模式，<code>epoll</code> 可以在 ET ⾼效模式⼯作;</p>
+</li>
+<li>
+<p><code>epoll</code> 是 <code>Linux</code> 所特有，⽽ <code>select</code> 则应该是 <code>POSIX</code> 所规定，⼀般操作系统均有实现;</p>
+</li>
+<li>
+<p><code>select</code> 单个进程可监视的fd数量有限，即能监听端⼝的⼤⼩有限，64位是2048；epoll 没有最⼤并发连接的限制，能打开的 fd 的上限远⼤于2048；</p>
+</li>
+<li>
+<p><code>select</code> 内核需要将消息传递到⽤户空间，都需要内核拷⻉动作；<code>epoll</code> 通过内核和⽤户空间共享⼀块内存来实现的</p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">IO多路复用</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="prev" rel="prev" title="计算机网络-网络协议知识梳理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算机网络-网络协议知识梳理</a>
+            <a href="/leetcode-%E7%9F%A9%E9%98%B5/" class="next" rel="next" title="LeetCode 矩阵">LeetCode 矩阵<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript><div id="commento" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Mr.Wu</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.commento.io/js/commento.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"I5ZLW4RREN","algoliaIndex":"blog","algoliaSearchKey":"ca4030445104c5af93f86dcac75e9c6e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.f58ffea166ff5d840976e4af8e31ee736ea0e035126a6625ed1feb834ff61769d811827b5137532960ce6edff8ede85f.js" integrity="sha384-9Y/+oWb/XYQJduSvjjHuc26g4DUSamYl7R/rg0/2F2nYEYJ7UTdTKWDObt/47ehf"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', '4672765957', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=4672765957" async></script></body>
+</html>
