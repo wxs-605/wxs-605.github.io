@@ -51,7 +51,7 @@
 
 2. **映射 Service 到物理机：** 将 Service 端口号映射到宿主机，即在 Service 中采用 `nodePort` 方式，以使客户端应用能够通过物理机访问容器应用。
 
-3. **射 Sercie 到 `LoadBalancer` ：** 通过设置 `LoadBalancer` 映射到云服务商提供的 `LoadBalancer` 地址。这种用法**仅用于在公有云服务提供商的云平台上**设置 Service 的场景。
+3. **映射 Sercie 到 `LoadBalancer` ：** 通过设置 `LoadBalancer` 映射到云服务商提供的 `LoadBalancer` 地址。这种用法**仅用于在公有云服务提供商的云平台上**设置 Service 的场景。
 
 ### Kubernetes的调度策略有哪些？
 
@@ -77,7 +77,7 @@
 2. `APIserver`接收到Pod的创建信息，然后将信息写入到Etcd数据库；
 3. `Scheduler`监听到Etcd数据库里新增了一个Pod，然后调用一系列函数，通过预选和优选过程，为Pod选择一个合适的节点，并将其绑定到该节点上；
 4. `Scheduler`将Pod的绑定信息发送给`APIserver`，然后`APIserver`将该信息写入到Etcd数据库；
-5. 节点上的 `Kubelet`监听到有Pod绑定到自己节点上的信息，于是就通过 `Container` 将这个Pod运行起来，并Pod运行奇拉爹信息发送给 `APIserver` ；
+5. 节点上的 `Kubelet`监听到有Pod绑定到自己节点上的信息，于是就通过 `Container` 将这个Pod运行起来，并Pod运行起来的信息发送给 `APIserver` ；
 6. `APIserver`将信息写入到Etcd数据库，至此，Pod从创建到运行的过程执行完毕；
 
 <center>

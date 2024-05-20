@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  2066 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "八股文","wordcount":  2067 ,
         "url": "https:\/\/wxs-605.github.io\/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F\/","datePublished": "2024-03-14T14:58:45+08:00","dateModified": "2024-03-14T14:58:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">八股文 云原生</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>云原生</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-14">2024-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2066 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-14">2024-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2067 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/%E5%85%AB%E8%82%A1%E6%96%87-%E4%BA%91%E5%8E%9F%E7%94%9F/" class="leancloud_visitors" data-flag-title="八股文 云原生">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -180,7 +180,7 @@
 <p><strong>映射 Service 到物理机：</strong> 将 Service 端口号映射到宿主机，即在 Service 中采用 <code>nodePort</code> 方式，以使客户端应用能够通过物理机访问容器应用。</p>
 </li>
 <li>
-<p><strong>射 Sercie 到 <code>LoadBalancer</code> ：</strong> 通过设置 <code>LoadBalancer</code> 映射到云服务商提供的 <code>LoadBalancer</code> 地址。这种用法<strong>仅用于在公有云服务提供商的云平台上</strong>设置 Service 的场景。</p>
+<p><strong>映射 Sercie 到 <code>LoadBalancer</code> ：</strong> 通过设置 <code>LoadBalancer</code> 映射到云服务商提供的 <code>LoadBalancer</code> 地址。这种用法<strong>仅用于在公有云服务提供商的云平台上</strong>设置 Service 的场景。</p>
 </li>
 </ol>
 <h3 id="kubernetes的调度策略有哪些">Kubernetes的调度策略有哪些？</h3>
@@ -208,7 +208,7 @@
 <li><code>APIserver</code>接收到Pod的创建信息，然后将信息写入到Etcd数据库；</li>
 <li><code>Scheduler</code>监听到Etcd数据库里新增了一个Pod，然后调用一系列函数，通过预选和优选过程，为Pod选择一个合适的节点，并将其绑定到该节点上；</li>
 <li><code>Scheduler</code>将Pod的绑定信息发送给<code>APIserver</code>，然后<code>APIserver</code>将该信息写入到Etcd数据库；</li>
-<li>节点上的 <code>Kubelet</code>监听到有Pod绑定到自己节点上的信息，于是就通过 <code>Container</code> 将这个Pod运行起来，并Pod运行奇拉爹信息发送给 <code>APIserver</code> ；</li>
+<li>节点上的 <code>Kubelet</code>监听到有Pod绑定到自己节点上的信息，于是就通过 <code>Container</code> 将这个Pod运行起来，并Pod运行起来的信息发送给 <code>APIserver</code> ；</li>
 <li><code>APIserver</code>将信息写入到Etcd数据库，至此，Pod从创建到运行的过程执行完毕；</li>
 </ol>
 <center>

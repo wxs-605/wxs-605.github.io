@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>CPP 多线程八股 - 临海沐清风</title><meta name="Description" content="不知名的小网站"><meta property="og:title" content="CPP 多线程八股" />
+<meta property="og:description" content="C&#43;&#43; 如何限制一个类只能在堆上创建？ 将类的构造函数设为私有，在类的内部构建一个静态函数用来创建一个在堆上的对象，该函数返回类的指针。这样对象只能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wxs-605.github.io/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/" /><meta property="og:image" content="https://wxs-605.github.io/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-11T19:35:21+08:00" />
+<meta property="article:modified_time" content="2024-04-11T19:35:21+08:00" /><meta property="og:site_name" content="临海沐清风" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wxs-605.github.io/logo.png" /><meta name="twitter:title" content="CPP 多线程八股"/>
+<meta name="twitter:description" content="C&#43;&#43; 如何限制一个类只能在堆上创建？ 将类的构造函数设为私有，在类的内部构建一个静态函数用来创建一个在堆上的对象，该函数返回类的指针。这样对象只能"/>
+<meta name="application-name" content="临海沐清风">
+<meta name="apple-mobile-web-app-title" content="临海沐清风"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/tubiao.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wxs-605.github.io/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/" /><link rel="prev" href="https://wxs-605.github.io/cpp-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/css/style.min.08823011bf7d1300472242f9ee95ad51cc252940e51ff203c51523215b537e958f580d3428d00579e382c0ccda98b86b.css" integrity="sha384-CIIwEb99EwBHIkL57pWtUcwlKUDlH/IDxRUjIVtTfpWPWA00KNAFeeOCwMzamLhr"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CPP 多线程八股",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wxs-605.github.io\/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1\/"
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "","wordcount":  10323 ,
+        "url": "https:\/\/wxs-605.github.io\/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1\/","datePublished": "2024-04-11T19:35:21+08:00","dateModified": "2024-04-11T19:35:21+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
+                "@type": "Person",
+                "name": "Mr.Wu"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friend/"> 友链 </a><a class="menu-item" href="/about/"> 简历 </a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="临海沐清风">Mr. Wu&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friend/" title="">友链</a><a class="menu-item" href="/about/" title="">简历</a><a class="menu-item" href="https://github.com/wxs-605/wxs-605.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CPP 多线程八股</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Categories</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-11">2024-04-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 10323 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/" class="leancloud_visitors" data-flag-title="CPP 多线程八股">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#c">C++</a>
+      <ul>
+        <li><a href="#如何限制一个类只能在堆上创建">如何限制一个类只能在堆上创建？</a></li>
+        <li><a href="#如何限制一个类只能在栈上创建">如何限制一个类只能在栈上创建？</a></li>
+        <li><a href="#为什么使用静态函数">为什么使用静态函数？</a></li>
+        <li><a href="#c中的智能指针会发生内存泄漏吗智能指针什么时候会发生内存泄漏">C++中的智能指针会发生内存泄漏吗？智能指针什么时候会发生内存泄漏？</a></li>
+        <li><a href="#c中什么时候用到静态函数">C++中什么时候用到静态函数？</a></li>
+        <li><a href="#c中的内存分区">C++中的内存分区？</a></li>
+        <li><a href="#c在在不同分区上的变量的初始化顺序是怎么样的">C++在在不同分区上的变量的初始化顺序是怎么样的？</a></li>
+        <li><a href="#全局变量和局部变量只声明不定义那他们的初值分别是多少">全局变量和局部变量只声明，不定义，那他们的初值分别是多少？</a></li>
+        <li><a href="#你对c中final的理解">你对C++中final的理解？</a></li>
+        <li><a href="#c中从cpp文件到可执行文件经历了哪些阶段">C++中从cpp文件到可执行文件，经历了哪些阶段？</a></li>
+      </ul>
+    </li>
+    <li><a href="#计算机网络">计算机网络</a>
+      <ul>
+        <li><a href="#tcp-的三次握手为什么两次不行">TCP 的三次握手，为什么两次不行？</a></li>
+        <li><a href="#ssl握手过程">SSL握手过程？</a></li>
+        <li><a href="#ip协议和应用场景">IP协议和应用场景</a></li>
+        <li><a href="#http20并发过程">HTTP2.0并发过程</a></li>
+        <li><a href="#了解arp协议吗">了解ARP协议吗</a></li>
+        <li><a href="#http请求方式队头阻塞">HTTP请求方式，队头阻塞</a></li>
+        <li><a href="#tcp如何保证可靠传输">TCP如何保证可靠传输</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql">MySQL</a>
+      <ul>
+        <li><a href="#视图">视图</a></li>
+        <li><a href="#事物">事物</a></li>
+        <li><a href="#索引失效场景都有什么">索引失效场景都有什么？</a></li>
+        <li><a href="#事务隔离级别">事务隔离级别</a></li>
+        <li><a href="#mvcc实现原理">MVCC实现原理</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作系统">操作系统</a>
+      <ul>
+        <li><a href="#多线程的锁互斥锁读写锁信号量自旋锁">多线程的锁，互斥锁、读写锁、信号量、自旋锁</a></li>
+        <li><a href="#进程线程区别了解面向协议的语言吗了解协程吗">进程线程区别，了解面向协议的语言吗？了解协程吗</a></li>
+        <li><a href="#死锁怎么判断死锁出现了">死锁，怎么判断死锁出现了</a></li>
+        <li><a href="#操作系统装载进程时发生了什么">操作系统装载进程时发生了什么</a></li>
+        <li><a href="#操作系统内存管理">操作系统内存管理</a></li>
+        <li><a href="#虚拟内存">虚拟内存</a></li>
+        <li><a href="#进程调度算法有哪些">进程调度算法有哪些？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="c">C++</h2>
+<h3 id="如何限制一个类只能在堆上创建">如何限制一个类只能在堆上创建？</h3>
+<p>将类的构造函数设为私有，在类的内部构建一个静态函数用来创建一个在堆上的对象，该函数返回类的指针。这样对象只能通过调用该静态函数来创建，并且保证是在堆上创建</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HeapOnly</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HeapOnly</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 构造函数私有化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">HeapOnly</span><span class="o">*</span> <span class="n">createInstance</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="nf">HeapOnly</span><span class="p">();</span> <span class="c1">// 只能通过静态方法创建对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">HeapOnly</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 需要提供析构函数，以便在堆上分配的对象可以被正确释放
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// HeapOnly obj; // 这会导致编译错误，因为构造函数是私有的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">HeapOnly</span><span class="o">*</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">HeapOnly</span><span class="o">::</span><span class="n">createInstance</span><span class="p">();</span> <span class="c1">// 只能通过静态方法创建对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">delete</span> <span class="n">obj</span><span class="p">;</span> <span class="c1">// 记得手动释放内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="如何限制一个类只能在栈上创建">如何限制一个类只能在栈上创建？</h3>
+<p>将类的new操作符和delete操作符重载为类的私有函数，这样类就不能通过new来实例化，就只能创建在栈上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">StackOnly</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 禁用动态分配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">size_t</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="k">operator</span> <span class="nf">delete</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 公共构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">StackOnly</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">StackOnly</span> <span class="n">obj</span><span class="p">;</span> <span class="c1">// 只能在栈上创建对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// StackOnly* obj = new StackOnly(); // 这会导致编译错误，因为operator new被禁用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="为什么使用静态函数">为什么使用静态函数？</h3>
+<p><strong>静态函数不依赖于类的示例</strong>， 静态函数可以在没有类的实例存在的情况下被调用。这样即使构造函数是私有的，我们也可以在静态函数内部创建对象；</p>
+<hr>
+<h3 id="c中的智能指针会发生内存泄漏吗智能指针什么时候会发生内存泄漏">C++中的智能指针会发生内存泄漏吗？智能指针什么时候会发生内存泄漏？</h3>
+<ul>
+<li>
+<p><strong>循环引用，</strong> 当两个或多个智能指针相互引用时，形成了循环引用，可能导致内存泄漏。这是因为智能指针的引用计数永远不会归零，所管理的内存永远不会被释放；</p>
+</li>
+<li>
+<p><strong>异常安全问题，</strong> 在使用智能指针时，如果在分配动态内存后发生异常而未能正确释放内存，可能会导致内存泄漏。因为 <code>new</code> 内存分配失败时会抛出 <code>bad_alloc</code> 异常，发生这个异常时需要把传进来的裸指针删除掉，避免内存泄漏</p>
+</li>
+</ul>
+<hr>
+<h3 id="c中什么时候用到静态函数">C++中什么时候用到静态函数？</h3>
+<ul>
+<li>
+<p><strong>封装辅助函数：</strong> 静态函数可以作为类的私有成员函数，用于封装辅助函数。这样可以确保这些函数仅在类内部使用，不会暴露给类的用户，从而提高了类的封装性</p>
+</li>
+<li>
+<p><strong>与类的实例无关的操作：</strong> 静态函数不依赖于类的实例，因此可以在没有创建类的实例的情况下调用。这些函数通常执行与类的实例无关的操作，例如工具函数或辅助函数</p>
+</li>
+<li>
+<p><strong>全局函数的替代方案：</strong> 静态函数可以用作类的命名空间，将相关的函数组织在一起，避免了全局命名空间污染</p>
+</li>
+</ul>
+<hr>
+<h3 id="c中的内存分区">C++中的内存分区？</h3>
+<p><strong>栈（Stack）：</strong></p>
+<ul>
+<li>栈是由编译器自动管理的，用于存储函数的局部变量、函数参数、函数返回地址等信息；</li>
+<li>栈内存是按照“先进后出”（FILO）的原则分配和释放的，函数调用时，局部变量在栈上分配内存，函数返回时释放；</li>
+<li>栈内存大小通常是固定的，由操作系统预先分配，因此栈的空间有限。栈溢出（stack overflow）可能发生在递归调用层次太深或分配过大的局部变量时；</li>
+</ul>
+<p><strong>堆（Heap）：</strong></p>
+<ul>
+<li>堆是由程序员手动管理的，用于动态分配内存，即在运行时根据需要分配和释放内存；</li>
+<li>堆内存的分配和释放由程序员通过 new 和 delete 运算符来控制；</li>
+<li>堆内存通常较大，但容易出现内存泄漏和内存碎片问题；</li>
+</ul>
+<p><strong>全局/静态存储区（Global/Static Storage Area）：</strong></p>
+<ul>
+<li>全局变量和静态变量存储在这个区域；</li>
+<li>在程序开始时分配，在程序结束时释放；</li>
+<li>全局变量存储在静态存储区中，并且在整个程序的执行周期内都存在；</li>
+</ul>
+<p><strong>常量存储区（Constant Storage Area）：</strong></p>
+<ul>
+<li>存放常量字符串和全局常量；</li>
+<li>这些数据通常存储在程序的数据段中，是只读的，不能被修改；</li>
+</ul>
+<p><strong>代码段（Code Segment）：</strong></p>
+<ul>
+<li>代码段存储程序的机器指令，也称为文本段；</li>
+<li>代码段通常是只读的，包含可执行代码的二进制表示；</li>
+</ul>
+<hr>
+<h3 id="c在在不同分区上的变量的初始化顺序是怎么样的">C++在在不同分区上的变量的初始化顺序是怎么样的？</h3>
+<p><strong>静态存储区（全局变量、静态变量）：</strong></p>
+<ul>
+<li>全局变量和静态变量在程序启动时被初始化；</li>
+<li>全局变量和静态变量的初始化顺序取决于它们的定义顺序，即先定义的先初始化；</li>
+</ul>
+<p><strong>栈区（局部变量）：</strong></p>
+<ul>
+<li>局部变量在进入其作用域时被初始化；</li>
+<li>局部变量的初始化顺序与它们在函数中的声明顺序相同；</li>
+</ul>
+<p><strong>堆区：</strong></p>
+<ul>
+<li>堆区中的变量是动态分配的，它们不会在程序启动时被初始化；</li>
+<li>堆区中的变量需要由程序员显式地分配和初始化；</li>
+</ul>
+<hr>
+<h3 id="全局变量和局部变量只声明不定义那他们的初值分别是多少">全局变量和局部变量只声明，不定义，那他们的初值分别是多少？</h3>
+<p><strong>全局变量（静态存储区）：</strong></p>
+<p>如果全局变量只声明而不定义，则它们会被初始化为零初始化（zero initialization）；
+对于基本数据类型（如整型、浮点型等），其初始值为 0；
+对于类类型，其初始值为类的默认构造函数生成的值；</p>
+<p><strong>局部变量（栈区）：</strong></p>
+<ul>
+<li>如果局部变量只声明而不定义，在函数内部未初始化，则它们的值是未定义的，即随机值；</li>
+<li>在函数外部（全局作用域）声明的局部变量默认初始化为零值；</li>
+</ul>
+<hr>
+<h3 id="你对c中final的理解">你对C++中final的理解？</h3>
+<p>在 C++ 中，final 关键字用于修饰类、虚函数和成员函数，用来防止其被继承或重写。final 的主要作用是强化代码的约束和安全性，确保特定的类、虚函数或成员函数在派生类中不能被修改或覆盖；</p>
+<p><strong>修饰类：</strong></p>
+<ul>
+<li>如果一个类被声明为 final，则该类不能被其他类继承；</li>
+<li>这意味着不能有派生类继承自这个被标记为 final 的类，进而增强了类的封闭性和安全性；</li>
+</ul>
+<p><strong>修饰虚函数和成员函数：</strong></p>
+<ul>
+<li>如果一个虚函数或成员函数被声明为 final，则在派生类中不能重写该函数；</li>
+<li>这样做可以确保特定的虚函数或成员函数在整个类继承层次结构中具有不变性，增强了代码的可维护性和可靠性；</li>
+</ul>
+<h3 id="c中从cpp文件到可执行文件经历了哪些阶段">C++中从cpp文件到可执行文件，经历了哪些阶段？</h3>
+<p>预处理（Preprocessing）：</p>
+<p>预处理阶段由预处理器完成，预处理器会处理以 # 开头的预处理指令，例如包含头文件、宏替换等。
+预处理后生成的文件通常以 .i 或 .ii 扩展名表示，是经过预处理后的源文件。
+编译（Compiling）：</p>
+<p>编译阶段将预处理后的源文件转换为汇编代码（Assembly code）。
+编译器（如 GCC、Clang 等）将 C++ 源代码翻译成汇编代码，该汇编代码是针对特定的目标平台的。
+编译后生成的文件通常以 .s 或 .asm 扩展名表示，是汇编代码文件。
+汇编（Assembling）：</p>
+<p>汇编阶段将汇编代码转换为目标文件（Object file）。
+汇编器（如 GAS、MASM 等）将汇编代码翻译成机器指令，并生成目标文件。
+目标文件通常以 .o、.obj 或 .coff 扩展名表示，是机器代码的二进制表示。
+链接（Linking）：</p>
+<p>链接阶段将多个目标文件及库文件链接在一起，生成可执行文件。
+链接器（如 ld、link 等）将目标文件和库文件进行符号解析和地址重定向，最终生成可执行文件。
+在链接过程中，会解析符号引用、处理重定位信息、合并相同的代码段和数据段等。
+最终生成的可执行文件通常不包含任何源代码信息，是二进制形式的可执行文件。
+可执行文件（Executable File）：</p>
+<p>可执行文件是由链接器生成的二进制文件，包含了程序的所有代码和数据。
+可执行文件可以在操作系统上运行，并执行程序的逻辑</p>
+<hr>
+<h2 id="计算机网络">计算机网络</h2>
+<h3 id="tcp-的三次握手为什么两次不行">TCP 的三次握手，为什么两次不行？</h3>
+<p>第一次握手（SYN）：客户端向服务器发送一个 SYN（同步）包，其中包含自己的初始序列号（sequence number），用来初始化 TCP 连接；</p>
+<p>第二次握手（SYN-ACK）：服务器接收到 SYN 包后，会返回一个 SYN-ACK 包作为响应，其中确认了客户端的 SYN，并包含了服务器自己的初始序列号；</p>
+<p>第三次握手（ACK）：客户端接收到服务器的 SYN-ACK 后，会发送一个 ACK 包给服务器，确认收到了服务器的 SYN-ACK 包。至此，TCP 连接建立完成，双方都可以开始传输数据；</p>
+<p>一：确保可靠的通信通道，让双方都确认对方和自己的接收和发送功能是正常的。 将三次握手通俗的说。</p>
+<p>第一次握手，Server知道Client的发送能力和自己的接收能力是正常的。
+第二次握手，Client知道Server的发送和接收能力和自己的发送和接收能力是正常的，但是Server还不知道我的接收和他的发送能力正常与否。
+第三次握手，Client回馈，让Server知道自己的发送能力和Client的接收能力正常。
+二：如果两次握手，服务端无法确认客户端是否接收到了服务端发送的初始序号，如果第二次握手报文丢失，那么客户端无法知道服务端的初始序列号。</p>
+<p>三：客户端由于某种原因发送了两次不同序号的syn包，旧的数据包有可能先到，如果两次握手服务端会之间对旧数据包建立连接</p>
+<p>假设只有两次握手：</p>
+<p>客户端发送 SYN 包给服务器。
+服务器收到 SYN 包并回应 SYN-ACK 包给客户端。
+在这个过程中，客户端的请求已经到达了服务器，但服务器并不知道客户端是否收到了自己的响应。如果 SYN-ACK 包在传输过程中丢失了，客户端将不会收到，而服务器将认为连接已经建立。这样会导致服务器一直等待客户端发送 ACK 包，而客户端却不会发送，因为它并不知道服务器是否收到了自己的 SYN-ACK 包。这样就会造成资源的浪费和连接的无法建立。</p>
+<h3 id="ssl握手过程">SSL握手过程？</h3>
+<p><strong>客户端Hello阶段：</strong></p>
+<p>客户端向服务器发送 ClientHello 消息，其中包含支持的 SSL/TLS 版本、加密算法、压缩方法等信息。
+客户端生成一个随机数，称为ClientRandom。</p>
+<p><strong>服务器Hello阶段：</strong></p>
+<p>服务器收到客户端的 ClientHello 后，会从中选择一个SSL/TLS版本、加密算法和压缩方法，并向客户端发送 ServerHello 消息。
+服务器生成一个随机数，称为ServerRandom。
+服务器将自己的数字证书发送给客户端，用于客户端验证服务器的身份。
+如果需要，服务器也可能向客户端请求客户端证书。</p>
+<p><strong>密钥协商阶段：</strong></p>
+<p>客户端收到服务器的 ServerHello 后，会验证服务器的数字证书是否合法。
+如果需要客户端也会发送自己的证书给服务器。
+客户端生成一个 PreMaster Secret，使用服务器的公钥加密后发送给服务器。
+服务器收到客户端的 PreMaster Secret 后，使用自己的私钥解密，得到 PreMaster Secret。
+客户端和服务器使用 ClientRandom、ServerRandom 和 PreMaster Secret 生成对话密钥，用于后续通信的对称加密。
+该对话密钥不会通过网络传输，只是客户端和服务器在本地计算生成，这样保证了密钥交换的安全性。</p>
+<p><strong>握手完成阶段：</strong></p>
+<p>客户端向服务器发送一个 Finished 消息，其中包含对之前所有握手消息的摘要，用客户端的密钥生成。
+服务器收到客户端的 Finished 消息后，会验证摘要是否匹配，若匹配则发送自己的 Finished 消息给客户端，其中包含对之前所有握手消息的摘要，用服务器的密钥生成。
+客户端收到服务器的 Finished 消息后，也会验证摘要是否匹配。
+握手完成后，SSL/TLS 连接建立成功，双方可以开始安全地进行通信</p>
+<h3 id="ip协议和应用场景">IP协议和应用场景</h3>
+<p>IP（Internet Protocol）协议是因特网中用于在网络上进行数据包传输的主要协议之一。它定义了数据包的格式和传输规则，使得数据能够在网络中进行路由和传递。以下是 IP 协议的主要应用场景和功能：</p>
+<p>数据包路由：IP 协议通过定义数据包的格式和地址结构，使得数据能够在网络中被正确路由到目的地。每个数据包都包含了源地址和目的地址，网络设备根据这些地址信息来决定如何将数据包转发到下一个节点，最终到达目的地。</p>
+<p>网络互联：IP 协议使得不同的网络能够互相连接，构成一个统一的因特网。通过定义统一的数据包格式和路由规则，IP 协议实现了跨网络的数据传输。</p>
+<p>寻址：IP 协议使用 IP 地址来唯一标识网络中的每个设备。IP 地址由 IPv4 或 IPv6 地址空间中的一组数字组成，用于识别设备的位置和身份。</p>
+<p>分包和重组：IP 协议允许将大数据包分割成更小的数据包进行传输，并在目的地重新组装。这种分包和重组的机制使得大文件或长消息能够在网络上稳定传输。</p>
+<p>网络层服务：IP 协议提供了一些网络层的基本服务，如差错检测和分片重组，以确保数据在传输过程中的可靠性和完整性。</p>
+<p>网络管理：IP 协议也支持网络管理功能，如 IP 地址分配和路由表维护等，使网络管理员能够对网络进行有效地管理和监控。</p>
+<p>总的来说，IP 协议是因特网中数据传输的基础，支撑了全球范围内的网络通信和互联。它的主要应用场景包括互联网通信、局域网通信、数据中心网络通信等</p>
+<h3 id="http20并发过程">HTTP2.0并发过程</h3>
+<p>HTTP/2.0 是 HTTP 协议的一个更新版本，它引入了许多新的特性，其中之一就是并发处理的改进。HTTP/2.0 的并发处理主要通过以下几个方面来实现：</p>
+<p>多路复用（Multiplexing）：HTTP/2.0 允许在单个 TCP 连接上同时发送多个请求和响应。这意味着在一个连接上可以并发处理多个请求，而不必像 HTTP/1.x 那样为每个请求建立新的连接。这样可以减少连接建立和关闭的开销，提高了性能和效率。</p>
+<p>二进制分帧（Binary Framing）：HTTP/2.0 将 HTTP 报文分割为更小的二进制帧，并对它们进行多路复用。每个帧都包含了一部分请求或响应的信息，并且带有标识符来标识属于哪个请求或响应。这样可以更灵活地管理请求和响应之间的关系，提高了并发处理的效率。</p>
+<p>头部压缩（Header Compression）：HTTP/2.0 使用了 HPACK 算法对请求和响应的头部进行压缩。由于 HTTP 头部在传输中通常是重复的，因此压缩头部可以显著减少数据传输的大小，从而提高了传输效率。头部压缩使得可以更快地传输请求和响应，从而实现更快的并发处理。</p>
+<p>服务器推送（Server Push）：HTTP/2.0 允许服务器在客户端发出请求之前就向客户端推送相应的资源。这样可以减少客户端请求的次数，加快页面加载速度，提高用户体验。服务器推送的引入也是 HTTP/2.0 并发处理的一个重要特性</p>
+<h3 id="了解arp协议吗">了解ARP协议吗</h3>
+<h3 id="http请求方式队头阻塞">HTTP请求方式，队头阻塞</h3>
+<h3 id="tcp如何保证可靠传输">TCP如何保证可靠传输</h3>
+<hr>
+<h2 id="mysql">MySQL</h2>
+<h3 id="视图">视图</h3>
+<p>MySQL中的视图（View）是一个虚拟的表，其内容由查询定义。它是一种存储数据的逻辑结构，不占用物理存储空间，仅保存定义视图的查询语句。视图可以简化复杂查询，隐藏底层表结构，提供安全性和简洁性。</p>
+<p>视图的特点包括：</p>
+<p>虚拟性: 视图本身不存储数据，只是存储了对数据的查询定义。数据存储在基本表中。</p>
+<p>简化复杂性: 视图可以将复杂的查询逻辑封装在一个易于理解和使用的接口中，提供简化的数据访问。</p>
+<p>数据安全性: 视图可以限制用户对数据的访问权限，只暴露必要的数据，保护敏感信息。</p>
+<p>重用性: 可以将一组常用的查询逻辑定义为视图，多次重用，避免了代码的重复编写</p>
+<h3 id="事物">事物</h3>
+<p>事务是一个不可分割的数据库操作序列，也是数据库并发控制的基本单位，其执行的结果必须使数据库从一种一致性状态变到另一种一致性状态。事务是逻辑上的一组操作，要么都执行，要么都不执行。</p>
+<p>四个特征ACID
+事务就是一组原子性的操作，这些操作要么全部发生，要么全部不发生。事务把数据库从一种一致性状态转换成另一种一致性状态。</p>
+<p>原子性。事务是数据库的逻辑工作单位，事务中包含的各操作要么都做，要么都不做
+一致性。事 务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态。因此当数据库只包含成功事务提交的结果时，就说数据库处于一致性状态。如果数据库系统 运行中发生故障，有些事务尚未完成就被迫中断，这些未完成事务对数据库所做的修改有一部分已写入物理数据库，这时数据库就处于一种不正确的状态，或者说是 不一致的状态。
+隔离性。一个事务的执行不能其它事务干扰。即一个事务内部的//操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰。
+持续性。也称永久性，指一个事务一旦提交，它对数据库中的数据的改变就应该是永久性的。接下来的其它操作或故障不应该对其执行结果有任何影响。</p>
+<h3 id="索引失效场景都有什么">索引失效场景都有什么？</h3>
+<h3 id="事务隔离级别">事务隔离级别</h3>
+<h3 id="mvcc实现原理">MVCC实现原理</h3>
+<p>MVCC（Multi-Version Concurrency Control，多版本并发控制）是MySQL等数据库管理系统实现并发控制的一种技术。它通过在事务执行时保留多个版本的数据，使得读操作不会被写操作所阻塞，从而提高了数据库的并发性能。</p>
+<p>MVCC的实现原理如下：</p>
+<p>版本标识: 每行数据都会有一个版本标识（或称为时间戳），用于标记该行数据的版本。通常情况下，这个版本标识是事务的开始时间或者提交时间。</p>
+<p>数据快照: 在执行读操作时，数据库系统会根据事务开始时间（或其他相应的时间戳）获取该事务可见的数据版本。这样可以保证读操作不会受到其他并发事务的影响。</p>
+<p>Undo日志: 当对数据进行更新操作时，数据库会先将原始数据复制一份（称为undo日志），并将新数据写入表中。这样，其他事务在读取数据时，即使正在执行更新操作，也可以读取到一份旧的数据版本。</p>
+<p>并发控制: 在MVCC中，读操作和写操作可以并发执行而不会相互阻塞。读操作只需要读取到一个稳定的数据版本即可，而不会被写操作所影响。写操作则会根据事务的隔离级别决定是否需要等待其他事务的读取操作完成。</p>
+<p>数据清理: 当事务提交时，系统会清理已经提交的事务产生的undo日志和不再需要的旧版本数据，以释放空间并保持系统性能</p>
+<hr>
+<h2 id="操作系统">操作系统</h2>
+<h3 id="多线程的锁互斥锁读写锁信号量自旋锁">多线程的锁，互斥锁、读写锁、信号量、自旋锁</h3>
+<p>互斥锁（Mutex）：</p>
+<p>互斥锁是一种最常见的同步机制，用于保护临界区（critical section），即一段代码在同一时间只能被一个线程执行。
+线程在进入临界区之前会尝试获取互斥锁，如果锁已经被其他线程持有，则线程会阻塞直到锁可用。
+使用互斥锁时需要注意避免死锁（deadlock）和饥饿（starvation）等问题。</p>
+<p>读写锁（Read-Write Lock）：</p>
+<p>读写锁允许多个线程同时读取共享数据，但只允许一个线程写入共享数据。
+当有线程写入时，其他线程无法读取或写入，但当有线程在读取时，其他线程也可以同时读取，从而提高了并发性。
+读写锁通常比互斥锁更适用于读多写少的场景，可以提高程序的性能。</p>
+<p>信号量（Semaphore）：</p>
+<p>信号量是一种更加通用的同步机制，可以用于实现各种同步策略。
+信号量包含一个计数器和等待队列，线程可以通过对信号量进行 P（等待）操作来获取资源，并通过 V（释放）操作释放资源。
+信号量通常用于控制对有限资源的访问，也可以用于实现生产者-消费者模式等。</p>
+<p>自旋锁（Spinlock）：</p>
+<p>自旋锁是一种比较简单的同步机制，它通过不断地忙等待（自旋）来获取锁。
+当自旋锁被其他线程持有时，当前线程会一直处于忙等待状态，直到锁可用。
+自旋锁适用于临界区很小且锁被持有时间很短的情况，避免了线程切换的开销。</p>
+<p><strong>自旋锁和互斥锁的区别</strong></p>
+<p>自旋锁和互斥锁是两种常见的同步机制，它们之间的主要区别在于线程在无法获取锁时的等待方式和性能特征：</p>
+<p>等待方式：</p>
+<p>互斥锁：当一个线程尝试获取互斥锁时，如果锁已经被其他线程持有，该线程会被置于等待状态（阻塞），直到锁可用。这种方式会导致线程在等待时被挂起，释放 CPU 资源给其他线程。
+自旋锁：当一个线程尝试获取自旋锁时，如果锁已经被其他线程持有，该线程会忙等待（自旋），不断地检查锁是否可用。这种方式避免了线程被挂起，但会消耗 CPU 资源。</p>
+<p>性能特征：</p>
+<p>互斥锁：由于互斥锁在等待时会释放 CPU 资源，因此适用于锁的持有时间较长的情况，可以减少不必要的 CPU 消耗。
+自旋锁：自旋锁适用于锁的持有时间较短的情况，因为它避免了线程切换的开销，但会消耗大量的 CPU 资源。在多核系统上，自旋锁更容易导致线程竞争 CPU 资源而降低性能。
+综上所述，互斥锁适用于锁的持有时间较长的情况，可以减少 CPU 的空闲时间，但会导致线程被挂起。而自旋锁适用于锁的持有时间较短的情况，可以避免线程被挂起，但会消耗大量的 CPU 资源。在实际应用中，需要根据具体的场景和性能要求选择合适的同步机制</p>
+<h3 id="进程线程区别了解面向协议的语言吗了解协程吗">进程线程区别，了解面向协议的语言吗？了解协程吗</h3>
+<p>向协议的语言是指那些使用协议来定义数据交换格式和通信规则的编程语言。这些语言通常用于网络编程和分布式系统中，其中最著名的例子是Python的Twisted框架和Erlang语言。</p>
+<p>协程是一种并发编程的方式，它比线程更加轻量级，能够在单个线程内实现多个任务的切换和调度。与线程不同的是，协程的调度是由程序员自己控制的，而不是由操作系统调度器决定的。这种特性使得协程在高并发场景下的性能更好，并且更容易实现复杂的并发逻辑。</p>
+<h3 id="死锁怎么判断死锁出现了">死锁，怎么判断死锁出现了</h3>
+<p>资源分配图（Resource Allocation Graph）：这是一种图形化方法，用于表示进程和资源之间的关系。在资源分配图中，每个进程和资源都表示为一个节点，而资源的分配和请求则表示为有向边。如果在资源分配图中存在一个循环，且每个进程都在等待下一个资源，那么就可能存在死锁。这种情况下，可以通过检测图中的循环来判断是否存在死锁。</p>
+<p>死锁检测算法：这是一种系统自动检测死锁的算法，常见的有银行家算法和资源分配图算法。这些算法通过检查系统的资源分配情况，来判断是否存在死锁。如果发现存在死锁，系统可以采取相应的措施来解除死锁，比如终止部分进程或者回滚操作。</p>
+<p>等待-图（Wait-for Graph）：这是一种另外一种图形化方法，用于表示进程之间的等待关系。在等待-图中，每个进程表示为一个节点，而等待关系则表示为有向边。如果在等待-图中存在一个环路，那么就可能存在死锁。</p>
+<p>资源分配表：在一些操作系统中，会维护一个资源分配表，用于记录每个进程已分配和正在等待的资源。通过检查资源分配表，可以判断是否存在进程之间的循环等待，从而判断是否存在死锁。</p>
+<h3 id="操作系统装载进程时发生了什么">操作系统装载进程时发生了什么</h3>
+<p>加载（Loading）：操作系统会从存储介质（通常是硬盘）中将进程的可执行文件加载到内存中。这个过程包括将可执行文件的指令和数据复制到内存的适当位置。</p>
+<p>链接（Linking）：如果进程的可执行文件是通过静态链接生成的，操作系统会将可执行文件中的各个模块链接到一个可执行的二进制文件中。如果是动态链接，链接的过程可能会在运行时进行。</p>
+<p>装入（Loading）：在将可执行文件加载到内存时，操作系统会确定进程在内存中的起始位置，并且分配适当的内存空间给进程使用。这个过程通常涉及到虚拟内存管理，操作系统会为进程分配一段连续的虚拟地址空间，并将其映射到实际的物理内存中。</p>
+<p>重定位（Relocation）：如果进程中包含有相对地址的指令或者数据，操作系统会进行地址重定位，将这些相对地址转换为绝对地址，以确保程序正确地在内存中执行。</p>
+<p>初始化（Initialization）：一旦进程被加载到内存中，操作系统会执行一些初始化工作，比如设置进程的上下文、初始化进程的堆栈和数据段等。</p>
+<p>启动（Start）：最后，操作系统会将进程的控制权交给其起始地址，开始执行进程的第一个指令，使其开始运行</p>
+<h3 id="操作系统内存管理">操作系统内存管理</h3>
+<p>操作系统内存管理是指操作系统如何管理计算机系统的内存资源，以便为运行的进程提供合适的内存空间，并有效地利用可用的物理内存。内存管理主要包括以下几个方面：</p>
+<p>内存分配（Memory Allocation）：内存分配是指操作系统如何将可用的物理内存空间分配给进程使用。常见的内存分配算法包括：</p>
+<p>首次适应（First Fit）
+下次适应（Next Fit）
+最佳适应（Best Fit）
+最差适应（Worst Fit）
+内存保护（Memory Protection）：内存保护是指操作系统如何确保各个进程之间不会相互干扰，以及防止进程访问不属于自己的内存区域。通常通过硬件支持的内存保护机制（如分段和分页）来实现。</p>
+<p>地址映射（Address Mapping）：地址映射是指操作系统如何将进程的逻辑地址（虚拟地址）映射到物理内存地址。这通常通过分页或分段的方式实现，以提高内存的管理效率。</p>
+<p>内存回收（Memory Deallocation）：内存回收是指操作系统如何在进程终止或释放内存时，将其占用的内存空间重新回收并释放给其他进程使用。这包括释放进程占用的物理内存、更新内存管理数据结构等操作。</p>
+<p>页面置换（Page Replacement）：当物理内存不足以容纳所有进程所需的内存空间时，操作系统需要进行页面置换，将一部分内存页从内存中移出，以便为新的内存页腾出空间。常见的页面置换算法包括：</p>
+<p>先进先出（FIFO）
+最近最少使用（LRU）
+时钟页面置换算法（Clock Algorithm）
+最不经常使用（LFU）
+内存共享（Memory Sharing）：内存共享是指多个进程之间共享同一段内存空间的机制。通过内存共享，进程可以直接访问并修改同一块内存，从而实现进程间的通信和数据共享。</p>
+<p>内存管理是操作系统中非常重要的一部分，它直接影响着系统的性能、稳定性和安全性。一个高效的内存管理机制可以有效地提高系统的资源利用率，提升系统的整体性能</p>
+<h3 id="虚拟内存">虚拟内存</h3>
+<p>虚拟内存是一种操作系统提供的技术，它通过将磁盘空间作为辅助存储器，扩展了计算机系统的内存地址空间。虚拟内存允许程序访问比物理内存更大的地址空间，而无需实际将所有数据和代码都加载到物理内存中。</p>
+<p>虚拟内存的主要目的是提供更大的内存空间，以便同时运行更多的程序，而不会受到物理内存容量的限制。虚拟内存的实现通常涉及到以下几个主要的概念和技术：</p>
+<p>地址映射（Address Mapping）：操作系统使用地址映射机制将程序的逻辑地址（虚拟地址）映射到物理内存中的实际地址。这种映射关系可以在运行时动态变化，以实现内存分配和回收等功能。</p>
+<p>分页（Paging）：虚拟内存通常通过分页的方式实现。在分页机制下，内存被划分为固定大小的页面（Page），而进程的地址空间也被划分为相同大小的页面。操作系统将进程的页面映射到物理内存中的页面帧（Page Frame），并且可以在需要时将页面从磁盘加载到内存中。</p>
+<p>页面置换（Page Replacement）：当物理内存不足以容纳所有进程所需的页面时，操作系统需要进行页面置换，将一部分页面从内存中移出，以便为新的页面腾出空间。常见的页面置换算法包括先进先出（FIFO）、最近最少使用（LRU）等。</p>
+<p>请求分页（Demand Paging）：为了尽量减少磁盘 I/O 操作，操作系统通常采用请求分页的方式加载页面。在请求分页中，只有当进程访问的页面不在内存中时，操作系统才会将该页面从磁盘加载到内存中。</p>
+<p>页面保护（Page Protection）：虚拟内存允许操作系统为每个页面设置保护位，以控制进程对页面的访问权限。常见的页面保护位包括读（Read）、写（Write）和执行（Execute）权限。</p>
+<p>虚拟内存的引入使得操作系统可以更加灵活地管理内存资源，并且能够提高系统的整体性能和稳定性。同时，虚拟内存也为程序员提供了更大的内存空间，使得开发和运行大型应用程序变得更加容易。</p>
+<h3 id="进程调度算法有哪些">进程调度算法有哪些？</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-04-11</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/cpp-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%AB%E8%82%A1/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/">Tags</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/cpp-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="CPP 设计模式"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CPP 设计模式</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript><div id="commento" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Mr.Wu</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.commento.io/js/commento.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"I5ZLW4RREN","algoliaIndex":"blog","algoliaSearchKey":"ca4030445104c5af93f86dcac75e9c6e","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.f58ffea166ff5d840976e4af8e31ee736ea0e035126a6625ed1feb834ff61769d811827b5137532960ce6edff8ede85f.js" integrity="sha384-9Y/+oWb/XYQJduSvjjHuc26g4DUSamYl7R/rg0/2F2nYEYJ7UTdTKWDObt/47ehf"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', '4672765957', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=4672765957" async></script></body>
+</html>

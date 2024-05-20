@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8\/"
-        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "IO多路复用","wordcount":  2751 ,
+        },"image": ["https:\/\/wxs-605.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "IO多路复用","wordcount":  3095 ,
         "url": "https:\/\/wxs-605.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8\/","datePublished": "2024-01-06T20:52:10+08:00","dateModified": "2024-01-06T20:52:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Mr.Wu","logo": "https:\/\/wxs-605.github.io\/img\/headSculpture.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统 IO多路复用</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Mr.Wu</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>操作系统</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-06">2024-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2751 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="leancloud_visitors" data-flag-title="操作系统 IO多路复用">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-06">2024-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3095 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="leancloud_visitors" data-flag-title="操作系统 IO多路复用">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -159,6 +159,12 @@
 <p>IO 多路复用是一种同步的IO模型，利用IO多路复用模型，可以实现一个线程监视多个文件句柄。一旦某个文件句柄就绪，就能够通知到对应的应用程序进行相应的读写操作；如果没有句柄就绪时，就会阻塞应用程序，从而释放出CPU资源。</p>
 <p>网络中：一个或多个线程处理多个TCP连接，无需创建和维护过多的线程</p>
 <p>实现IO多路复用的原型有三种，select、poll、epoll</p>
+<hr>
+<p><strong>IO多路复用的应用场景？</strong></p>
+<p><strong>1. 网络编程：</strong> 在服务器端，当需要同时处理多个客户端连接时，可以使用IO多路复用来监听多个socket，以便及时响应客户端的请求。常见的IO多路复用技术包括select、poll、epoll（Linux系统中的特有机制）等</p>
+<p><strong>2. 高性能服务器：</strong> 对于高性能服务器，通过IO多路复用可以降低系统开销，提高服务器的并发处理能力。通过在单个线程中管理多个IO操作，避免了线程切换带来的开销，提高了系统的效率</p>
+<p><strong>3. 实时系统：</strong> 在实时系统中，需要及时响应外部事件，IO多路复用可以用于实时监视多个外部事件，以及时做出响应</p>
+<p><strong>4. 图形用户界面(GUI)编程：</strong> 在GUI编程中，常常需要同时处理多个用户输入或者异步事件，比如键盘输入、鼠标点击、定时器事件等，IO多路复用可以用于监听这些事件并及时做出响应</p>
 <hr>
 <h2 id="select"><code>select</code></h2>
 <p>实现原理：轮询 + 遍历</p>
